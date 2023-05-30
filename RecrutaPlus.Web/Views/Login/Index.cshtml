@@ -1,0 +1,67 @@
+﻿@model LoginViewModel
+
+@{
+    Layout = "_Layout_login";
+    ViewData["Title"] = "Login - RecrutaPlus";
+}
+
+@*<div class="BlackGradient">
+    <div class="d-flex">
+        <div class="col-md-7">
+            <img src="~/img/RecrutaPlus.png" class="img-logo" />
+        </div>
+        <div class="col-md-5">
+            <div>
+                <small class="text-white">Login With Your</small>
+                <h1 class="text-uppercase text-white">Account</h1>
+            </div>
+            <div>
+                <div class="form-group col-sm-12 col-md-4">
+                    <label asp-for="username"></label>
+                    <input asp-for="username" class="form-control" placeholder="" required min="0">
+                    <span asp-validation-for="username" class="form-text text-danger small"></span>
+                </div>
+                <div class="form-group col-sm-12 col-md-4">
+                    <label asp-for="password" class="text-white"></label>
+                    <input asp-for="password" class="form-control" placeholder="" required min="0">
+                    <span asp-validation-for="password" class="form-text text-danger small"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<section class="text-center text-lg-start BlackGradient">
+
+    <div class="container py-4">
+        <div class="row g-0 align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <img src="~/img/RecrutaPlus.png" class="img-logo w-100 rounded-4 shadow-4" />
+            </div>
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="cascading-right">
+                    <div class="card-body p-5 shadow-5 text-center">
+                        <small class="text-white">Login With Your</small>
+                        <h1 class="text-uppercase text-white">Account</h1>
+                        <form>
+                            <div class="position-custom col-sm-12 col-md-12">
+                                
+                                <input asp-for="Username" id="inputEmail" class="text-input" type="email" placeholder="Enter your Email" >
+                                <label asp-for="Username" for="inputEmail" class="text-white label-custom"></label>
+                            </div>
+                            <div class="position-custom col-sm-12 col-md-12">
+                                
+                                <input asp-for="Password" id="inputPassword" class="text-input" type="password" placeholder="Enter your Password">
+                                <label asp-for="Password" for="inputPassword" class="text-white label-custom"></label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4 mb-4">
+                                LOGIN
+                            </button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

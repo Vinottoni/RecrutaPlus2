@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ALTITUDE_LABEL" xml:space="preserve">
+    <value>Altitude</value>
+  </data>
+  <data name="ALT_LABEL" xml:space="preserve">
+    <value>Alt</value>
+  </data>
+  <data name="CANCEL" xml:space="preserve">
+    <value>Cancelar</value>
+  </data>
+  <data name="CONFIG" xml:space="preserve">
+    <value>Configurações</value>
+  </data>
+  <data name="CREATE" xml:space="preserve">
+    <value>Novo</value>
+  </data>
+  <data name="CULTURE_INFO_PTBR" xml:space="preserve">
+    <value>Português-BR</value>
+  </data>
+  <data name="DELETE" xml:space="preserve">
+    <value>Excluir</value>
+  </data>
+  <data name="DOWNLOAD" xml:space="preserve">
+    <value>Baixar</value>
+  </data>
+  <data name="DOWNLOAD_ALL" xml:space="preserve">
+    <value>Baixar Tudo</value>
+  </data>
+  <data name="EDIT" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="LATITUTE_LABEL" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="LAT_LABEL" xml:space="preserve">
+    <value>Lat</value>
+  </data>
+  <data name="LENGTH_COMPRESS_LABEL" xml:space="preserve">
+    <value>Tamanho Compactado:</value>
+  </data>
+  <data name="LENGTH_LABEL" xml:space="preserve">
+    <value>Tamanho:</value>
+  </data>
+  <data name="LONGITUDE_LABEL" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="LONG_LABEL" xml:space="preserve">
+    <value>Long</value>
+  </data>
+  <data name="MGS_RANGE_VALUE_INVALID" xml:space="preserve">
+    <value>Faixa de valores inválido</value>
+  </data>
+  <data name="MSG_ALERT_SYNC" xml:space="preserve">
+    <value>Clique em sincronizar dados para obter as atualizações recentes</value>
+  </data>
+  <data name="MSG_AWAIT" xml:space="preserve">
+    <value>Sincronizando dados. Aguarde...</value>
+  </data>
+  <data name="MSG_BAIXAR" xml:space="preserve">
+    <value>Baixar</value>
+  </data>
+  <data name="MSG_DADOS_NOT_SINC" xml:space="preserve">
+    <value>Dados não sincronizados com o servidor. Sincronize os dados antes de efetuar o logout</value>
+  </data>
+  <data name="MSG_DADOS_NOT_SINC_QUESTION" xml:space="preserve">
+    <value>Dados não sincronizados com o servidor. Sincronize os dados antes de efetuar o logout. Se continuar, todos os dados serão perdidos. Deseja continuar mesmo assim?</value>
+  </data>
+  <data name="MSG_DADOS_NOT_SINC_USER_QUESTION" xml:space="preserve">
+    <value>Dados não sincronizados com o servidor: empresa {0} e usuário {1}. Sincronize os dados logando com o usuário anterior. Se continuar, todos os dados serão perdidos. Deseja continuar mesmo assium?</value>
+  </data>
+  <data name="MSG_DADOS_SINC" xml:space="preserve">
+    <value>Deseja sincronizar os dados?</value>
+  </data>
+  <data name="MSG_DADOS_SINC_SUCCESS" xml:space="preserve">
+    <value>Dados sincronizados com sucesso</value>
+  </data>
+  <data name="MSG_DELETED_SUCCESSFULLY" xml:space="preserve">
+    <value>Registro excluído com sucesso</value>
+  </data>
+  <data name="MSG_DELETION_NOT_ALLOWED" xml:space="preserve">
+    <value>Exclusão não permitida</value>
+  </data>
+  <data name="MSG_DOWN_SUCCESS" xml:space="preserve">
+    <value>Dados baixados com sucesso</value>
+  </data>
+  <data name="MSG_GIRAR" xml:space="preserve">
+    <value>Girar</value>
+  </data>
+  <data name="MSG_MAXIMUM_LENGTH_EXCEEDED" xml:space="preserve">
+    <value>O tamanho máximo de '{PropertyName}' deve ser de {MaxLength} caracteres</value>
+  </data>
+  <data name="MSG_MAX_SIZE_FILE_EXCEEDED" xml:space="preserve">
+    <value>O tamanho máximo do arquivo deve ser de {0} MB. Você escolheu um arquivo de {1}</value>
+  </data>
+  <data name="MSG_NAO" xml:space="preserve">
+    <value>Não</value>
+  </data>
+  <data name="MSG_NOT_NETWORKACCESS" xml:space="preserve">
+    <value>Sem acesso à internet</value>
+  </data>
+  <data name="MSG_OFFILE_MODE_ENABLE" xml:space="preserve">
+    <value>Habilitar Modo Offline?</value>
+  </data>
+  <data name="MSG_OFFLINE_MODE" xml:space="preserve">
+    <value>Modo Offline Habilitado</value>
+  </data>
+  <data name="MSG_OFFLINE_MODE_INFO" xml:space="preserve">
+    <value>Para trabalhar em modo offline deve efetuar uma sincronização completa</value>
+  </data>
+  <data name="MSG_OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="MSG_PASSWORD_WRONG" xml:space="preserve">
+    <value>Senha inválida</value>
+  </data>
+  <data name="MSG_PERMISSIONS_MEDIA" xml:space="preserve">
+    <value>Permitir acesso à arquivos, fotos e galerias</value>
+  </data>
+  <data name="MSG_PROBLEMA_INESPERADO" xml:space="preserve">
+    <value>Ocorreu um problema inesperado. Entre em contato com administrador</value>
+  </data>
+  <data name="MSG_PROCESSING_WAIT" xml:space="preserve">
+    <value>Processando aguarde...</value>
+  </data>
+  <data name="MSG_RECRUTA_PENDENCIA" xml:space="preserve">
+    <value>Envio de dados pendente. Clique em enviar.</value>
+  </data>
+  <data name="MSG_REQUIRED" xml:space="preserve">
+    <value>Campo obrigatório</value>
+  </data>
+  <data name="MSG_REQUIRED_FIELD_INFO" xml:space="preserve">
+    <value>*Campos Obrigatórios</value>
+  </data>
+  <data name="MSG_SAVED_FAILURE" xml:space="preserve">
+    <value>Falha ao salvar registro</value>
+  </data>
+  <data name="MSG_SAVED_SUCCESSFULLY" xml:space="preserve">
+    <value>Registro salvo com sucesso</value>
+  </data>
+  <data name="MSG_SELECIONAR" xml:space="preserve">
+    <value>Selecionar</value>
+  </data>
+  <data name="MSG_SELECIONE" xml:space="preserve">
+    <value>Selecione...</value>
+  </data>
+  <data name="MSG_SIM" xml:space="preserve">
+    <value>Sim</value>
+  </data>
+  <data name="MSG_UPDATE_SUCCESSFULLY" xml:space="preserve">
+    <value>Registro atualizado com sucesso</value>
+  </data>
+  <data name="MSG_UPLOAD_SUCCESS" xml:space="preserve">
+    <value>Dados enviados com sucesso</value>
+  </data>
+  <data name="MSG_USERNAME_PASSWORD_WRONG" xml:space="preserve">
+    <value>Usuário ou senha inválidos</value>
+  </data>
+  <data name="MSG_USERNAME_WRONG" xml:space="preserve">
+    <value>Username não confere</value>
+  </data>
+  <data name="MSG_VALOR_DUPLICADO" xml:space="preserve">
+    <value>Valor duplicado. Existe um registro com este valor</value>
+  </data>
+  <data name="MSG_WAIT" xml:space="preserve">
+    <value>Aguarde...</value>
+  </data>
+  <data name="SAVE" xml:space="preserve">
+    <value>Salvar</value>
+  </data>
+  <data name="TITLE" xml:space="preserve">
+    <value>RecrutaPlus</value>
+  </data>
+</root>

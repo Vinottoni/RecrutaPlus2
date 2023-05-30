@@ -1,0 +1,145 @@
+﻿@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Dashboard - RecrutaPlus";
+}
+
+<div class="content-pages text-yellowy">
+    <div class="container">
+        <div class="page-titles">
+            <h2>
+                Geral Information
+            </h2>
+        </div>
+        <div class="status-employees">
+            <div class="base-status-employees col-sm-12 col-md-2 margin-status">
+                <div class="text-base-status">
+                    <small class="text-white">Total Employee</small>
+                    <h4 class="mb-0">158</h4>
+                </div>
+            </div>
+            <div class="base-status-employees col-sm-12 col-md-2 margin-status">
+                <div class="text-base-status">
+                    <small class="text-white">Active Employee</small>
+                    <h4 class="mb-0">127</h4>
+                </div>
+            </div>
+            <div class="base-status-employees col-sm-12 col-md-2 margin-status">
+                <div class="text-base-status">
+                    <small class="text-white">Offline Employee</small>
+                    <h4 class="mb-0">31</h4>
+                </div>
+            </div>
+            <div class="base-status-employees col-sm-12 col-md-2 ">
+                <div class="text-base-status">
+                    <small class="text-white">Recently Employee</small>
+                    <h4 class="mb-0">5</h4>
+                </div>
+            </div>
+        </div>
+        <hr class="hr-color" />
+
+        <div class="card-custom">
+            <div class="card-body card-body-custom d-flex card-background">
+                <div class="col-sm-12 col-md-6 home-base-graficos">
+                    <canvas id="myChart" class="size-canva"></canvas>
+                </div>
+                <div class="col-sm-12 col-md-6 home-base-graficos">
+                    <div class="d-flex align-dashboard">
+                        <h6 class="text-white">Recent Employee</h6>
+                        <table class="table table-employee-dashboard table-borderless">
+                            <thead class="border-tb-dashboard">
+                                <tr class="text-yellowy">
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="text-white">
+                                    <td>Jessie Clarcson</td>
+                                    <td>prototype@teste.com</td>
+                                </tr>
+                                <tr class="text-white">
+                                    <td>Lebron Wayde</td>
+                                    <td>prototype@teste.com</td>
+                                </tr>
+                                <tr class="text-white">
+                                    <td>Natali Trump</td>
+                                    <td colspan="2">prototype@teste.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        @*<div class="base-dashboard">
+            <div class="col-sm-12 col-md-6 home-base-graficos">
+                <canvas id="myChart" class="size-canva"></canvas>
+            </div>
+            <div class="col-sm-12 col-md-6 home-base-graficos">
+                <div class="d-flex align-dashboard">
+                    <h6 class="text-white">Recent Employee</h6>
+                    <table class="table table-employee-dashboard table-borderless">
+                        <thead class="border-tb-dashboard">
+                            <tr class="text-yellowy">
+                                <th>Name</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-white">
+                                <td>Jessie Clarcson</td>
+                                <td>prototype@teste.com</td>
+                            </tr>
+                            <tr class="text-white">
+                                <td>Lebron Wayde</td>
+                                <td>prototype@teste.com</td>
+                            </tr>
+                            <tr class="text-white"> 
+                                <td>Natali Trump</td>
+                                <td colspan="2">prototype@teste.com</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            
+            </div>
+        </div>*@
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    const ctx = document.getElementById('myChart');
+    const myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Botox', 'Ácido', 'Gelox', 'Gel', 'Enzimas', 'álcool em gel'],
+            datasets: [{
+                label: '44 of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+    });
+    const grafctx = document.getElementById('grafBar');
+</script>

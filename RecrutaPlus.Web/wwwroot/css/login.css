@@ -1,0 +1,111 @@
+﻿/* Google Fonts Import Link */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --color-nero: #262626;
+    --color-dark-nero: #1e1e1e;
+    --color-yellowy-green: #A7D729;
+    --color-smoky: #5A5A5F;
+    --color-white: #FFFFFF;
+    --color-ghost: #B6B6BB;
+    --color-btn-active-light-blue: #C9F7F5;
+    --color-light-sea-green: #1BC5BD;
+    --color-sundown: #FFAEAE;
+    --color-red: #FF0000;
+    --color-bittersweet-error-mensagem: #FF5B5B;
+}
+
+body {
+    background-image: url(../img/Background_login.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: var(--color-dark-nero) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100vh;
+    width: 100%;
+}
+
+.BlackGradient {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(90deg, #262626 43.23%, rgba(255, 255, 255, 0.8) 100%);
+}
+
+.img-logo {
+    width: 100%;
+}
+
+.cascading-right {
+    margin-right: -50px;
+}
+
+@media (max-width: 991.98px) {
+    .cascading-right {
+        margin-right: 0;
+    }
+}
+
+.input-containers{
+    width: 280px;
+    position: relative;
+}
+
+.label-custom{
+    position:absolute;
+    left:10px;
+    top:14px;
+    transition: all 0.2s;
+    padding: 0 2px;
+    z-index: 1;
+    color: #b3b3b3;
+}
+
+.text-input{
+    padding: 0.8rem;
+    width: 100%;
+    height: 100%;
+    border: 2px solid #2f2c45;
+    background: #272530;
+    border-radius: 5px;
+    font-size: 18px;
+    outline: none;
+    transition: all 0.3s;
+    color: #fff;
+}
+
+.label-custom::before{
+    content: "";
+    height: 5px;
+    background: #272530;
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    width: 100%;
+    z-index: -1;
+}
+
+.text-input:focus{
+    border: 2px solid #7e4ccb;
+}
+
+.text-input:focus + .label-custom, .filled{
+    top: -10px;
+    color: #7e4ccb;
+    font-size: 14px;
+}
+
+.text-input::placeholder{
+    font-size: 16px;
+    opacity: 0;
+    transition: all 0.3s;
+}
+
+.text-input:focus::placeholder{
+    opacity:1;
+}
+
+.position-custom{
+    position:relative !important;
+}

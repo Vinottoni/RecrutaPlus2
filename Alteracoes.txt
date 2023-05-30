@@ -1,0 +1,117 @@
+//INSERIR AQUI AS ALTERAÇÕES COM SQL
+
+create schema recrutamais2;
+
+use recrutamais;
+
+CREATE TABLE IF NOT EXISTS `__EFMigrationsHistory` (
+    `MigrationId` varchar(150) CHARACTER SET utf8mb4 NOT NULL,
+    `ProductVersion` varchar(32) CHARACTER SET utf8mb4 NOT NULL,
+    CONSTRAINT `PK___EFMigrationsHistory` PRIMARY KEY (`MigrationId`)
+) CHARACTER SET=utf8mb4;
+
+START TRANSACTION;
+
+ALTER DATABASE CHARACTER SET utf8mb4;
+
+CREATE TABLE `AppLoggers` (
+    `Id` int NOT NULL AUTO_INCREMENT,
+    `Message` longtext CHARACTER SET utf8mb4 NULL,
+    `Template` longtext CHARACTER SET utf8mb4 NULL,
+    `Level` longtext CHARACTER SET utf8mb4 NULL,
+    `TimeStamp` datetime(6) NOT NULL,
+    `Exception` longtext CHARACTER SET utf8mb4 NULL,
+    `Properties` longtext CHARACTER SET utf8mb4 NULL,
+    CONSTRAINT `PK_AppLoggers` PRIMARY KEY (`Id`)
+) CHARACTER SET=utf8mb4;
+
+CREATE TABLE `cargos` (
+    `CargoId` INT NOT NULL AUTO_INCREMENT,
+    `Nome` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Descricao` TEXT CHARACTER SET utf8mb4 NULL,
+    `Salario` DECIMAL(65,30) NOT NULL,
+    `Cadastro` DATETIME NOT NULL,
+    `CadastradoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
+    `Edicao` DATETIME NOT NULL,
+    `EditadoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
+    `VersionStamp` DECIMAL(20,0) NOT NULL,
+    `GuidStamp` CHAR(36) COLLATE ascii_general_ci NOT NULL,
+    `FuncionarioId` INT NULL,
+    CONSTRAINT `PK_cargos` PRIMARY KEY (`CargoId`),
+    CONSTRAINT `AK_cargos_GuidStamp` UNIQUE (`GuidStamp`)
+) CHARACTER SET=utf8mb4;
+
+CREATE TABLE `funcionarios` (
+    `FuncionarioId` INT NOT NULL AUTO_INCREMENT,
+    `CargoId` INT NOT NULL,
+    `Nome` longtext CHARACTER SET utf8mb4 NULL,
+    `RG` VARCHAR(45) CHARACTER SET utf8mb4 NOT NULL,
+    `CPF` VARCHAR(11) CHARACTER SET utf8mb4 NOT NULL,
+    `Email` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Telefone` VARCHAR(20) CHARACTER SET utf8mb4 NOT NULL,
+    `DataNascimento` DATE NOT NULL,
+    `Genero` CHAR(2) CHARACTER SET utf8mb4 NOT NULL,
+    `CEP` VARCHAR(20) CHARACTER SET utf8mb4 NOT NULL,
+    `Endereco` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Bairro` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Educacao` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Status` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Cadastro` DATETIME NOT NULL,
+    `CadastradoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
+    `Edicao` DATETIME NOT NULL,
+    `EditadoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
+    `VersionStamp` DECIMAL(20,0) NOT NULL,
+    `GuidStamp` CHAR(36) COLLATE ascii_general_ci NOT NULL,
+    `LoginUsuarioId` INT NULL,
+    CONSTRAINT `PK_funcionarios` PRIMARY KEY (`FuncionarioId`),
+    CONSTRAINT `AK_funcionarios_GuidStamp` UNIQUE (`GuidStamp`),
+    CONSTRAINT `FK_funcionarios_cargos_CargoId` FOREIGN KEY (`CargoId`) REFERENCES `cargos` (`CargoId`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+
+CREATE TABLE `usuarios` (
+    `usuarioId` INT NOT NULL AUTO_INCREMENT,
+    `FuncionarioId` INT NOT NULL,
+    `username` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `password` VARCHAR(255) CHARACTER SET utf8mb4 NOT NULL,
+    `Cadastro` DATETIME NOT NULL,
+    `CadastradoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
+    `Edicao` DATETIME NOT NULL,
+    `EditadoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
+    `timeStamp` DECIMAL(20,0) NOT NULL,
+    `GuidStamp` CHAR(36) COLLATE ascii_general_ci NOT NULL,
+    CONSTRAINT `PK_usuarios` PRIMARY KEY (`usuarioId`),
+    CONSTRAINT `AK_usuarios_GuidStamp` UNIQUE (`GuidStamp`),
+    CONSTRAINT `FK_usuarios_funcionarios_FuncionarioId` FOREIGN KEY (`FuncionarioId`) REFERENCES `funcionarios` (`FuncionarioId`) ON DELETE CASCADE
+) CHARACTER SET=utf8mb4;
+
+CREATE INDEX `IX_cargos_FuncionarioId` ON `cargos` (`FuncionarioId`);
+
+CREATE INDEX `IX_funcionarios_CargoId` ON `funcionarios` (`CargoId`);
+
+CREATE INDEX `IX_funcionarios_LoginUsuarioId` ON `funcionarios` (`LoginUsuarioId`);
+
+CREATE INDEX `IX_usuarios_FuncionarioId` ON `usuarios` (`FuncionarioId`);
+
+ALTER TABLE `cargos` ADD CONSTRAINT `FK_cargos_funcionarios_FuncionarioId` FOREIGN KEY (`FuncionarioId`) REFERENCES `funcionarios` (`FuncionarioId`);
+
+ALTER TABLE `funcionarios` ADD CONSTRAINT `FK_funcionarios_usuarios_LoginUsuarioId` FOREIGN KEY (`LoginUsuarioId`) REFERENCES `usuarios` (`usuarioId`);
+
+INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+VALUES ('20230530222418_db', '7.0.5');
+
+COMMIT;
+
+
+
+
+
+
+//Criação dados teste
+//Cargo
+INSERT INTO `recrutamais`.`cargos` (`cargoId`, `nome`, `descricao`, `salario`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'teste', 'teste', '1300', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
+
+//Funcionario
+INSERT INTO `recrutamais`.`funcionarios` (`funcionarioId`, `nome`, `cpf`, `email`, `telefone`, `data_nascimento`, `endereco`, `cargoId`, `rg`, `genero`, `cep`, `educacao`, `status`, `bairro`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'Vinicius', '73652415243', 'teste@teste.com', '11998787654', '2003-06-26', 'Rua das Arvores', '1', '457365477', 'M', '07084070', 'Ensino Superior', 'Casado', 'Parque Continental 2', '2023-05-28 21:59:17', 'admin', '2023-05-29 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
+
+//Usuario
+INSERT INTO `recrutamais`.`usuarios` (`usuarioId`, `username`, `password`, `funcionarioId`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'teste', 'teste1234', '1', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');

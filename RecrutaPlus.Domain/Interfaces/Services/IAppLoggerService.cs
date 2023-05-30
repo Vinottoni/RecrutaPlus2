@@ -1,0 +1,14 @@
+﻿using RecrutaPlus.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RecrutaPlus.Domain.Interfaces.Services
+{
+    public interface IAppLoggerService : IService<AppLogger>
+    {
+        Task<AppLogger> GetByIdAsync(int id);
+    }
+}
