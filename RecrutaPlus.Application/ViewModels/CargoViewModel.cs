@@ -19,9 +19,6 @@ namespace RecrutaPlus.Application.ViewModels
         [Display(Name = "Descrição")]
         public string Descricao { get; set; }
 
-        [Display(Name = "Salário")]
-        public decimal Salario { get; set; }
-
         //Default
         public DateTime Cadastro { get; set; }
         public string CadastradoPor { get; set; }

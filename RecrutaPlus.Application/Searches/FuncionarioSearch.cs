@@ -13,6 +13,10 @@ namespace RecrutaPlus.Application.Searches
         [JsonIgnore]
         public List<FuncionarioViewModel> Itens { get; set; } = new List<FuncionarioViewModel>();
         public FuncionarioFilterViewModel Filter { get; set; }
+        public FuncionarioViewModel FuncionarioViewModels { get; set; }
+
+        [JsonIgnore]
+        public virtual IList<FuncionarioViewModel> Funcionarios { get; set; }
 
         [Display(Name = "Carregar")]
         public bool HasFilter { get; set; } = DefaultConst.FILTER_HASFILTER_DEFAULT;

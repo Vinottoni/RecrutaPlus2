@@ -40,6 +40,8 @@ namespace RecrutaPlus.Application.ViewModels
 
         public string Estado { get; set; }
 
+        public decimal? Salario { get; set; }
+
         //Default
         public DateTime? Cadastro { get; set; }
         public string CadastradoPor { get; set; }

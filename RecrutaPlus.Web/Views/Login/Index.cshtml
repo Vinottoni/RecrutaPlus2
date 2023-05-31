@@ -5,32 +5,6 @@
     ViewData["Title"] = "Login - RecrutaPlus";
 }
 
-@*<div class="BlackGradient">
-    <div class="d-flex">
-        <div class="col-md-7">
-            <img src="~/img/RecrutaPlus.png" class="img-logo" />
-        </div>
-        <div class="col-md-5">
-            <div>
-                <small class="text-white">Login With Your</small>
-                <h1 class="text-uppercase text-white">Account</h1>
-            </div>
-            <div>
-                <div class="form-group col-sm-12 col-md-4">
-                    <label asp-for="username"></label>
-                    <input asp-for="username" class="form-control" placeholder="" required min="0">
-                    <span asp-validation-for="username" class="form-text text-danger small"></span>
-                </div>
-                <div class="form-group col-sm-12 col-md-4">
-                    <label asp-for="password" class="text-white"></label>
-                    <input asp-for="password" class="form-control" placeholder="" required min="0">
-                    <span asp-validation-for="password" class="form-text text-danger small"></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@
-
 <section class="text-center text-lg-start BlackGradient">
 
     <div class="container py-4">
@@ -54,7 +28,7 @@
                                 <input asp-for="Password" id="inputPassword" class="text-input" type="password" placeholder="Enter your Password">
                                 <label asp-for="Password" for="inputPassword" class="text-white label-custom"></label>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4 mb-4">
+                            <button type="submit" class="btn btn-primary btn-block col-md-12 mt-4 mb-4" asp-action="Index" asp-controller="Dashboard">
                                 LOGIN
                             </button>
 

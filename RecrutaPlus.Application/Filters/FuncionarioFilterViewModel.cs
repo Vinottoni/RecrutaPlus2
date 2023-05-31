@@ -54,6 +54,9 @@ namespace RecrutaPlus.Application.Filters
         [Display(Name = "Estado")]
         public string Estado { get; set; }
 
+        [Display(Name = "Salário")]
+        public decimal? Salario { get; set; }
+
         //Default
         public DateTime? Cadastro { get; set; }
         public string CadastradoPor { get; set; }

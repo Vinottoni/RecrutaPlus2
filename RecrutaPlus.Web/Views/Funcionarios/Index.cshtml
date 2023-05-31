@@ -1,8 +1,98 @@
-﻿@using RecrutaPlus.Application.Searches;
-@model FuncionarioSearch
+﻿@model FuncionarioSearch
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Funcionários - RecrutaPlus";
+    ViewData["Title"] = "Funcionários";
     ViewData["SubTitle"] = "Consulta";
 }
+
+<div class="content-pages text-yellowy">
+    <div class="container">
+        <div class="page-titles">
+            <h1 class="ml-0">
+                @ViewData["Title"]
+            </h1>
+        </div>
+
+        <div class="page-section">
+
+            <div class="card-deck-xl">
+
+                <div class="card-custom card-fluid">
+
+                    <div class="card-body card-body-custom card-background">
+
+                        <form asp-action="Create" class="col-12 col-sm-12 col-md-12">
+
+                            <fieldset>
+                                <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
+
+                                    <div class="col-12 col-sm-12 col-md-12 justify-content-between d-flex">
+                                        <div class="text-left">
+                                            <small class="text-white">Tabela de</small><br />
+                                            <h2>Funcionarios</h2>
+                                        </div>
+                                        <div>
+                                            <a asp-action="Create" class="btn btn-lg btn-custom">Novo</a>
+                                        </div>
+                                    </div>
+                                    <div class="form-row col-12 col-sm-12 col-md-12">
+                                        <table class="table table-borderless">
+                                            <thead class="table-header-custom">
+                                                <tr class="text-center">
+                                                    <th class="table-border-left-15">Nome</th>
+                                                    <th>Email</th>
+                                                    <th>Salário</th>
+                                                    <th>Telefone</th>
+                                                    <th>Status</th>
+                                                    <th class="table-border-right-15"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="table-body-color">
+                                                @foreach (FuncionarioViewModel item in Model.Itens)
+                                                {
+                                                    <tr>
+                                                        <td class="text-center align-middle">
+                                                            @Html.DisplayFor(modelItem => item.Nome)
+                                                        </td>
+                                                        <td class="text-center align-middle">
+                                                            @Html.DisplayFor(modelItem => item.Email)
+                                                        </td>
+                                                        <td class="text-center align-middle">
+
+                                                            <small>R$&nbsp;</small>@Html.DisplayFor(modelItem => item.Salario)
+                                                        </td>
+                                                        <td class="text-center align-middle">
+                                                            @Html.DisplayFor(modelItem => item.Telefone)
+                                                        </td>
+                                                        <td class="text-center align-middle">
+                                                            @if (item.Ativo == true)
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-active">@FuncionarioResource.MSG_ATIVO</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-off">@FuncionarioResource.MSG_OFFLINE</span>
+                                                            }
+                                                        </td>
+                                                        <td class="text-center align-middle">
+                                                            <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
+                                                            <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
+                                                            <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

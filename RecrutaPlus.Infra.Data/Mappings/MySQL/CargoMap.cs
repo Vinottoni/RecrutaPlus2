@@ -26,10 +26,6 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
             builder.Property(e => e.Descricao)
                 .HasColumnType(MySQLDataTypes.TEXT());
 
-            builder.Property(e => e.Salario)
-                .IsRequired()
-                .HasColumnType(MySQLDataTypes.DECIMAL());
-
             builder.Property(e => e.Cadastro)
                 .HasColumnType(MySQLDataTypes.DATETIME());
 

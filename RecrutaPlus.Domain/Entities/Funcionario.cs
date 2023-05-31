@@ -40,6 +40,7 @@ namespace RecrutaPlus.Domain.Entities
 
         public string Estado { get; set; }
 
+        public decimal Salario { get; set; }
 
         //Default
         public DateTime Cadastro { get; set; }

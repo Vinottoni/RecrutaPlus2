@@ -22,15 +22,15 @@
 
                     <div class="card-body card-body-custom card-background">
 
-                        <form asp-action="Create" class="col-12 col-sm-12 col-md-12">
+                        <form asp-action="Create" id="formCreate" class="col-12 col-sm-12 col-md-12">
 
                             <fieldset>
                                 <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
 
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="text-left">
-                                            <small class="text-white">Register</small><br />
-                                            <h2>Information</h2>
+                                            <small class="text-white">Registrar</small><br />
+                                            <h2>Informações</h2>
                                         </div>
                                         <hr class="hr-color" />
                                     </div>
@@ -39,19 +39,19 @@
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
                                             <div class="form-group col-12 col-sm-12 col-md-5">
                                                 <label asp-for="Nome" class="label-custom"></label>
-                                                <input asp-for="Nome" class="form-control input-color" placeholder="Enter your Name" required min="0">
+                                                <input asp-for="Nome" class="form-control input-color" placeholder="Digite seu Name" required min="0">
                                                 <span asp-validation-for="Nome" class="form-text text-danger small"></span>
                                             </div>
 
                                             <div class="form-group col-12 col-sm-12 col-md-4">
                                                 <label asp-for="Email" class="label-custom"></label>@*<sup class="text-danger">*</sup>*@
-                                                <input asp-for="Email" class="form-control input-color" placeholder="Enter your Email" required min="0">
+                                                <input asp-for="Email" class="form-control input-color" placeholder="Digite seu Email" required min="0">
                                                 <span asp-validation-for="Email" class="form-text text-danger small"></span>
                                             </div>
 
                                             <div class="form-group col-12 col-sm-12 col-md-2">
                                                 <label asp-for="Telefone" class="label-custom"></label>
-                                                <input asp-for="Telefone" class="form-control input-color" placeholder="Enter your Number">
+                                                <input asp-for="Telefone" class="form-control input-color" placeholder="Digite seu Celular">
                                                 <span asp-validation-for="Telefone" class="form-text text-danger small"></span>
                                             </div>
                                         </div>
@@ -59,19 +59,19 @@
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
                                             <div class="form-group col-12 col-sm-12 col-md-3">
                                                 <label asp-for="CPF" class="label-custom"></label>
-                                                <input asp-for="CPF" class="form-control input-color" placeholder="Enter your CPF">
+                                                <input asp-for="CPF" class="form-control input-color" placeholder="Digite seu CPF">
                                                 <span asp-validation-for="CPF" class="form-text text-danger small"></span>
                                             </div>
 
                                             <div class="form-group col-12 col-sm-12 col-md-3">
                                                 <label asp-for="RG" class="label-custom"></label>
-                                                <input asp-for="RG" class="form-control input-color" placeholder="Enter your RG">
+                                                <input asp-for="RG" class="form-control input-color" placeholder="Digite seu RG">
                                                 <span asp-validation-for="RG" class="form-text text-danger small"></span>
                                             </div>
 
                                             <div class="form-group col-12 col-sm-12 col-md-2">
                                                 <label asp-for="DataNascimento" class="label-custom"></label>
-                                                <input asp-for="DataNascimento" class="form-control input-color" placeholder="Enter your Date of Birthday">
+                                                <input asp-for="DataNascimento" class="form-control input-color" placeholder="Digite sua Data de Nascimento">
                                                 <span asp-validation-for="DataNascimento" class="form-text text-danger small"></span>
                                             </div>
 
@@ -91,7 +91,7 @@
 
                                             <div class="form-group col-12 col-sm-12 col-md-6">
                                                 <label asp-for="Endereco" class="label-custom"></label>
-                                                <input asp-for="Endereco" class="form-control input-color" placeholder="Enter your Adress">
+                                                <input asp-for="Endereco" class="form-control input-color" placeholder="Digite seu Endereço">
                                                 <span asp-validation-for="Endereco" class="form-text text-danger small"></span>
                                             </div>
                                         </div>
@@ -99,20 +99,20 @@
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
                                             <div class="form-group col-12 col-sm-12 col-md-3">
                                                 <label asp-for="CEP" class="label-custom"></label>
-                                                <input asp-for="CEP" class="form-control input-color" placeholder="Enter your CEP">
+                                                <input asp-for="CEP" class="form-control input-color" placeholder="Digite seu CEP">
                                                 <span asp-validation-for="CEP" class="form-text text-danger small"></span>
                                             </div>
 
                                             <div class="form-group col-12 col-sm-12 col-md-5">
                                                 <label asp-for="Bairro" class="label-custom"></label>
-                                                <input asp-for="Bairro" class="form-control input-color" placeholder="Enter your Neighborhood">
+                                                <input asp-for="Bairro" class="form-control input-color" placeholder="Digite seu Bairro">
                                                 <span asp-validation-for="Bairro" class="form-text text-danger small"></span>
                                             </div>
 
                                             <div class="form-group col-12 col-sm-12 col-md-3">
-                                                <label asp-for="RG" class="label-custom"></label>
-                                                <input asp-for="RG" class="form-control input-color" placeholder="Select">
-                                                <span asp-validation-for="RG" class="form-text text-danger small"></span>
+                                                <label asp-for="Estado" class="label-custom"></label>
+                                                <input asp-for="Estado" class="form-control input-color" placeholder="Digite seu Estado">
+                                                <span asp-validation-for="Estado" class="form-text text-danger small"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -121,8 +121,8 @@
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <hr class="hr-color" />
                                         <div class="text-left">
-                                            <small class="text-white">Register</small><br />
-                                            <h2>Salary</h2>
+                                            <small class="text-white">Registrar</small><br />
+                                            <h2>Salário</h2>
                                         </div>
                                         <hr class="hr-color" />
                                     </div>
@@ -136,7 +136,7 @@
 
                                         <div class="form-group col-12 col-sm-12 col-md-4">
                                             <label asp-for="RG" class="label-custom"></label>
-                                            <input asp-for="RG" class="form-control input-color" placeholder="Value">
+                                            <input asp-for="RG" class="form-control input-color" placeholder="Valor por Hora">
                                             <span asp-validation-for="RG" class="form-text text-danger small"></span>
                                         </div>
                                     </div>
@@ -144,7 +144,7 @@
                             </fieldset>
                             <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
                                 <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-route-state="true">Voltar</a>
-                                <a class="btn btn-primary btn-lg btn-register" asp-action="Create" asp-controller="Create" type="submit">Salvar</a>
+                                <button form="formCreate" class="btn btn-primary btn-lg btn-register" type="submit">Salvar</button>
                             </div>
                         </form>
                     </div>

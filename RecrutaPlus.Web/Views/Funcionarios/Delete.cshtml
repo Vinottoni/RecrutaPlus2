@@ -5,3 +5,135 @@
     ViewData["Title"] = "Funcionários - RecrutaPlus";
     ViewData["SubTitle"] = "Deletar";
 }
+
+<div class="content-pages text-yellowy">
+    <div class="container">
+        <div class="page-titles">
+            <h1 class="ml-0">
+                @ViewData["Title"]
+            </h1>
+        </div>
+
+        <div class="page-section">
+
+            <div class="card-deck-xl">
+
+                <div class="card-custom card-fluid">
+
+                    <div class="card-body card-body-custom card-background">
+
+                        <form asp-action="Create" class="col-12 col-sm-12 col-md-12">
+
+                            <fieldset>
+                                <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
+
+                                    <div class="col-12 col-sm-12 col-md-12">
+                                        <div class="text-left">
+                                            <small class="text-white">Detalhes</small><br />
+                                            <h2>Informações</h2>
+                                        </div>
+                                        <hr class="hr-color" />
+                                    </div>
+                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
+
+                                        <dl class="flex-custom col-12 col-sm-12 col-md-12">
+                                            <div class="col-12 col-sm-12 col-md-12 flex-custom">
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Nome)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Email)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Email)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Telefone)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Telefone)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.CPF)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.CPF)</dd>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-md-12 flex-custom justify-content-between">
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.RG)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.RG)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.DataNascimento)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.DataNascimento)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Genero)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Genero)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Educacao)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Educacao)</dd>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-12 flex-custom ">
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Endereco)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Endereco)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.CEP)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.CEP)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Bairro)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Bairro)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Estado)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Estado)</dd>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-12 flex-custom ">
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.Nome)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Salario)</dt>
+                                                    <dd class="text-white"><small>R$&nbsp;</small>@Html.DisplayFor(model => model.Salario)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt>@Html.DisplayNameFor(model => model.Ativo)</dt>
+                                                    <dd class="text-white">
+                                                        @if (Model.Ativo == true)
+                                                        {
+                                                            <span class="badge badge-subtle btn-badge-active">@DefaultResource.MSG_SIM</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge badge-subtle btn-badge-off">@DefaultResource.MSG_NAO</span>
+                                                        }
+                                                    </dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3"></div>
+                                            </div>
+
+                                        </dl>
+
+                                    </div>
+                            </fieldset>
+                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
+                                <form asp-action="Delete">
+                                    <input type="hidden" asp-for="FuncionarioId" />
+                                    <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-route-state="true">Voltar</a>
+                                    <button class="btn btn-danger btn-lg btn-delete-custom" type="submit">Deletar</button>
+                                </form>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

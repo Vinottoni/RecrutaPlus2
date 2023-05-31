@@ -129,6 +129,12 @@
   <data name="EDIT" xml:space="preserve">
     <value>Editar</value>
   </data>
+  <data name="MSG_ATIVO" xml:space="preserve">
+    <value>Ativo</value>
+  </data>
+  <data name="MSG_OFFLINE" xml:space="preserve">
+    <value>Desativado</value>
+  </data>
   <data name="MSG_SAVED_SUCCESSFULLY" xml:space="preserve">
     <value>Registro salvo com sucesso</value>
   </data>

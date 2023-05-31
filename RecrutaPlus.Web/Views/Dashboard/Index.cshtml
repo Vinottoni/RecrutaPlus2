@@ -1,4 +1,6 @@
-﻿@{
+﻿@model FuncionarioSearch
+
+@{
     Layout = "_Layout";
     ViewData["Title"] = "Dashboard - RecrutaPlus";
 }
@@ -13,25 +15,25 @@
         <div class="status-employees">
             <div class="base-status-employees col-sm-12 col-md-2 margin-status">
                 <div class="text-base-status">
-                    <small class="text-white">Total Employee</small>
+                    <small class="text-white">Total de Funcionarios</small>
                     <h4 class="mb-0">158</h4>
                 </div>
             </div>
             <div class="base-status-employees col-sm-12 col-md-2 margin-status">
                 <div class="text-base-status">
-                    <small class="text-white">Active Employee</small>
+                    <small class="text-white">Funcionarios Ativos</small>
                     <h4 class="mb-0">127</h4>
                 </div>
             </div>
             <div class="base-status-employees col-sm-12 col-md-2 margin-status">
                 <div class="text-base-status">
-                    <small class="text-white">Offline Employee</small>
+                    <small class="text-white">Funcionarios Desativados</small>
                     <h4 class="mb-0">31</h4>
                 </div>
             </div>
             <div class="base-status-employees col-sm-12 col-md-2 ">
                 <div class="text-base-status">
-                    <small class="text-white">Recently Employee</small>
+                    <small class="text-white">Funcionarios Recentes</small>
                     <h4 class="mb-0">5</h4>
                 </div>
             </div>
@@ -45,27 +47,27 @@
                 </div>
                 <div class="col-sm-12 col-md-6 home-base-graficos">
                     <div class="d-flex align-dashboard">
-                        <h6 class="text-white">Recent Employee</h6>
+                        <h6 class="text-white">Funcionarios Recentes</h6>
+
                         <table class="table table-employee-dashboard table-borderless">
                             <thead class="border-tb-dashboard">
                                 <tr class="text-yellowy">
-                                    <th>Name</th>
+                                    <th>Nome</th>
                                     <th>Email</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="text-white">
-                                    <td>Jessie Clarcson</td>
-                                    <td>prototype@teste.com</td>
-                                </tr>
-                                <tr class="text-white">
-                                    <td>Lebron Wayde</td>
-                                    <td>prototype@teste.com</td>
-                                </tr>
-                                <tr class="text-white">
-                                    <td>Natali Trump</td>
-                                    <td colspan="2">prototype@teste.com</td>
-                                </tr>
+                                @foreach (FuncionarioViewModel item in Model.Itens)
+                                {
+                                    <tr class="text-white">
+                                        <td class="text-left align-middle">
+                                            @Html.DisplayFor(modelItem => item.Nome)
+                                        </td>
+                                        <td class="text-left align-middle">
+                                            @Html.DisplayFor(modelItem => item.Email)
+                                        </td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -73,40 +75,6 @@
                 </div>
             </div>
         </div>
-
-        @*<div class="base-dashboard">
-            <div class="col-sm-12 col-md-6 home-base-graficos">
-                <canvas id="myChart" class="size-canva"></canvas>
-            </div>
-            <div class="col-sm-12 col-md-6 home-base-graficos">
-                <div class="d-flex align-dashboard">
-                    <h6 class="text-white">Recent Employee</h6>
-                    <table class="table table-employee-dashboard table-borderless">
-                        <thead class="border-tb-dashboard">
-                            <tr class="text-yellowy">
-                                <th>Name</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="text-white">
-                                <td>Jessie Clarcson</td>
-                                <td>prototype@teste.com</td>
-                            </tr>
-                            <tr class="text-white">
-                                <td>Lebron Wayde</td>
-                                <td>prototype@teste.com</td>
-                            </tr>
-                            <tr class="text-white"> 
-                                <td>Natali Trump</td>
-                                <td colspan="2">prototype@teste.com</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            
-            </div>
-        </div>*@
     </div>
 </div>
 
@@ -117,25 +85,19 @@
     const myChart = new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Botox', 'Ácido', 'Gelox', 'Gel', 'Enzimas', 'álcool em gel'],
+            labels: ['Ativos', 'Desativados', 'Recentes'],
             datasets: [{
-                label: '44 of Votes',
-                data: [12, 19, 3, 5, 2, 3],
+                label: '158 funcionários',
+                data: [127, 31, 5],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(167, 215, 41, 1)',
+                    'rgba(255, 174, 174, 1)',
+                    'rgba(201, 247, 245, 1)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(167, 215, 4, 1)',
+                    'rgba(255, 174, 174, 1)',
+                    'rgba(201, 247, 245, 1)',
                 ],
                 borderWidth: 1
             }]

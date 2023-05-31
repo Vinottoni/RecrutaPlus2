@@ -63,6 +63,10 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.VARCHAR(255));
 
+            builder.Property(e => e.Salario)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.DECIMAL(20,2));
+
             builder.Property(e => e.Bairro)
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.VARCHAR(255));

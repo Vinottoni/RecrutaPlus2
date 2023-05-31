@@ -19,9 +19,6 @@ namespace RecrutaPlus.Application.Filters
         [Display(Name = "Descrição")]
         public string descricao { get; set; }
 
-        [Display(Name = "Salário")]
-        public decimal? salario { get; set; }
-
         //Default
         public DateTime? Cadastro { get; set; }
         public string CadastradoPor { get; set; }
