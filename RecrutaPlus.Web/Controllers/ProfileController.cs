@@ -28,7 +28,12 @@ namespace RecrutaPlus.Web.Controllers
         {
             if (id == null)
             {
+                //Funcionario employee = await _employeeService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
                 return NotFound();
+            }
+            else
+            {
+                //Funcionario employee = await _employeeService.GetAllAsync();
             }
 
             Funcionario employee = await _employeeService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));

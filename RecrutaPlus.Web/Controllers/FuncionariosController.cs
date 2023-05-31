@@ -131,6 +131,10 @@ namespace RecrutaPlus.Web.Controllers
             //AutoMapper
             var funcionario = _mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
+            //funcionario.Salario =  ;
+
+            funcionario.Ativo = true;
+
             funcionario.Cadastro = DateTime.Now;
             funcionario.CadastradoPor = User.Identity.Name ?? DefaultConst.USER_ANONYMOUS;
             funcionario.Edicao = DateTime.Now;

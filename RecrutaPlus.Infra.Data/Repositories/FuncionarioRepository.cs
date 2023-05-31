@@ -39,7 +39,6 @@ namespace RecrutaPlus.Infra.Data.Repositories
             if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
             if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
             if (filter?.CPF != null) { _query = _query.Where(w => w.CPF == filter.CPF); }
-            //if (filter?.Ativo != null) { _query = _query.Where(w => w.Ativo == filter.Ativo); }
 
             return await _query.ToListAsync();
         }
@@ -47,17 +46,16 @@ namespace RecrutaPlus.Infra.Data.Repositories
         public async Task<IEnumerable<Funcionario>> GetByFilterRelatedAsync(FuncionarioFilter filter = null)
         {
             var _query = _dbContext.Employees.AsNoTrackingWithIdentityResolution()
-                .Include(i => i.Cargo);
+                .Include(i => i.Cargo).AsQueryable();
 
-            //if (filter?.FuncionarioId != null) { _query = _query.Where(w => w.FuncionarioId == filter.FuncionarioId.GetValueOrDefault()); }
-            //if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
-            //if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
-            //if (filter?.CPF != null) { _query = _query.Where(w => w.CPF == filter.CPF); }
-            //if (filter?.Ativo != null) { _query = _query.Where(w => w.Ativo == filter.Ativo); }
+            if (filter?.FuncionarioId != null) { _query = _query.Where(w => w.FuncionarioId == filter.FuncionarioId.GetValueOrDefault()); }
+            if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
+            if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
+            if (filter?.CPF != null) { _query = _query.Where(w => w.CPF == filter.CPF); }
+            if (filter?.Ativo != null) { _query = _query.Where(w => w.Ativo == filter.Ativo); }
 
-            ////Office
-            //if (filter?.CargoFilter?.Nome != null) { _query = _query.Where(w => w.Cargo.Nome == filter.CargoFilter.Nome); }
-            //if (filter?.CargoFilter?.Descricao != null) { _query = _query.Where(w => w.Cargo.Descricao == filter.CargoFilter.Descricao); }
+            //Office
+            if (filter?.CargoFilter?.Nome != null) { _query = _query.Where(w => w.Cargo.Nome == filter.CargoFilter.Nome); }
 
             return await _query.ToListAsync();
         }

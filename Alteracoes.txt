@@ -108,13 +108,13 @@ COMMIT;
 
 //Criação dados teste
 //Cargo
-INSERT INTO `recrutamais`.`cargos` (`cargoId`, `nome`, `descricao`, `salario`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'teste', 'teste', '1300', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
+INSERT INTO `recrutamais2`.`cargos` (`cargoId`, `nome`, `descricao`, `salario`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'teste', 'teste', '1300', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
 
 //Funcionario
-INSERT INTO `recrutamais`.`funcionarios` (`funcionarioId`, `nome`, `cpf`, `email`, `telefone`, `data_nascimento`, `endereco`, `cargoId`, `rg`, `genero`, `cep`, `educacao`, `status`, `bairro`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'Vinicius', '73652415243', 'teste@teste.com', '11998787654', '2003-06-26', 'Rua das Arvores', '1', '457365477', 'M', '07084070', 'Ensino Superior', 'S', 'Parque Continental 2', '2023-05-28 21:59:17', 'admin', '2023-05-29 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
+INSERT INTO `recrutamais2`.`funcionarios` (`FuncionarioId`, `Nome`, `CPF`, `Email`, `Telefone`, `DataNascimento`, `Endereco`, `CargoId`, `RG`, `Genero`, `CEP`, `Educacao`, `Ativo`, `Bairro`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `VersionStamp`, `GuidStamp`, `Salario`, `Estado`) VALUES ('1', 'Vinicius', '73652415243', 'teste@teste.com', '11998787654', '2003-06-26', 'Rua das Arvores', '1', '457365477', 'M', '07084070', 'Ensino Superior', '1', 'Parque Continental 2', '2023-05-28 21:59:17', 'admin', '2023-05-29 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81', '1300', 'SP');
 
 //Usuario
-INSERT INTO `recrutamais`.`usuarios` (`usuarioId`, `username`, `password`, `funcionarioId`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'teste', 'teste1234', '1', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
+INSERT INTO `recrutamais2`.`usuarios` (`usuarioId`, `username`, `password`, `funcionarioId`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'teste', 'teste1234', '1', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
 
 //Mais alterações
 ALTER TABLE `recrutamais2`.`funcionarios` 
