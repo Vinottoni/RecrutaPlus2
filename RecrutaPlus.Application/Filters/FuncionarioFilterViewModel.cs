@@ -48,8 +48,11 @@ namespace RecrutaPlus.Application.Filters
         [Display(Name = "Educação")]
         public string Educacao { get; set; }
 
-        [Display(Name = "Status")]
-        public bool? Status { get; set; }
+        [Display(Name = "Ativo")]
+        public bool? Ativo { get; set; }
+
+        [Display(Name = "Estado")]
+        public string Estado { get; set; }
 
         //Default
         public DateTime? Cadastro { get; set; }

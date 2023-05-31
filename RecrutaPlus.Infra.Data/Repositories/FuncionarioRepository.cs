@@ -39,7 +39,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
             if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
             if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
             if (filter?.CPF != null) { _query = _query.Where(w => w.CPF == filter.CPF); }
-            //if (filter?.Status != null) { _query = _query.Where(w => w.Status == filter.Status); }
+            //if (filter?.Ativo != null) { _query = _query.Where(w => w.Ativo == filter.Ativo); }
 
             return await _query.ToListAsync();
         }
@@ -53,7 +53,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
             //if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
             //if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
             //if (filter?.CPF != null) { _query = _query.Where(w => w.CPF == filter.CPF); }
-            //if (filter?.Status != null) { _query = _query.Where(w => w.Status == filter.Status); }
+            //if (filter?.Ativo != null) { _query = _query.Where(w => w.Ativo == filter.Ativo); }
 
             ////Office
             //if (filter?.CargoFilter?.Nome != null) { _query = _query.Where(w => w.Cargo.Nome == filter.CargoFilter.Nome); }

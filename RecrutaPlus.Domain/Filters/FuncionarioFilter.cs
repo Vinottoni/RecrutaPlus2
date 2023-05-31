@@ -36,7 +36,9 @@ namespace RecrutaPlus.Application.ViewModels
 
         public string Educacao { get; set; }
 
-        public bool? Status { get; set; }
+        public bool? Ativo { get; set; }
+
+        public string Estado { get; set; }
 
         //Default
         public DateTime? Cadastro { get; set; }

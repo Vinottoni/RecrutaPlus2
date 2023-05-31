@@ -2,14 +2,15 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Register - RecrutaPlus";
+    ViewData["Title"] = "Funcionários - RecrutaPlus";
+    ViewData["SubTitle"] = "Novo";
 }
 
 <div class="content-pages text-yellowy">
     <div class="container">
         <div class="page-titles">
             <h1 class="ml-0">
-                Register New Employee
+                @ViewData["Title"]
             </h1>
         </div>
 
@@ -34,7 +35,7 @@
                                         <hr class="hr-color" />
                                     </div>
                                     <div class="form-row col-12 col-sm-12 col-md-12 flex-custom gap-register">
-                                        
+
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
                                             <div class="form-group col-12 col-sm-12 col-md-5">
                                                 <label asp-for="Nome" class="label-custom"></label>
@@ -80,7 +81,7 @@
                                                 <span asp-validation-for="Genero" class="form-text text-danger small"></span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
                                             <div class="form-group col-12 col-sm-12 col-md-5">
                                                 <label asp-for="Educacao" class="label-custom"></label>
@@ -94,7 +95,7 @@
                                                 <span asp-validation-for="Endereco" class="form-text text-danger small"></span>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
                                             <div class="form-group col-12 col-sm-12 col-md-3">
                                                 <label asp-for="CEP" class="label-custom"></label>
@@ -115,7 +116,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   
+
 
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <hr class="hr-color" />
@@ -142,8 +143,8 @@
                                 </div>
                             </fieldset>
                             <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
-                                <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-controller="dashboard" asp-route-state="true">Return</a>
-                                <a class="btn btn-primary btn-lg btn-register" asp-action="Create" asp-controller="Create" type="submit">Register</a>
+                                <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-route-state="true">Voltar</a>
+                                <a class="btn btn-primary btn-lg btn-register" asp-action="Create" asp-controller="Create" type="submit">Salvar</a>
                             </div>
                         </form>
                     </div>

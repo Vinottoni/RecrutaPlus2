@@ -119,3 +119,11 @@ INSERT INTO `recrutamais`.`usuarios` (`usuarioId`, `username`, `password`, `func
 //Mais alterações
 ALTER TABLE `recrutamais2`.`funcionarios` 
 CHANGE COLUMN `Status` `Status` CHAR(1) NOT NULL ;
+
+//Alteração 31/05/2023
+
+ALTER TABLE `recrutamais2`.`funcionarios` 
+CHANGE COLUMN `Status` `Ativo` CHAR(1) NOT NULL ;
+
+ALTER TABLE `recrutamais2`.`funcionarios` 
+ADD COLUMN `Estado` VARCHAR(255) NOT NULL AFTER `LoginUsuarioId`;

@@ -64,7 +64,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
         //    if (filter?.EmployeeFilter.endereco != null) { _query = _query.Where(w => w.Employee.endereco == filter.EmployeeFilter.endereco); }
         //    if (filter?.EmployeeFilter.bairro != null) { _query = _query.Where(w => w.Employee.bairro == filter.EmployeeFilter.bairro); }
         //    if (filter?.EmployeeFilter.educacao != null) { _query = _query.Where(w => w.Employee.educacao == filter.EmployeeFilter.educacao); }
-        //    if (filter?.EmployeeFilter.status != null) { _query = _query.Where(w => w.Employee.status == filter.EmployeeFilter.status); }
+        //    if (filter?.EmployeeFilter.Ativo != null) { _query = _query.Where(w => w.Employee.Ativo == filter.EmployeeFilter.Ativo); }
 
         //    return await _query.ToListAsync();
         //}
