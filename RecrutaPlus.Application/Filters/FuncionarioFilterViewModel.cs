@@ -13,43 +13,43 @@ namespace RecrutaPlus.Application.Filters
     public class FuncionarioFilterViewModel
     {
         [Display(Name = "Código")]
-        public int? funcionarioId { get; set; }
+        public int? FuncionarioId { get; set; }
 
         [Display(Name = "Nome")]
-        public string nome { get; set; }
+        public string Nome { get; set; }
 
         [Display(Name = "RG")]
-        public string rg { get; set; }
+        public string RG { get; set; }
 
         [Display(Name = "CPF")]
-        public string cpf { get; set; }
+        public string CPF { get; set; }
 
         [Display(Name = "Email")]
-        public string email { get; set; }
+        public string Email { get; set; }
 
         [Display(Name = "Telefone")]
-        public string telefone { get; set; }
+        public string Telefone { get; set; }
 
         [Display(Name = "Data de Nascimento")]
-        public DateOnly? dataNascimento { get; set; }
+        public DateOnly? DataNascimento { get; set; }
 
         [Display(Name = "Gênero")]
-        public string genero { get; set; }
+        public string Genero { get; set; }
 
         [Display(Name = "CEP")]
-        public string cep { get; set; }
+        public string CEP { get; set; }
 
         [Display(Name = "Endereço")]
-        public string endereco { get; set; }
+        public string Endereco { get; set; }
 
         [Display(Name = "Bairro")]
-        public string bairro { get; set; }
+        public string Bairro { get; set; }
 
         [Display(Name = "Educação")]
-        public string educacao { get; set; }
+        public string Educacao { get; set; }
 
         [Display(Name = "Status")]
-        public string status { get; set; }
+        public bool? Status { get; set; }
 
         //Default
         public DateTime? Cadastro { get; set; }

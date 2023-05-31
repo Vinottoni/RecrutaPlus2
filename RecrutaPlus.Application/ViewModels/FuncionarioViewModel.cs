@@ -47,7 +47,7 @@ namespace RecrutaPlus.Application.ViewModels
         public string Educacao { get; set; }
 
         [Display(Name = "Status")]
-        public string Status { get; set; }
+        public bool Status { get; set; }
 
         //Default
         public DateTime Cadastro { get; set; }

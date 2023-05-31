@@ -36,7 +36,7 @@ namespace RecrutaPlus.Domain.Entities
 
         public string Educacao { get; set; }
 
-        public string Status { get; set; }
+        public bool Status { get; set; }
 
 
         //Default

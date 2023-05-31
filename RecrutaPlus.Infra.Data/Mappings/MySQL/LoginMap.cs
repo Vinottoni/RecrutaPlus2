@@ -22,42 +22,33 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
 
             //Property
             builder.Property(e => e.UsuarioId)
-                .HasColumnName("usuarioId")
                 .HasColumnType(MySQLDataTypes.INT());
 
             builder.Property(e => e.Username)
-                .HasColumnName("username")
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.VARCHAR(255));
 
             builder.Property(e => e.Password)
-                .HasColumnName("password")
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.VARCHAR(255));
 
             builder.Property(e => e.Cadastro)
-                .HasColumnName("Cadastro")
                 .HasColumnType(MySQLDataTypes.DATETIME());
 
             builder.Property(e => e.CadastradoPor)
-                .HasColumnName("CadastradoPor")
                 .HasColumnType(MySQLDataTypes.VARCHAR(50));
 
             builder.Property(e => e.Edicao)
-                .HasColumnName("Edicao")
                 .HasColumnType(MySQLDataTypes.DATETIME());
 
             builder.Property(e => e.EditadoPor)
-                .HasColumnName("EditadoPor")
                 .HasColumnType(MySQLDataTypes.VARCHAR(50));
 
             builder.Property(e => e.VersionStamp)
-                .HasColumnName("timeStamp")
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.DECIMAL());
 
             builder.Property(e => e.GuidStamp)
-                .HasColumnName("GuidStamp")
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.CHAR(36));
 

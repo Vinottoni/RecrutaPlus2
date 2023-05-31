@@ -77,7 +77,7 @@ CREATE TABLE `usuarios` (
     `CadastradoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
     `Edicao` DATETIME NOT NULL,
     `EditadoPor` VARCHAR(50) CHARACTER SET utf8mb4 NULL,
-    `timeStamp` DECIMAL(20,0) NOT NULL,
+    `VersionStamp` DECIMAL(20,0) NOT NULL,
     `GuidStamp` CHAR(36) COLLATE ascii_general_ci NOT NULL,
     CONSTRAINT `PK_usuarios` PRIMARY KEY (`usuarioId`),
     CONSTRAINT `AK_usuarios_GuidStamp` UNIQUE (`GuidStamp`),
@@ -115,3 +115,7 @@ INSERT INTO `recrutamais`.`funcionarios` (`funcionarioId`, `nome`, `cpf`, `email
 
 //Usuario
 INSERT INTO `recrutamais`.`usuarios` (`usuarioId`, `username`, `password`, `funcionarioId`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `timeStamp`, `GuidStamp`) VALUES ('1', 'teste', 'teste1234', '1', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630069857895', '3708d1c2-4c33-4514-af98-3269de6c2f81');
+
+//Mais alterações
+ALTER TABLE `recrutamais2`.`funcionarios` 
+CHANGE COLUMN `Status` `Status` CHAR(1) NOT NULL ;
