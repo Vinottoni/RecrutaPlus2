@@ -129,6 +129,9 @@
   <data name="EDIT" xml:space="preserve">
     <value>Editar</value>
   </data>
+  <data name="LABEL_CARGOS" xml:space="preserve">
+    <value>Cargos</value>
+  </data>
   <data name="MSG_ATIVO" xml:space="preserve">
     <value>Ativo</value>
   </data>

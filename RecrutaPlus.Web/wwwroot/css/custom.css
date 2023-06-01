@@ -482,3 +482,8 @@ body {
     border-radius: 6px !important;
     color: var(--color-red) !important;
 }
+
+.switch-size {
+    width: 3rem !important;
+    height: 1.2rem !important;
+}

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
+using AutoMapper.Configuration.Annotations;
 
 namespace RecrutaPlus.Application.ViewModels
 {
@@ -12,6 +13,9 @@ namespace RecrutaPlus.Application.ViewModels
     {
         [Display(Name = "Código")]
         public int FuncionarioId { get; set; }
+        
+        [Display(Name = "Código")]
+        public int CargoId { get; set; }
 
         [Display(Name = "Nome")]
         public string Nome { get; set; }
@@ -66,7 +70,29 @@ namespace RecrutaPlus.Application.ViewModels
         [JsonIgnore]
         public virtual IList<CargoViewModel> CargoViewModels { get; set; }
 
-        
+        //Custom
+        [Display(Name = "Valor por Hora")]
+        public decimal ValorPorHora { get; set; }
+
+        [Display(Name = "Quantidade de Horas por Mês")]
+        public int QuantidadeHoraMes { get; set; }
+
+        [Ignore]
+        public decimal SalarioFinal
+        {
+            get
+            {
+                if (ValorPorHora > 0 && QuantidadeHoraMes > 0)
+                {
+                    return ValorPorHora * QuantidadeHoraMes;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            
+        }
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RecrutaPlus.Domain.Entities;
 using RecrutaPlus.Infra.Data.Mappings.DataTypes;
 
@@ -7,6 +8,8 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
 {
     public class FuncionarioMap : IEntityTypeConfiguration<Funcionario>
     {
+        private readonly BoolToStringConverter _boolToStringConverter = new BoolToStringConverter("N", "S");
+
         public void Configure(EntityTypeBuilder<Funcionario> builder)
         {
             //Table
@@ -57,7 +60,8 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
 
             builder.Property(e => e.Ativo)
                 .IsRequired()
-                .HasColumnType(MySQLDataTypes.CHAR(1));
+                .HasColumnType(MySQLDataTypes.BOOLEAN())
+                .HasConversion(_boolToStringConverter);
 
             builder.Property(e => e.Estado)
                 .IsRequired()
@@ -66,6 +70,14 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
             builder.Property(e => e.Salario)
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.DECIMAL(20,2));
+
+            builder.Property(e => e.ValorPorHora)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.DECIMAL(20, 2));
+
+            builder.Property(e => e.QuantidadeHoraMes)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.INT());
 
             builder.Property(e => e.Bairro)
                 .IsRequired()

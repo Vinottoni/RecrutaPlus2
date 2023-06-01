@@ -26,7 +26,7 @@ namespace RecrutaPlus.Domain.Entities
         [NotMapped]
         public Guid GuidStamp { get; set; }
 
-        public virtual IEnumerable<Funcionario> Funcionarios { get; set; }
+        public virtual IList<Funcionario> Funcionarios { get; set; }
 
         public override bool IsValid() //Aqui ainda tem refências para criar em Services
         {

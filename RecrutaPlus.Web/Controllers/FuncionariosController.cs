@@ -19,15 +19,18 @@ namespace RecrutaPlus.Web.Controllers
     public class FuncionariosController : BaseController
     {
         private readonly IFuncionarioService _funcionarioService;
+        private readonly ICargoService _cargoService;
 
         public FuncionariosController(
             IMapper mapper,
             IAppLogger logger,
-            IFuncionarioService funcionarioService) : base(logger, mapper)
+            IFuncionarioService funcionarioService,
+            ICargoService cargoService) : base(logger, mapper)
         {
             _mapper = mapper;
             _logger = logger;
             _funcionarioService = funcionarioService;
+            _cargoService = cargoService;
         }
 
         public async Task<IActionResult> Index(int? id, bool state = false)
@@ -126,12 +129,10 @@ namespace RecrutaPlus.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(FuncionarioViewModel funcionarioViewModel)
         {
-            ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
-
             //AutoMapper
             var funcionario = _mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
-            //funcionario.Salario =  ;
+            funcionario.Salario = funcionarioViewModel.SalarioFinal;
 
             funcionario.Ativo = true;
 
@@ -146,6 +147,7 @@ namespace RecrutaPlus.Web.Controllers
             //Validation
             if (serviceResult.HasErrors)
             {
+                ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
 
                 serviceResult.ToModelStateDictionary(ModelState);
 
@@ -158,7 +160,7 @@ namespace RecrutaPlus.Web.Controllers
 
             _logger.LogInformation(FuncionarioConst.LOG_CREATE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
-            return RedirectToAction(nameof(Index), new { id = funcionario?.FuncionarioId });
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -168,7 +170,9 @@ namespace RecrutaPlus.Web.Controllers
                 return NotFound();
             }
 
-            Funcionario funcionario = await _funcionarioService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
+            IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            Funcionario funcionario = funcionarios.FirstOrDefault();
 
             if (funcionario == null)
             {
@@ -185,6 +189,8 @@ namespace RecrutaPlus.Web.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
+
             if (id == null)
             {
                 return NotFound();
@@ -209,6 +215,8 @@ namespace RecrutaPlus.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, FuncionarioViewModel funcionarioViewModel)
         {
+            ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
+
             if (id != funcionarioViewModel.FuncionarioId)
             {
                 return NotFound();
@@ -216,6 +224,8 @@ namespace RecrutaPlus.Web.Controllers
 
             //AutoMapper
             var funcionario = _mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
+
+            funcionario.Salario = funcionarioViewModel.SalarioFinal;
 
             funcionario.Edicao = DateTime.Now;
             funcionario.EditadoPor = User.Identity.Name ?? DefaultConst.USER_ANONYMOUS;
@@ -237,11 +247,13 @@ namespace RecrutaPlus.Web.Controllers
 
             _logger.LogInformation(FuncionarioConst.LOG_EDIT, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
-            return RedirectToAction(nameof(Index), new { id = funcionario?.FuncionarioId });
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int? id)
         {
+            ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
+
             if (id == null)
             {
                 return NotFound();
@@ -287,17 +299,17 @@ namespace RecrutaPlus.Web.Controllers
 
         #region SelectList
 
-        private List<SelectListItem> SelectListCargos()
+        private async Task<List<SelectListItem>> SelectListCargos()
         {
             List<SelectListItem> selectListItems = new List<SelectListItem>();
-            IEnumerable<Funcionario> funcionarios = _funcionarioService.GetAllAsync().GetAwaiter().GetResult();
+            IEnumerable<Cargo> cargos = await _cargoService.GetAllAsync();
 
             selectListItems.Add(new SelectListItem(DefaultResource.MSG_SELECIONE, string.Empty, true));
 
-            //foreach (var item in funcionarios.OrderBy(o => o.cargo))
-            //{
-            //    selectListItems.Add(new SelectListItem(text: item.Nome, value: item.BancoId.ToString()));
-            //}
+            foreach (var item in cargos.OrderBy(o => o.Nome))
+            {
+                selectListItems.Add(new SelectListItem(text: item.Nome, value: item.CargoId.ToString()));
+            }
 
             return selectListItems;
         }

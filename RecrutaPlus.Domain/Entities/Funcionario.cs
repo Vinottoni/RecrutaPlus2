@@ -62,5 +62,10 @@ namespace RecrutaPlus.Domain.Entities
             return ValidationResult.IsValid;
         }
 
+        //Custom
+        public decimal ValorPorHora { get; set; }
+
+        public int QuantidadeHoraMes { get; set; }
+
     }
 }

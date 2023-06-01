@@ -127,3 +127,16 @@ CHANGE COLUMN `Status` `Ativo` CHAR(1) NOT NULL ;
 
 ALTER TABLE `recrutamais2`.`funcionarios` 
 ADD COLUMN `Estado` VARCHAR(255) NOT NULL AFTER `LoginUsuarioId`;
+
+
+INSERT INTO `recrutamais2`.`cargos` (`CargoId`, `Nome`, `Descricao`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `VersionStamp`, `GuidStamp`) VALUES ('2', 'Presidente', 'teste', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630169857895', '3708d1c2-4c33-4514-af98-3269de6c2f82');
+UPDATE `recrutamais2`.`cargos` SET `Nome` = 'CEO' WHERE (`CargoId` = '1');
+INSERT INTO `recrutamais2`.`cargos` (`CargoId`, `Nome`, `Descricao`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `VersionStamp`, `GuidStamp`) VALUES ('3', 'Diretor', 'teste', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630269857895', '3708d1c2-4c33-4514-af98-3269de6c2f83');
+INSERT INTO `recrutamais2`.`cargos` (`CargoId`, `Nome`, `Descricao`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `VersionStamp`, `GuidStamp`) VALUES ('4', 'Coordenador / Supervisor', 'teste', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630369857895', '3708d1c2-4c33-4514-af98-3269de6c2f84');
+INSERT INTO `recrutamais2`.`cargos` (`CargoId`, `Nome`, `Descricao`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `VersionStamp`, `GuidStamp`) VALUES ('5', 'Analista (junior, pleno , senior)', 'teste', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630469857895', '3708d1c2-4c33-4514-af98-3269de6c2f85');
+INSERT INTO `recrutamais2`.`cargos` (`CargoId`, `Nome`, `Descricao`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `VersionStamp`, `GuidStamp`) VALUES ('6', 'Assistente', 'teste', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630569857895', '3708d1c2-4c33-4514-af98-3269de6c2f86');
+INSERT INTO `recrutamais2`.`cargos` (`CargoId`, `Nome`, `Descricao`, `Cadastro`, `CadastradoPor`, `Edicao`, `EditadoPor`, `VersionStamp`, `GuidStamp`) VALUES ('7', 'Auxiliar', 'teste', '2023-05-28 21:59:17', 'admin', '2023-05-28 21:59:17', 'admin', '637721630669857895', '3708d1c2-4c33-4514-af98-3269de6c2f87');
+
+ALTER TABLE `recrutamais2`.`funcionarios` 
+ADD COLUMN `ValorPorHora` DECIMAL(20,2) NULL AFTER `Salario`,
+ADD COLUMN `QuantidadeHoraMes` INT NULL AFTER `ValorPorHora`;

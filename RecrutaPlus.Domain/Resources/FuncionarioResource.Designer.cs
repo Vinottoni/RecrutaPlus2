@@ -97,6 +97,15 @@ namespace RecrutaPlus.Domain.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cargos.
+        /// </summary>
+        public static string LABEL_CARGOS {
+            get {
+                return ResourceManager.GetString("LABEL_CARGOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ativo.
         /// </summary>
         public static string MSG_ATIVO {

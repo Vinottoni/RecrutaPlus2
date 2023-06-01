@@ -97,22 +97,27 @@
                                         </div>
 
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
-                                            <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <div class="form-group col-12 col-sm-12 col-md-2">
                                                 <label asp-for="CEP" class="label-custom"></label>
                                                 <input asp-for="CEP" class="form-control input-color" placeholder="Digite seu CEP">
                                                 <span asp-validation-for="CEP" class="form-text text-danger small"></span>
                                             </div>
 
-                                            <div class="form-group col-12 col-sm-12 col-md-5">
+                                            <div class="form-group col-12 col-sm-12 col-md-4">
                                                 <label asp-for="Bairro" class="label-custom"></label>
                                                 <input asp-for="Bairro" class="form-control input-color" placeholder="Digite seu Bairro">
                                                 <span asp-validation-for="Bairro" class="form-text text-danger small"></span>
                                             </div>
 
-                                            <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <div class="form-group col-12 col-sm-12 col-md-2">
                                                 <label asp-for="Estado" class="label-custom"></label>
                                                 <input asp-for="Estado" class="form-control input-color" placeholder="Digite seu Estado">
                                                 <span asp-validation-for="Estado" class="form-text text-danger small"></span>
+                                            </div>
+                                            <div class="form-group col-12 col-sm-12 col-md-3">
+                                                <span class="label-custom">@FuncionarioResource.LABEL_CARGOS</span>
+                                                <select id="CargoId" asp-for="CargoId" asp-items="@ViewBag.SelectListCargos" class="form-control select-select2" data-allow-clear="true" data-toggle="select2" data-placeholder="Selecione..." data-language="pt-BR">
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -129,15 +134,15 @@
 
                                     <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register">
                                         <div class="form-group col-12 col-sm-12 col-md-4">
-                                            <label asp-for="RG" class="label-custom"></label>
-                                            <input asp-for="RG" class="form-control input-color" placeholder="Select">
-                                            <span asp-validation-for="RG" class="form-text text-danger small"></span>
+                                            <label asp-for="ValorPorHora" class="label-custom"></label>
+                                            <input asp-for="ValorPorHora" class="form-control input-color" placeholder="Valor por Hora">
+                                            <span asp-validation-for="ValorPorHora" class="form-text text-danger small"></span>
                                         </div>
 
                                         <div class="form-group col-12 col-sm-12 col-md-4">
-                                            <label asp-for="RG" class="label-custom"></label>
-                                            <input asp-for="RG" class="form-control input-color" placeholder="Valor por Hora">
-                                            <span asp-validation-for="RG" class="form-text text-danger small"></span>
+                                            <label asp-for="QuantidadeHoraMes" class="label-custom"></label>
+                                            <input asp-for="QuantidadeHoraMes" class="form-control input-color" placeholder="Quatidade de Horas por Mês">
+                                            <span asp-validation-for="QuantidadeHoraMes" class="form-text text-danger small"></span>
                                         </div>
                                     </div>
                                 </div>
