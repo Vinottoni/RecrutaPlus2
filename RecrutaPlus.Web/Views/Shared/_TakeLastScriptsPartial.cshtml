@@ -1,0 +1,12 @@
+﻿<script>
+
+    //Take
+    $(document).on("change", "#modalFilterColumns input[type=text], input[type=date], input[time], input[number], input[datetime], input[datetime-local], select", function (e) {
+        console.info(e);
+        if(e.target.id != 'TakeLast'){
+            $('#hasFilter').prop('checked', false);
+            $('#multi-collapse').collapse('hide');
+        }
+    });
+
+</script>

@@ -285,16 +285,31 @@ namespace RecrutaPlus.Web.Controllers
             {
                 serviceResult.ToModelStateDictionary(ModelState);
                 ErrorMessage = serviceResult.ToHtml();
-                return RedirectToAction(nameof(Delete), new { id = funcionario?.FuncionarioId });
+                return RedirectToAction(nameof(Delete));
             }
 
-            _ = await _funcionarioService.SaveChangesAsync();
+            if (funcionario.Ativo == false)
+            {
+                _ = await _funcionarioService.SaveChangesAsync();
 
-            SuccessMessage = DefaultResource.MSG_SAVED_SUCCESSFULLY;
+                SuccessMessage = DefaultResource.MSG_SAVED_SUCCESSFULLY;
 
-            _logger.LogInformation(FuncionarioConst.LOG_DELETE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+                _logger.LogInformation(FuncionarioConst.LOG_DELETE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
-            return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction(nameof(Index));
+            }
+
+            //_ = await _funcionarioService.SaveChangesAsync();
+
+            //SuccessMessage = DefaultResource.MSG_SAVED_SUCCESSFULLY;
+
+            //_logger.LogInformation(FuncionarioConst.LOG_DELETE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            //return RedirectToAction(nameof(Index));
         }
 
         #region SelectList

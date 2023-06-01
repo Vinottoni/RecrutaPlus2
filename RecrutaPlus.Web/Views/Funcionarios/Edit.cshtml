@@ -4,6 +4,7 @@
     Layout = "_Layout";
     ViewData["Title"] = "Funcionários";
     ViewData["SubTitle"] = "Editar";
+    ViewData["Informacoes"] = "Informações";
 }
 
 <div class="content-pages text-yellowy">
@@ -37,8 +38,8 @@
 
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="text-left">
-                                            <small class="text-white">Registrar</small><br />
-                                            <h2>Informações</h2>
+                                            <small class="text-white">@ViewData["SubTitle"]</small><br />
+                                            <h2>@ViewData["Informacoes"]</h2>
                                         </div>
                                         <hr class="hr-color" />
                                     </div>

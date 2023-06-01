@@ -2,8 +2,9 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Funcionários - RecrutaPlus";
-    ViewData["SubTitle"] = "Deletar";
+    ViewData["Title"] = "Funcionários";
+    ViewData["SubTitle"] = "Excluir";
+    ViewData["Informacoes"] = "Informações";
 }
 
 <div class="content-pages text-yellowy">
@@ -29,8 +30,8 @@
 
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="text-left">
-                                            <small class="text-white">Detalhes</small><br />
-                                            <h2>Informações</h2>
+                                            <small class="text-white">@ViewData["SubTitle"]</small><br />
+                                            <h2>@ViewData["Informacoes"]</h2>
                                         </div>
                                         <hr class="hr-color" />
                                     </div>
@@ -95,8 +96,8 @@
 
                                             <div class="col-12 col-sm-12 col-md-12 flex-custom ">
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt>@Html.DisplayNameFor(model => model.Nome)</dt>
-                                                    <dd class="text-white">@Html.DisplayFor(model => model.Nome)</dd>
+                                                    <dt>@FuncionarioResource.LABEL_CARGOS</dt>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.CargoId)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
                                                     <dt>@Html.DisplayNameFor(model => model.Salario)</dt>
@@ -122,18 +123,70 @@
 
                                     </div>
                             </fieldset>
-                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
-                                <form asp-action="Delete">
-                                    <input type="hidden" asp-for="FuncionarioId" />
-                                    <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-route-state="true">Voltar</a>
-                                    <button class="btn btn-danger btn-lg btn-delete-custom" type="submit">Deletar</button>
-                                </form>
-                                
-                            </div>
                         </form>
+                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
+                            <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-route-state="true">Voltar</a>
+                            <button class="btn btn-danger btn-lg btn-delete-custom" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Deletar</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@if (Model.Ativo == false)
+{
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseja Excluir?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <span>O Funcionário @Html.DisplayFor(model => model.Nome) Será Deletado Permanentemente.</span>
+                </div>
+                <div class="modal-footer">
+                    <form asp-action="Delete">
+                        <input type="hidden" asp-for="FuncionarioId" />
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                        <button class="btn btn-danger btn-lg btn-delete-custom" type="submit">Deletar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Erro</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                </div>
+                <div class="modal-body">
+                    <span>O Funcionário @Html.DisplayFor(model => model.Nome) Está Ativo. Observação: Desativar o Funcionário Na Tela De Edição Para Poder Excluir.</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts{
+    <script>
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
+
+        myModal.addEventListener('shown.bs.modal', () => {
+            myInput.focus()
+        })
+    </script>
+}
