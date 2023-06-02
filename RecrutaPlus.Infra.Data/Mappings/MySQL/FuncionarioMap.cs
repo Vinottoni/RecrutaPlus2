@@ -56,7 +56,7 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
 
             builder.Property(e => e.Educacao)
                 .IsRequired()
-                .HasColumnType(MySQLDataTypes.VARCHAR(255));
+                .HasColumnType(MySQLDataTypes.INT());
 
             builder.Property(e => e.Ativo)
                 .IsRequired()

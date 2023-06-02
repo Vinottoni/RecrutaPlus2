@@ -6,31 +6,43 @@ using System.Threading.Tasks;
 
 namespace RecrutaPlus.Domain.ValueObjects
 {
-    public class GeneroValueObject : ValueObject
+    public class CargoValueObject : ValueObject
     {
-        public static string Masculino => "Masculino";
-        public static string Feminino => "Feminino";
-        public static string LGBTQIAMAIS => "LGBTQIA+";
-        public static string PrefinoNaoResponder => "Prefiro não responder";
+        public static string CEO => "CEO";
+        public static string Presidente => "Presidente";
+        public static string Diretor => "Diretor";
+        public static string CoordenadorSupervisor => "Coordenador / Supervisor";
+        public static string Analista => "Analista (junior, pleno , senior)";
+        public static string Assistente => "Assistente";
+        public static string Auxiliar => "Auxiliar";
 
 
-        public static string MasculinoCodigo => "0";
-        public static string FemininoCodigo => "1";
-        public static string LGBTQIAMAISCodigo => "2";
-        public static string PrefinoNaoResponderCodigo => "3";
+        public static string CEOCodigo => "1";
+        public static string PresidenteCodigo => "2";
+        public static string DiretorCodigo => "3";
+        public static string CoordenadorSupervisorCodigo => "4";
+        public static string PrefinoNaoResponderCodigo => "5";
+        public static string AssistenteCodigo => "6";
+        public static string AuxiliarCodigo => "7";
 
         public static string GetName(int codigo)
         {
             switch (codigo)
             {
-                case 0:
-                    return Masculino;
                 case 1:
-                    return Feminino;
+                    return CEO;
                 case 2:
-                    return LGBTQIAMAIS;
+                    return Presidente;
                 case 3:
-                    return PrefinoNaoResponder;
+                    return Diretor;
+                case 4:
+                    return CoordenadorSupervisor;
+                case 5:
+                    return Analista;
+                case 6:
+                    return Assistente;
+                case 7:
+                    return Auxiliar;
                 default:
                     return string.Empty;
             }

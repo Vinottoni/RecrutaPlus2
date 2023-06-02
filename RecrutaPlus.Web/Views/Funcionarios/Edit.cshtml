@@ -94,8 +94,8 @@
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
                                             <div class="form-group col-12 col-sm-12 col-md-5">
                                                 <label asp-for="Educacao" class="label-custom"></label>
-                                                <input asp-for="Educacao" class="form-control input-color" placeholder="Select">
-                                                <span asp-validation-for="Educacao" class="form-text text-danger small"></span>
+                                                <select id="Educacao" asp-for="Educacao" asp-items="@ViewBag.SelectListEducacao" class="form-control select-select2" data-allow-clear="true" data-toggle="select2" data-placeholder="Selecione..." data-language="pt-BR">
+                                                </select>
                                             </div>
 
                                             <div class="form-group col-12 col-sm-12 col-md-6">

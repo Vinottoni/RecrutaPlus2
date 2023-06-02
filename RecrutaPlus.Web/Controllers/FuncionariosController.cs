@@ -118,6 +118,7 @@ namespace RecrutaPlus.Web.Controllers
         {
             ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
             ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
+            ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
 
             _logger.LogInformation(FuncionarioConst.LOG_CREATE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
@@ -151,6 +152,7 @@ namespace RecrutaPlus.Web.Controllers
             {
                 ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
                 ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
+                ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
 
                 serviceResult.ToModelStateDictionary(ModelState);
 
@@ -169,6 +171,8 @@ namespace RecrutaPlus.Web.Controllers
         public async Task<IActionResult> Details(int? id)
         {
             ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
+            ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
+            ViewBag.SelectListCargoToString = await Task.Run(() => SelectListCargoToString());
 
             if (id == null)
             {
@@ -196,6 +200,7 @@ namespace RecrutaPlus.Web.Controllers
         {
             ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
             ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
+            ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
 
             if (id == null)
             {
@@ -223,6 +228,7 @@ namespace RecrutaPlus.Web.Controllers
         {
             ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
             ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
+            ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
 
             if (id != funcionarioViewModel.FuncionarioId)
             {
@@ -259,8 +265,9 @@ namespace RecrutaPlus.Web.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
-            ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
             ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
+            ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
+            ViewBag.SelectListCargoToString = await Task.Run(() => SelectListCargoToString());
 
             if (id == null)
             {
@@ -360,12 +367,30 @@ namespace RecrutaPlus.Web.Controllers
             await Task.Run(() =>
             {
                 selectListItems.Add(new SelectListItem(DefaultResource.MSG_SELECIONE, string.Empty, true));
-                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_FUNDAMENTAL, ((int)GeneroEnum.Masculino).ToString(), false));
-                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_FUNDAMENTAL_INCOMPLETO, ((int)GeneroEnum.Masculino).ToString(), false));
-                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_MEDIO, ((int)GeneroEnum.Feminino).ToString(), false)); ;
-                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_MEDIO_INCOMPLETO, ((int)GeneroEnum.Feminino).ToString(), false)); ;
-                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_SUPERIOR, ((int)GeneroEnum.LGBTQIAMAIS).ToString(), false));
-                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_SUPERIOR_INCOMPLETO, ((int)GeneroEnum.LGBTQIAMAIS).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_FUNDAMENTAL, ((int)EducacaoEnum.EnsinoFundamental).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_FUNDAMENTAL_INCOMPLETO, ((int)EducacaoEnum.EnsinoFundamentalIncompleto).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_MEDIO, ((int)EducacaoEnum.EnsinoMedio).ToString(), false)); ;
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_MEDIO_INCOMPLETO, ((int)EducacaoEnum.EnsinoMedioIncompleto).ToString(), false)); ;
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_SUPERIOR, ((int)EducacaoEnum.EnsinoSuperior).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ENSINO_SUPERIOR_INCOMPLETO, ((int)EducacaoEnum.EnsinoSuperiorIncompleto).ToString(), false));
+            });
+
+            return selectListItems;
+        }
+
+        private async Task<List<SelectListItem>> SelectListCargoToString()
+        {
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+            await Task.Run(() =>
+            {
+                selectListItems.Add(new SelectListItem(DefaultResource.MSG_SELECIONE, string.Empty, true));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.CEO_LABEL, ((int)CargoEnum.CEO).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.PRESIDENTE_LABEL, ((int)CargoEnum.Presidente).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.COORDENADOR_SUPERVISOR_LABEL, ((int)CargoEnum.CoordenadorSupervisor).ToString(), false)); ;
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ANALISTA_LABEL, ((int)CargoEnum.Analista).ToString(), false)); ;
+                selectListItems.Add(new SelectListItem(FuncionarioResource.ASSISTENTE_LABEL, ((int)CargoEnum.Assistente).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.AUXILIAR_LABEL, ((int)CargoEnum.Auxiliar).ToString(), false));
             });
 
             return selectListItems;

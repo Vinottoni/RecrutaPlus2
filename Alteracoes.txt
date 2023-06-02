@@ -143,3 +143,6 @@ ADD COLUMN `QuantidadeHoraMes` INT NULL AFTER `ValorPorHora`;
 
 ALTER TABLE `recrutamais2`.`funcionarios` 
 CHANGE COLUMN `Genero` `Genero` INT NULL DEFAULT NULL ;
+
+ALTER TABLE `recrutamais2`.`funcionarios` 
+CHANGE COLUMN `Educacao` `Educacao` INT NULL DEFAULT NULL ;

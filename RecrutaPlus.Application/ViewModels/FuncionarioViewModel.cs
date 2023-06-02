@@ -15,7 +15,7 @@ namespace RecrutaPlus.Application.ViewModels
         [Display(Name = "Código")]
         public int FuncionarioId { get; set; }
         
-        [Display(Name = "Código")]
+        [Display(Name = "Cargo")]
         public int CargoId { get; set; }
 
         [Display(Name = "Nome")]
@@ -49,7 +49,7 @@ namespace RecrutaPlus.Application.ViewModels
         public string Bairro { get; set; }
 
         [Display(Name = "Educação")]
-        public string Educacao { get; set; }
+        public int Educacao { get; set; }
 
         [Display(Name = "Ativo")]
         public bool Ativo { get; set; }
@@ -100,6 +100,9 @@ namespace RecrutaPlus.Application.ViewModels
         
         [JsonIgnore]
         public string CargoToString => CargoValueObject.GetName(CargoId);
+        
+        [JsonIgnore]
+        public string EducacaoToString => EducacaoValueObject.GetName(Educacao);
 
     }
 }

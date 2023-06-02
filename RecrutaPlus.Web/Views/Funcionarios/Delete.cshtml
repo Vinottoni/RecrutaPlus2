@@ -67,26 +67,11 @@
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
                                                     <dt>@Html.DisplayNameFor(model => model.Genero)</dt>
-                                                    @if (Model.Genero == 0)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.GENERO_MASCULINO</dd>
-                                                    }
-                                                    else if (Model.Genero == 1)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.GENERO_FEMININO</dd>
-                                                    }
-                                                    else if (Model.Genero == 2)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.GENERO_LGBTQIAMAIS</dd>
-                                                    }
-                                                    else
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.GENERO_PREFIRO_NAO_RESPONDER</dd>
-                                                    }
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.GeneroToString)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
                                                     <dt>@Html.DisplayNameFor(model => model.Educacao)</dt>
-                                                    <dd class="text-white">@Html.DisplayFor(model => model.Educacao)</dd>
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.EducacaoToString)</dd>
                                                 </div>
                                             </div>
 
@@ -112,34 +97,7 @@
                                             <div class="col-12 col-sm-12 col-md-12 flex-custom ">
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
                                                     <dt>@FuncionarioResource.LABEL_CARGOS</dt>
-                                                    @if (Model.CargoId == 1)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.CEO_LABEL</dd>
-                                                    }
-                                                    else if (Model.CargoId == 2)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.PRESIDENTE_LABEL</dd>
-                                                    }
-                                                    else if (Model.CargoId == 3)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.DIRETOR_LABEL</dd>
-                                                    }
-                                                    else if (Model.CargoId == 4)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.COORDENADOR_SUPERVISOR_LABEL</dd>
-                                                    }
-                                                    else if (Model.CargoId == 5)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.ANALISTA_LABEL</dd>
-                                                    }
-                                                    else if (Model.CargoId == 6)
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.ASSISTENTE_LABEL</dd>
-                                                    }
-                                                    else
-                                                    {
-                                                        <dd class="text-white">@FuncionarioResource.AUXILIAR_LABEL</dd>
-                                                    }
+                                                    <dd class="text-white">@Html.DisplayFor(model => model.CargoToString)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
                                                     <dt>@Html.DisplayNameFor(model => model.Salario)</dt>
@@ -160,9 +118,7 @@
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3"></div>
                                             </div>
-
                                         </dl>
-
                                     </div>
                                 </div>
                             </fieldset>
@@ -220,7 +176,6 @@ else
         </div>
     </div>
 }
-
 
 
 @section Scripts{

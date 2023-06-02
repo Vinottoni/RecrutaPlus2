@@ -46,7 +46,7 @@ namespace RecrutaPlus.Application.Filters
         public string Bairro { get; set; }
 
         [Display(Name = "Educação")]
-        public string Educacao { get; set; }
+        public int? Educacao { get; set; }
 
         [Display(Name = "Ativo")]
         public bool? Ativo { get; set; }

@@ -34,7 +34,7 @@ namespace RecrutaPlus.Application.ViewModels
 
         public string Bairro { get; set; }
 
-        public string Educacao { get; set; }
+        public int? Educacao { get; set; }
 
         public bool? Ativo { get; set; }
 

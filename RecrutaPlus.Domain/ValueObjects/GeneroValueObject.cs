@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RecrutaPlus.Domain.ValueObjects
 {
-    public class CargoValueObject : ValueObject
+    public class GeneroValueObject : ValueObject
     {
         public static string Masculino => "Masculino";
         public static string Feminino => "Feminino";
