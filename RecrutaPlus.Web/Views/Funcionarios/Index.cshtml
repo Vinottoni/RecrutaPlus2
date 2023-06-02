@@ -122,12 +122,12 @@
                         <div class="form-row">
 
                             <div class="form-group col-sm-12 col-md-6">
-                                <label class="my-3" asp-for="Filter.FuncionarioId"></label>
+                                <label asp-for="Filter.FuncionarioId"></label>
                                 <input asp-for="Filter.FuncionarioId" class="form-control">
                             </div>
 
                             <div class="form-group col-sm-12 col-md-6">
-                                <label class="my-3" asp-for="Filter.Nome"></label>
+                                <label asp-for="Filter.Nome"></label>
                                 <input asp-for="Filter.Nome" class="form-control">
                             </div>
 
@@ -170,3 +170,11 @@
     </form>
 
 </div>
+
+@section Scripts{
+
+    <partial name="~/Views/Shared/_TakeLastScriptsPartial.cshtml" />
+
+
+
+}
