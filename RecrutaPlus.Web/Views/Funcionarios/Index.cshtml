@@ -19,7 +19,6 @@
             <div class="card-deck-xl">
 
                 <div class="card-custom card-fluid">
-
                     <div class="card-body card-body-custom card-background">
 
                         <form asp-action="Create" class="col-12 col-sm-12 col-md-12">
@@ -34,9 +33,7 @@
                                         </div>
                                         <div>
                                             <a asp-action="Create" class="btn btn-lg btn-custom">Novo</a>
-                                        </div>
-                                        <div>
-                                            <button type="button" class="btn btn-lg btn-custom" data-toggle="modal" data-target="#modalFilterColumns">
+                                            <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                 <i class="fa fa-filter"></i>
                                                 <span class="ml-1">Filtro</span>
                                             </button>
@@ -103,78 +100,46 @@
     </div>
 </div>
 
-<div>
+<div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content  form-modal-custom">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-yellowy" id="staticBackdropLabel">Filtro</h1>
+            </div>
+            <form asp-action="Index" method="post">
+                <div class="modal-body">
+                    <div class="d-flex gap-2">
 
-    <form asp-action="Index" method="post">
-
-        <div class="modal fade" id="modalFilterColumns" tabindex="-1" role="dialog" aria-labelledby="modalFilterColumnsLabel">
-
-            <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalFilterColumnsLabel"> Filtro </h5>
-                    </div>
-
-                    <div class="modal-body">
-
-                        <div class="form-row">
-
-                            <div class="form-group col-sm-12 col-md-6">
-                                <label asp-for="Filter.FuncionarioId"></label>
-                                <input asp-for="Filter.FuncionarioId" class="form-control">
-                            </div>
-
-                            <div class="form-group col-sm-12 col-md-6">
-                                <label asp-for="Filter.Nome"></label>
-                                <input asp-for="Filter.Nome" class="form-control">
-                            </div>
-
+                        <div class="form-group col-sm-12 col-md-6">
+                            <label asp-for="Filter.FuncionarioId"></label>
+                            <input asp-for="Filter.FuncionarioId" class="form-control input-filter-color">
                         </div>
 
-                        <hr class="mb-4">
-
-                        <div class="form-row">
-
-                            <div class="form-group col-auto">
-                                <div class="custom-control custom-switch">
-                                    <input asp-for="HasFilter" type="checkbox" id="hasFilter" class="custom-control-input" data-toggle="collapse" data-target=".multi-collapse">
-                                    <label asp-for="HasFilter" for="hasFilter" class="custom-control-label"></label>
-                                </div>
-                            </div>
-
-                            <div class="form-group col-auto">
-                                <div class="collapse show multi-collapse">
-                                    <div class="collapse show multi-collapse">
-                                        <select id="TakeLast" asp-for="TakeLast" asp-items="Html.GetEnumSelectList<TakeLastEnum>()" class="custom-select">
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="form-group col-sm-12 col-md-6">
+                            <label asp-for="Filter.Nome"></label>
+                            <input asp-for="Filter.Nome" class="form-control input-filter-color">
                         </div>
 
-                        <hr class="mb-4">
-
-                    </div>
-
-                    <div class="modal-footer justify-content-start">
-                        <button type="submit" class="btn btn-primary">Aplicar filtro</button>
-                        <button type="button" class="btn btn-light" data-dismiss="modal">Cancelar</button>
                     </div>
                 </div>
-            </div>
+                <div class="modal-footer justify-content-start">
+                    <button type="submit" class="btn btn-green-default">Aplicar filtro</button>
+                    <button type="button" class="btn btn-dark-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                </div>
+            </form>
         </div>
-
-    </form>
-
+    </div>
 </div>
 
 @section Scripts{
 
-    <partial name="~/Views/Shared/_TakeLastScriptsPartial.cshtml" />
+    <script>
+        const myModal = document.getElementById('myModal')
+        const myInput = document.getElementById('myInput')
 
-
+        myModal.addEventListener('shown.bs.modal', () => {
+            myInput.focus()
+        })
+    </script>
 
 }

@@ -487,3 +487,28 @@ body {
     width: 3rem !important;
     height: 1.2rem !important;
 }
+
+.form-modal-custom{
+    background-color: var(--color-dark-nero) !important;
+    color: var(--color-white) !important;
+}
+
+.btn-green-default{
+    background: var(--color-yellowy-green) !important;
+    color: var(--color-dark-nero) !important;
+}
+.btn-dark-secondary{
+    background: var(--color-dark-nero) !important;
+    color: var(--color-yellowy-green) !important;
+    border: 1px solid var(--color-yellowy-green) !important;
+}
+
+.input-filter-color {
+    background-color: var(--color-nero) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+}
+
+    .input-filter-color:focus {
+        border-color: var(--color-yellowy-green) !important;
+    }
