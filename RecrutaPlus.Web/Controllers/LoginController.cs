@@ -27,10 +27,16 @@ namespace RecrutaPlus.Web.Controllers
 
         public async Task<IActionResult> Index(int? id)
         {
-            //if (id == null)
-            //{
-            //    return NotFound();
-            //}
+            /*if (id == null)
+            {
+                Funcionario employee = await _employeeService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
+
+                return NotFound();
+            }
+            else
+            {
+                Funcionario employee = await _employeeService.GetAllAsync();
+            }*/
 
             //Login login = await _loginService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
 

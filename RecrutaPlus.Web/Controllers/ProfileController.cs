@@ -1,54 +1,82 @@
 ﻿using RecrutaPlus.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Web.Models;
-using System.Diagnostics;
 using RecrutaPlus.Domain.Interfaces.Services;
 using AutoMapper;
 using RecrutaPlus.Domain.Interfaces;
 using RecrutaPlus.Domain.Constants;
 using RecrutaPlus.Domain.Entities;
+using RecrutaPlus.Application.Filters;
+using RecrutaPlus.Application.Searches;
+using System.Text.Json.Serialization;
+using System.Text.Json;
 
 namespace RecrutaPlus.Web.Controllers
 {
     public class ProfileController : BaseController
     {
-        private readonly IFuncionarioService _employeeService;
+        private readonly IFuncionarioService _funcionarioService;
 
         public ProfileController(
             IMapper mapper,
             IAppLogger logger,
-            IFuncionarioService employeeService) : base(logger, mapper)
+            IFuncionarioService funcionarioService) : base(logger, mapper)
         {
             _mapper = mapper;
             _logger = logger;
-            _employeeService = employeeService;
+            _funcionarioService = funcionarioService;
         }
 
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int? id, bool state = false)
         {
-            if (id == null)
+            FuncionarioSearch funcionarioSearch = new FuncionarioSearch();
+            IEnumerable<Funcionario> funcionarios = null;
+
+            if (!state)
             {
-                //Funcionario employee = await _employeeService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
-                return NotFound();
+                TempData[DefaultConst.TEMPDATA_FILTERSTATE] = null;
+            }
+
+            if (!string.IsNullOrWhiteSpace(TempData[DefaultConst.TEMPDATA_FILTERSTATE]?.ToString()))
+            {
+                funcionarioSearch = JsonSerializer.Deserialize<FuncionarioSearch>(TempData[DefaultConst.TEMPDATA_FILTERSTATE]?.ToString());
+                if (funcionarioSearch.HasFilter)
+                {
+                    funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
+                }
+                else
+                {
+                    FuncionarioFilter filter = _mapper.Map<FuncionarioFilterViewModel, FuncionarioFilter>(funcionarioSearch?.Filter);
+                    funcionarios = await _funcionarioService.GetByFilterRelatedAsync(filter);
+                }
+
+                if (state)
+                {
+                    TempData[DefaultConst.TEMPDATA_FILTERSTATE] = JsonSerializer.Serialize(funcionarioSearch, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
+                }
             }
             else
             {
-                //Funcionario employee = await _employeeService.GetAllAsync();
+                if (id != null)
+                {
+                    Funcionario funcionario = await _funcionarioService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
+                    if (funcionario != null)
+                    {
+                        funcionarios = new List<Funcionario>() { funcionario };
+                    }
+                }
+                else
+                {
+                    funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
+                }
             }
 
-            Funcionario employee = await _employeeService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
+            List<FuncionarioViewModel> funcionarioViewModels = _mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(funcionarios).ToList();
 
-            if (employee == null)
-            {
-                return NotFound();
-            }
+            funcionarioSearch.Itens = funcionarioViewModels;
 
-            //AutoMapper
-            FuncionarioViewModel employeeViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(employee);
+            _logger.LogInformation(FuncionarioConst.LOG_INDEX, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
-            _logger.LogInformation(FuncionarioConst.LOG_INDEX, GetUserName(), DateTime.Now);
-
-            return View(employeeViewModel);
+            return View(funcionarioSearch);
         }
     }
 }
