@@ -48,7 +48,7 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
 
             builder.Property(e => e.Genero)
                 .IsRequired()
-                .HasColumnType(MySQLDataTypes.CHAR(2));
+                .HasColumnType(MySQLDataTypes.INT());
 
             builder.Property(e => e.CEP)
                 .IsRequired()

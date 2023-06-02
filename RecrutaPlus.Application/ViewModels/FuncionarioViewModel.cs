@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using AutoMapper.Configuration.Annotations;
+using RecrutaPlus.Domain.ValueObjects;
 
 namespace RecrutaPlus.Application.ViewModels
 {
@@ -36,7 +37,7 @@ namespace RecrutaPlus.Application.ViewModels
         public DateOnly DataNascimento { get; set; }
 
         [Display(Name = "Gênero")]
-        public string Genero { get; set; }
+        public int Genero { get; set; }
 
         [Display(Name = "CEP")]
         public string CEP { get; set; }
@@ -93,6 +94,12 @@ namespace RecrutaPlus.Application.ViewModels
             }
             
         }
+
+        [JsonIgnore]
+        public string GeneroToString => GeneroValueObject.GetName(Genero);
+        
+        [JsonIgnore]
+        public string CargoToString => CargoValueObject.GetName(CargoId);
 
     }
 }

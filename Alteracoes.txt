@@ -140,3 +140,6 @@ INSERT INTO `recrutamais2`.`cargos` (`CargoId`, `Nome`, `Descricao`, `Cadastro`,
 ALTER TABLE `recrutamais2`.`funcionarios` 
 ADD COLUMN `ValorPorHora` DECIMAL(20,2) NULL AFTER `Salario`,
 ADD COLUMN `QuantidadeHoraMes` INT NULL AFTER `ValorPorHora`;
+
+ALTER TABLE `recrutamais2`.`funcionarios` 
+CHANGE COLUMN `Genero` `Genero` INT NULL DEFAULT NULL ;

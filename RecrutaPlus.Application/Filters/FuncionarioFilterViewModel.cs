@@ -34,7 +34,7 @@ namespace RecrutaPlus.Application.Filters
         public DateOnly? DataNascimento { get; set; }
 
         [Display(Name = "Gênero")]
-        public string Genero { get; set; }
+        public int? Genero { get; set; }
 
         [Display(Name = "CEP")]
         public string CEP { get; set; }

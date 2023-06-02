@@ -86,8 +86,8 @@
 
                                             <div class="form-group col-12 col-sm-12 col-md-3">
                                                 <label asp-for="Genero" class="label-custom"></label>
-                                                <input asp-for="Genero" class="form-control input-color" placeholder="Select">
-                                                <span asp-validation-for="Genero" class="form-text text-danger small"></span>
+                                                <select id="Genero" asp-for="Genero" asp-items="@ViewBag.SelectListGenero" class="form-control select-select2" data-allow-clear="true" data-toggle="select2" data-placeholder="Selecione..." data-language="pt-BR">
+                                                </select>
                                             </div>
                                         </div>
 

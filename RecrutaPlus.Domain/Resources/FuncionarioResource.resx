@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ANALISTA_LABEL" xml:space="preserve">
+    <value>Analista (junior, pleno , senior)</value>
+  </data>
+  <data name="ASSISTENTE_LABEL" xml:space="preserve">
+    <value>Assistente</value>
+  </data>
+  <data name="AUXILIAR_LABEL" xml:space="preserve">
+    <value>Auxiliar</value>
+  </data>
   <data name="CANCEL" xml:space="preserve">
     <value>Cancelar</value>
+  </data>
+  <data name="CEO_LABEL" xml:space="preserve">
+    <value>CEO</value>
+  </data>
+  <data name="COORDENADOR_SUPERVISOR_LABEL" xml:space="preserve">
+    <value>Coordenador / Supervisor</value>
   </data>
   <data name="CREATE" xml:space="preserve">
     <value>Novo</value>
@@ -126,8 +141,41 @@
   <data name="DELETE" xml:space="preserve">
     <value>Deletar</value>
   </data>
+  <data name="DIRETOR_LABEL" xml:space="preserve">
+    <value>Diretor</value>
+  </data>
   <data name="EDIT" xml:space="preserve">
     <value>Editar</value>
+  </data>
+  <data name="ENSINO_FUNDAMENTAL" xml:space="preserve">
+    <value>Ensino Fundamental</value>
+  </data>
+  <data name="ENSINO_FUNDAMENTAL_INCOMPLETO" xml:space="preserve">
+    <value>Ensino Fundamental Incompleto</value>
+  </data>
+  <data name="ENSINO_MEDIO" xml:space="preserve">
+    <value>Ensino Médio</value>
+  </data>
+  <data name="ENSINO_MEDIO_INCOMPLETO" xml:space="preserve">
+    <value>Ensino Médio Incompleto</value>
+  </data>
+  <data name="ENSINO_SUPERIOR" xml:space="preserve">
+    <value>Ensino Superior</value>
+  </data>
+  <data name="ENSINO_SUPERIOR_INCOMPLETO" xml:space="preserve">
+    <value>Ensino Superior Incompleto</value>
+  </data>
+  <data name="GENERO_FEMININO" xml:space="preserve">
+    <value>Feminino</value>
+  </data>
+  <data name="GENERO_LGBTQIAMAIS" xml:space="preserve">
+    <value>LGBTQIA+</value>
+  </data>
+  <data name="GENERO_MASCULINO" xml:space="preserve">
+    <value>Masculino</value>
+  </data>
+  <data name="GENERO_PREFIRO_NAO_RESPONDER" xml:space="preserve">
+    <value>Prefiro não responder</value>
   </data>
   <data name="LABEL_CARGOS" xml:space="preserve">
     <value>Cargos</value>
@@ -140,6 +188,9 @@
   </data>
   <data name="MSG_SAVED_SUCCESSFULLY" xml:space="preserve">
     <value>Registro salvo com sucesso</value>
+  </data>
+  <data name="PRESIDENTE_LABEL" xml:space="preserve">
+    <value>Presidente</value>
   </data>
   <data name="SAVE" xml:space="preserve">
     <value>Salvar</value>

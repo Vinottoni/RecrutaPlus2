@@ -26,7 +26,7 @@ namespace RecrutaPlus.Domain.Entities
 
         public DateOnly DataNascimento { get; set; }
 
-        public string Genero { get; set; }
+        public int Genero { get; set; }
 
         public string CEP { get; set; }
 

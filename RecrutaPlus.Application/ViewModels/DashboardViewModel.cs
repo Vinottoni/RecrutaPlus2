@@ -10,7 +10,6 @@ namespace RecrutaPlus.Application.ViewModels
 {
     public class DashboardViewModel
     {
-        [JsonIgnore]
-        public List<FuncionarioViewModel> Itens { get; set; } = new List<FuncionarioViewModel>();
+      
     }
 }
