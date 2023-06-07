@@ -33,21 +33,21 @@
                                         </div>
                                         <div>
                                             <a asp-action="Create" class="btn btn-lg btn-custom">Novo</a>
-                                            <button type="button" class="btn btn-sm btn-dark" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            <button type="button" class="btn btn-sm btn-filter-custom" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                 <i class="fa fa-filter"></i>
-                                                <span class="ml-1">Filtro</span>
+                                                Filtro
                                             </button>
                                         </div>
                                     </div>
                                     <div class="form-row col-12 col-sm-12 col-md-12">
                                         <table class="table table-borderless">
                                             <thead class="table-header-custom">
-                                                <tr class="text-center">
+                                                <tr>
                                                     <th class="table-border-left-15">Nome</th>
                                                     <th>Email</th>
                                                     <th>Salário</th>
                                                     <th>Telefone</th>
-                                                    <th>Status</th>
+                                                    <th class="text-center">Status</th>
                                                     <th class="table-border-right-15"></th>
                                                 </tr>
                                             </thead>
@@ -55,17 +55,17 @@
                                                 @foreach (FuncionarioViewModel item in Model.Itens)
                                                 {
                                                     <tr>
-                                                        <td class="text-center align-middle">
+                                                        <td class="align-middle">
                                                             @Html.DisplayFor(modelItem => item.Nome)
                                                         </td>
-                                                        <td class="text-center align-middle">
+                                                        <td class="align-middle">
                                                             @Html.DisplayFor(modelItem => item.Email)
                                                         </td>
-                                                        <td class="text-center align-middle">
+                                                        <td class="align-middle">
 
                                                             <small>R$&nbsp;</small>@Html.DisplayFor(modelItem => item.Salario)
                                                         </td>
-                                                        <td class="text-center align-middle">
+                                                        <td class="align-middle">
                                                             @Html.DisplayFor(modelItem => item.Telefone)
                                                         </td>
                                                         <td class="text-center align-middle">

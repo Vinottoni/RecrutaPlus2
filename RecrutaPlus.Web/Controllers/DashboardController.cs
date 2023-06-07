@@ -11,6 +11,7 @@ using System.Text.Json;
 using AutoMapper;
 using RecrutaPlus.Domain.Interfaces.Services;
 using RecrutaPlus.Domain.Interfaces;
+using Microsoft.Data.SqlClient;
 
 namespace RecrutaPlus.Web.Controllers
 {
@@ -31,6 +32,19 @@ namespace RecrutaPlus.Web.Controllers
         {
             FuncionarioSearch funcionarioSearch = new FuncionarioSearch();
             IEnumerable<Funcionario> funcionarios = null;
+
+            //SqlConnection connection = new SqlConnection("server=localhost;User Id=root;password=123456;Persist Security Info=True;database=recrutamais2");
+            //{
+            //    SqlCommand command = new SqlCommand("SELECT COUNT(funcionarioId) FROM funcionarios", connection);
+            //    command.Connection.Open();
+            //    command.ExecuteNonQuery();
+            //}
+
+            //funcionarioSearch.TotalFuncionarios = await _funcionarioService.CountAsync(c => c.FuncionarioId);
+            //funcionarioSearch.FuncionariosAtivos = await _funcionarioService.CountAsync(c => c.FuncionarioId == c.Ativo == true);
+            //funcionarioSearch.FuncionariosDesativados = await _funcionarioService.CountAsync(c => c.FuncionarioId == c.Ativo == false);
+            //funcionarioSearch.FuncionariosRecentes = await _funcionarioService.CountAsync(c => c.FuncionarioId);
+
 
             if (!state)
             {

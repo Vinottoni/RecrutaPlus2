@@ -10,6 +10,12 @@ namespace RecrutaPlus.Application.Searches
 {
     public class FuncionarioSearch
     {
+        public int TotalFuncionarios { get; set; }
+        public int FuncionariosAtivos { get; set; }
+        public int FuncionariosDesativados { get; set; }
+        public int FuncionariosRecentes { get; set; }
+
+
         [JsonIgnore]
         public List<FuncionarioViewModel> Itens { get; set; } = new List<FuncionarioViewModel>();
         public FuncionarioFilterViewModel Filter { get; set; }

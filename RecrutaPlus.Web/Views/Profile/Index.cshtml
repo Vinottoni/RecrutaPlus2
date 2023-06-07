@@ -1,4 +1,79 @@
-﻿@{
+﻿@model FuncionarioViewModel
+
+@{
     Layout = "_Layout";
-    ViewData["Title"] = "Profile - RecrutaPlus";
+    ViewData["Title"] = "Profile";
+}
+
+<div class="content-pages text-yellowy">
+    <div class="container">
+        <div class="page-titles">
+            <h1 class="ml-0">
+                @ViewData["Title"]
+            </h1>
+        </div>
+
+        <div class="page-section">
+
+            <div class="card-deck-xl">
+
+                <div class="card-custom card-fluid">
+                    <div class="card-body card-body-custom card-background">
+                        <fieldset>
+                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
+
+                                <div class="col-12 col-sm-12 col-md-12 d-flex gap-5">
+                                    <div class="text-left">
+                                        <span>Nome</span><br />
+                                        <h2>Profile name</h2>
+                                    </div>
+                                    <div class="d-inline-flex">
+                                        <a asp-action="Edit" class="btn btn-lg btn-dark-secondary-profile align-midle">Editar Perfil</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="hr-color" />
+                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom gap-register">
+
+
+                                <div class="form-group col-12 col-sm-12 col-md-12">
+                                    <label asp-for="Email" class="label-custom"></label>@*<sup class="text-danger">*</sup>*@
+                                    <input asp-for="Email" class="form-control input-color" placeholder="Digite seu Email" required min="0">
+                                    <span asp-validation-for="Email" class="form-text text-danger small"></span>
+                                </div>
+
+                                <div class="form-group col-12 col-sm-12 col-md-3">
+                                    <label asp-for="Telefone" class="label-custom"></label>
+                                    <input asp-for="Telefone" class="form-control input-color" placeholder="Digite seu Celular">
+                                    <span asp-validation-for="Telefone" class="form-text text-danger small"></span>
+                                </div>
+
+                                <div class="form-group col-12 col-sm-12 col-md-4">
+                                    <label asp-for="CPF" class="label-custom"></label>
+                                    <input asp-for="CPF" class="form-control input-color" placeholder="Digite seu CPF">
+                                    <span asp-validation-for="CPF" class="form-text text-danger small"></span>
+                                </div>
+
+                                <div class="form-group col-12 col-sm-12 col-md-4">
+                                    <label asp-for="Genero" class="label-custom"></label>
+                                    <select id="Genero" asp-for="Genero" asp-items="@ViewBag.SelectListGenero" class="form-control form-control-custom" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-row col-12 col-sm-12 col-md-12">
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+
+@section Scripts{
+
+
 }

@@ -57,7 +57,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (FuncionarioViewModel item in Model.Itens)
+                                @foreach (FuncionarioViewModel item in Model.Itens.Take(3))
                                 {
                                     <tr class="text-white">
                                         <td class="text-left align-middle">

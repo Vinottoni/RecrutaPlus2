@@ -2,14 +2,25 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="~/css/custom.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="~/css/custom.css" data-skin="default">
+    <link rel="stylesheet" href="~/css/theme-light.css" data-skin="lightTheme">
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
-    @*<link href="~/css/theme.css" rel="stylesheet" />*@
-    @*<link href="~/css/theme-dark.css" rel="stylesheet" data-skin="dark" />*@
-    
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script>
+        var skin = localStorage.getItem('skin') || 'default';
+        var isCompact = JSON.parse(localStorage.getItem('hasCompactMenu'));
+        var disabledSkinStylesheet = document.querySelector('link[data-skin]:not([data-skin="' + skin + '"])');
+        // Disable unused skin immediately
+        disabledSkinStylesheet.setAttribute('rel', '');
+        disabledSkinStylesheet.setAttribute('disabled', true);
+        // add flag class to html immediately
+        if (isCompact == true) document.querySelector('html').classList.add('preparing-compact-menu');
+    </script>
+
 </head>
 <body>
     
@@ -39,13 +50,13 @@
                 </a>
             </li>
             <li>
-                <a asp-area="" asp-controller="Settings" asp-action="Index">
-                    <i class="fa-solid fa-gear"></i>
-                    <span class="link_name">Configurações</span>
+                <a asp-area="" data-toggle="skin">
+                    <i class="fa-solid fa-moon"></i>
+                    <span class="link_name">DarkTheme</span>
                 </a>
             </li>
             <li>
-                <a asp-area="" asp-controller="Login" asp-action="Index">
+                <a asp-area="" data-bs-toggle="modal" data-bs-target="#modalSair">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
                     <span class="link_name">Sair</span>
                 </a>
@@ -63,6 +74,29 @@
             <h6 class="text-white mb-0 pl-4">&nbsp; developed by Kennedy, Menezes e Ottoni <strong class="text-yellowy">@DateTime.Now.ToString("yyyy")</strong></h6>
         </footer>
     </section>
+
+    <div class="modal fade " id="modalSair" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content  form-modal-custom">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5 text-yellowy" id="staticBackdropLabel">Confirmar Saida?</h1>
+                </div>
+                <form asp-action="index" asp-controller="login" method="post">
+                    <div class="modal-body">
+                        <div class="d-flex gap-2">
+
+                            <span>Você tem certeza que deseja <strong class="text-yellowy">deslogar?</strong></span>
+
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-end">
+                        <button type="button" class="btn btn-dark-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                        <button type="submit" class="btn btn-green-default">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="~/lib/chartjs/chart.min.js"></script>
     <script src="~/lib/jquery/jquery.min.js"></script>
