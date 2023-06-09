@@ -39,49 +39,11 @@ namespace RecrutaPlus.Web.Controllers
             dashboardViewModel.FuncionariosDesativados = await _funcionarioService.CountAsync(c => c.Ativo == false);
             dashboardViewModel.FuncionariosRecentes = await _funcionarioService.CountAsync(c => c.Edicao >= DateTime.Now.AddDays(-30));
 
+            funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
 
-            //if (!state)
-            //{
-            //    TempData[DefaultConst.TEMPDATA_FILTERSTATE] = null;
-            //}
+            List<FuncionarioViewModel> funcionarioViewModels = _mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(funcionarios).ToList();
 
-            //if (!string.IsNullOrWhiteSpace(TempData[DefaultConst.TEMPDATA_FILTERSTATE]?.ToString()))
-            //{
-            //    funcionarioSearch = JsonSerializer.Deserialize<FuncionarioSearch>(TempData[DefaultConst.TEMPDATA_FILTERSTATE]?.ToString());
-            //    if (funcionarioSearch.HasFilter)
-            //    {
-            //        funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
-            //    }
-            //    else
-            //    {
-            //        FuncionarioFilter filter = _mapper.Map<FuncionarioFilterViewModel, FuncionarioFilter>(funcionarioSearch?.Filter);
-            //        funcionarios = await _funcionarioService.GetByFilterRelatedAsync(filter);
-            //    }
-
-            //    if (state)
-            //    {
-            //        TempData[DefaultConst.TEMPDATA_FILTERSTATE] = JsonSerializer.Serialize(funcionarioSearch, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
-            //    }
-            //}
-            //else
-            //{
-            //    if (id != null)
-            //    {
-            //        Funcionario funcionario = await _funcionarioService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
-            //        if (funcionario != null)
-            //        {
-            //            funcionarios = new List<Funcionario>() { funcionario };
-            //        }
-            //    }
-            //    else
-            //    {
-            //        funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
-            //    }
-            //}
-
-            //List<FuncionarioViewModel> funcionarioViewModels = _mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(funcionarios).ToList();
-
-            //funcionarioSearch.Itens = funcionarioViewModels;
+            funcionarioSearch.Itens = funcionarioViewModels;
             funcionarioSearch.DashboardViewModel = dashboardViewModel;
 
             _logger.LogInformation(FuncionarioConst.LOG_INDEX, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
