@@ -21,19 +21,19 @@ namespace RecrutaPlus.Infra.Data.Repositories
         }
         public async Task<Funcionario> GetByIdAsync(int id)
         {
-            return await _dbContext.Employees.AsNoTrackingWithIdentityResolution().SingleOrDefaultAsync(s => s.FuncionarioId == id);
+            return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution().SingleOrDefaultAsync(s => s.FuncionarioId == id);
         }
 
         public async Task<Funcionario> GetByIdRelatedAsync(int id)
         {
-            return await _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+            return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
                 .SingleOrDefaultAsync(s => s.FuncionarioId == id);
         }
 
         public async Task<IEnumerable<Funcionario>> GetByFilterAsync(FuncionarioFilter filter = null)
         {
-            var _query = _dbContext.Employees.AsNoTrackingWithIdentityResolution();
+            var _query = _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution();
 
             if (filter?.FuncionarioId != null) { _query = _query.Where(w => w.FuncionarioId == filter.FuncionarioId.GetValueOrDefault());}
             if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
@@ -45,7 +45,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
 
         public async Task<IEnumerable<Funcionario>> GetByFilterRelatedAsync(FuncionarioFilter filter = null)
         {
-            var _query = _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+            var _query = _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo).AsQueryable();
 
             if (filter?.FuncionarioId != null) { _query = _query.Where(w => w.FuncionarioId == filter.FuncionarioId.GetValueOrDefault()); }
@@ -64,11 +64,11 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             if (predicate == null)
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution().OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution().OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
             }
             else
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
             }
         }
 
@@ -76,13 +76,13 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             if (predicate == null)
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                     .Include(i => i.Cargo)
                     .ToListAsync();
             }
             else
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                     .Include(i => i.Cargo)
                     .Where(predicate).ToListAsync();
             }
@@ -92,11 +92,11 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             if (predicate == null)
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution().OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution().OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
             }
             else
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
             }
         }
 
@@ -104,13 +104,13 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             if (predicate == null)
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
                 .OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
             }
             else
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
                 .Where(predicate).OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
             }
@@ -120,13 +120,13 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             if (predicate == null)
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
                 .OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
             }
             else
             {
-                return await _dbContext.Employees.AsNoTrackingWithIdentityResolution()
+                return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
                 .Where(predicate).OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
             }

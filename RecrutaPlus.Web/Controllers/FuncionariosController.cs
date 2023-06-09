@@ -36,6 +36,9 @@ namespace RecrutaPlus.Web.Controllers
 
         public async Task<IActionResult> Index(int? id, bool state = false)
         {
+            ViewBag.SelectListNomes = await Task.Run(() => SelectListNomes());
+            ViewBag.SelectListAtivos = await Task.Run(() => SelectListAtivos());
+
             FuncionarioSearch funcionarioSearch = new FuncionarioSearch();
             IEnumerable<Funcionario> funcionarios = null;
 
@@ -91,7 +94,12 @@ namespace RecrutaPlus.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Index(FuncionarioSearch funcionarioSearch)
         {
+            ViewBag.SelectListNomes = await Task.Run(() => SelectListNomes());
+            ViewBag.SelectListAtivos = await Task.Run(() => SelectListAtivos());
+
             IEnumerable<Funcionario> funcionarios;
+
+            funcionarioSearch.HasFilter = false;
 
             if (funcionarioSearch.HasFilter)
             {
@@ -344,6 +352,21 @@ namespace RecrutaPlus.Web.Controllers
             return selectListItems;
         }
 
+        private async Task<List<SelectListItem>> SelectListNomes()
+        {
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+            IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetAllAsync();
+
+            selectListItems.Add(new SelectListItem(DefaultResource.MSG_SELECIONE, string.Empty, true));
+
+            foreach (var item in funcionarios.OrderBy(o => o.Nome))
+            {
+                selectListItems.Add(new SelectListItem(text: item.Nome + " - " + item.CargoToString, value: item.FuncionarioId.ToString()));
+            }
+
+            return selectListItems;
+        }
+
         private async Task<List<SelectListItem>> SelectListGenero()
         {
             List<SelectListItem> selectListItems = new List<SelectListItem>();
@@ -391,6 +414,20 @@ namespace RecrutaPlus.Web.Controllers
                 selectListItems.Add(new SelectListItem(FuncionarioResource.ANALISTA_LABEL, ((int)CargoEnum.Analista).ToString(), false)); ;
                 selectListItems.Add(new SelectListItem(FuncionarioResource.ASSISTENTE_LABEL, ((int)CargoEnum.Assistente).ToString(), false));
                 selectListItems.Add(new SelectListItem(FuncionarioResource.AUXILIAR_LABEL, ((int)CargoEnum.Auxiliar).ToString(), false));
+            });
+
+            return selectListItems;
+        }
+
+        private async Task<List<SelectListItem>> SelectListAtivos()
+        {
+            List<SelectListItem> selectListItems = new List<SelectListItem>();
+
+            await Task.Run(() =>
+            {
+                selectListItems.Add(new SelectListItem(DefaultResource.MSG_SELECIONE, string.Empty, true));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.MSG_ATIVO, ((int)AtivoEnum.Ativo).ToString(), false));
+                selectListItems.Add(new SelectListItem(FuncionarioResource.MSG_OFFLINE, ((int)AtivoEnum.Offline).ToString(), false)); ;
             });
 
             return selectListItems;

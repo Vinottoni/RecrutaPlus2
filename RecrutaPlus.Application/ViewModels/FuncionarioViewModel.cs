@@ -51,7 +51,7 @@ namespace RecrutaPlus.Application.ViewModels
         [Display(Name = "Educação")]
         public int Educacao { get; set; }
 
-        [Display(Name = "Ativo")]
+        [Display(Name = "Status")]
         public bool Ativo { get; set; }
 
         [Display(Name = "Estado")]

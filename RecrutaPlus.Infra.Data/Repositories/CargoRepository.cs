@@ -20,7 +20,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
         }
         public async Task<Cargo> GetByIdAsync(int id)
         {
-            return await _dbContext.Offices.AsNoTrackingWithIdentityResolution().SingleOrDefaultAsync(s => s.CargoId == id);
+            return await _dbContext.Cargos.AsNoTrackingWithIdentityResolution().SingleOrDefaultAsync(s => s.CargoId == id);
         }
 
         //public async Task<Office> GetByIdRelatedAsync(int id)
@@ -32,7 +32,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
 
         public async Task<IEnumerable<Cargo>> GetByFilterAsync(CargoFilter filter = null)
         {
-            var _query = _dbContext.Offices.AsNoTrackingWithIdentityResolution();
+            var _query = _dbContext.Cargos.AsNoTrackingWithIdentityResolution();
 
             if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId.GetValueOrDefault()); }
             if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
@@ -73,11 +73,11 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             if (predicate == null)
             {
-                return await _dbContext.Offices.AsNoTrackingWithIdentityResolution().OrderBy(o => o.CargoId).Skip(skip).Take(take).ToListAsync();
+                return await _dbContext.Cargos.AsNoTrackingWithIdentityResolution().OrderBy(o => o.CargoId).Skip(skip).Take(take).ToListAsync();
             }
             else
             {
-                return await _dbContext.Offices.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.CargoId).Skip(skip).Take(take).ToListAsync();
+                return await _dbContext.Cargos.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.CargoId).Skip(skip).Take(take).ToListAsync();
             }
         }
 
@@ -101,11 +101,11 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             if (predicate == null)
             {
-                return await _dbContext.Offices.AsNoTrackingWithIdentityResolution().OrderBy(o => o.CargoId).Take(takeLast).ToListAsync();
+                return await _dbContext.Cargos.AsNoTrackingWithIdentityResolution().OrderBy(o => o.CargoId).Take(takeLast).ToListAsync();
             }
             else
             {
-                return await _dbContext.Offices.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.CargoId).Take(takeLast).ToListAsync();
+                return await _dbContext.Cargos.AsNoTrackingWithIdentityResolution().Where(predicate).OrderBy(o => o.CargoId).Take(takeLast).ToListAsync();
             }
         }
 

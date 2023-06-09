@@ -20,79 +20,83 @@
 
                 <div class="card-custom card-fluid">
                     <div class="card-body card-body-custom card-background">
+                        <fieldset>
+                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
 
-                        <form asp-action="Create" class="col-12 col-sm-12 col-md-12">
-
-                            <fieldset>
-                                <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
-
-                                    <div class="col-12 col-sm-12 col-md-12 justify-content-between d-flex">
-                                        <div class="text-left">
-                                            <small class="text-white">@ViewData["SubTitle"]</small><br />
-                                            <h2>@ViewData["Title"]</h2>
-                                        </div>
-                                        <div>
-                                            <a asp-action="Create" class="btn btn-lg btn-custom">Novo</a>
-                                            <button type="button" class="btn btn-sm btn-filter-custom" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                                <i class="fa fa-filter"></i>
-                                                Filtro
-                                            </button>
-                                        </div>
+                                <div class="col-12 col-sm-12 col-md-12 justify-content-between d-flex">
+                                    <div class="text-left">
+                                        <small class="text-white">@ViewData["SubTitle"]</small><br />
+                                        <h2>@ViewData["Title"]</h2>
                                     </div>
-                                    <div class="form-row col-12 col-sm-12 col-md-12">
-                                        <table class="table table-borderless">
-                                            <thead class="table-header-custom">
-                                                <tr>
-                                                    <th class="table-border-left-15">Nome</th>
-                                                    <th>Email</th>
-                                                    <th>Salário</th>
-                                                    <th>Telefone</th>
-                                                    <th class="text-center">Status</th>
-                                                    <th class="table-border-right-15"></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody class="table-body-color">
-                                                @foreach (FuncionarioViewModel item in Model.Itens)
-                                                {
-                                                    <tr>
-                                                        <td class="align-middle">
-                                                            @Html.DisplayFor(modelItem => item.Nome)
-                                                        </td>
-                                                        <td class="align-middle">
-                                                            @Html.DisplayFor(modelItem => item.Email)
-                                                        </td>
-                                                        <td class="align-middle">
-
-                                                            <small>R$&nbsp;</small>@Html.DisplayFor(modelItem => item.Salario)
-                                                        </td>
-                                                        <td class="align-middle">
-                                                            @Html.DisplayFor(modelItem => item.Telefone)
-                                                        </td>
-                                                        <td class="text-center align-middle">
-                                                            @if (item.Ativo == true)
-                                                            {
-                                                                <span class="badge badge-subtle btn-badge-active">@FuncionarioResource.MSG_ATIVO</span>
-                                                            }
-                                                            else
-                                                            {
-                                                                <span class="badge badge-subtle btn-badge-off">@FuncionarioResource.MSG_OFFLINE</span>
-                                                            }
-                                                        </td>
-                                                        <td class="text-center align-middle">
-                                                            <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
-                                                            <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
-                                                            <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
-                                                        </td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
-
+                                    <div>
+                                        <a asp-action="Create" class="btn btn-lg btn-custom">Novo</a>
+                                        <button type="button" class="btn btn-sm btn-filter-custom" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                            <i class="fa fa-filter"></i>
+                                            Filtro
+                                        </button>
                                     </div>
-
                                 </div>
-                            </fieldset>
-                        </form>
+                                <div class="form-row col-12 col-sm-12 col-md-12">
+                                    <table class="table table-borderless">
+                                        <thead class="table-header-custom">
+                                            <tr>
+                                                <th class="table-border-left-15">
+                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Nome)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Email)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Salario)
+                                                </th>
+                                                <th>
+                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Telefone)
+                                                </th>
+                                                <th class="text-center">
+                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Ativo)
+                                                </th>
+                                                <th class="table-border-right-15"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="table-body-color">
+                                            @foreach (FuncionarioViewModel item in Model.Itens)
+                                            {
+                                                <tr>
+                                                    <td class="align-middle">
+                                                        @Html.DisplayFor(modelItem => item.Nome)
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        @Html.DisplayFor(modelItem => item.Email)
+                                                    </td>
+                                                    <td class="align-middle">
+
+                                                        <small>R$&nbsp;</small>@Html.DisplayFor(modelItem => item.Salario)
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        @Html.DisplayFor(modelItem => item.Telefone)
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        @if (item.Ativo == true)
+                                                        {
+                                                            <span class="badge badge-subtle btn-badge-active">@FuncionarioResource.MSG_ATIVO</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge badge-subtle btn-badge-off">@FuncionarioResource.MSG_OFFLINE</span>
+                                                        }
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
+                                                        <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
+                                                        <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
                 </div>
             </div>
@@ -111,13 +115,15 @@
                     <div class="d-flex gap-2">
 
                         <div class="form-group col-sm-12 col-md-6">
-                            <label asp-for="Filter.FuncionarioId"></label>
-                            <input asp-for="Filter.FuncionarioId" class="form-control input-filter-color">
+                            <label asp-for="Filter.Nome"></label>
+                            <select asp-for="Filter.Nome" asp-items="@ViewBag.SelectListNomes" class="form-control input-filter-color">
+                            </select>
                         </div>
 
                         <div class="form-group col-sm-12 col-md-6">
-                            <label asp-for="Filter.Nome"></label>
-                            <input asp-for="Filter.Nome" class="form-control input-filter-color">
+                            <label asp-for="Filter.Ativo"></label>
+                            <select asp-for="Filter.Ativo" asp-items="@ViewBag.SelectListAtivos" class="form-control input-filter-color">
+                            </select>
                         </div>
 
                     </div>

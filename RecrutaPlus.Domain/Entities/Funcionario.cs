@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using RecrutaPlus.Domain.Validators;
+using RecrutaPlus.Domain.ValueObjects;
 
 namespace RecrutaPlus.Domain.Entities
 {
@@ -66,6 +68,9 @@ namespace RecrutaPlus.Domain.Entities
         public decimal ValorPorHora { get; set; }
 
         public int QuantidadeHoraMes { get; set; }
+
+        [JsonIgnore]
+        public string CargoToString => CargoValueObject.GetName(CargoId);
 
     }
 }

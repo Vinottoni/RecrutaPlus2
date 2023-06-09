@@ -1,4 +1,5 @@
 ﻿using RecrutaPlus.Application.ViewModels;
+using RecrutaPlus.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,6 +15,9 @@ namespace RecrutaPlus.Application.Filters
     {
         [Display(Name = "Código")]
         public int? FuncionarioId { get; set; }
+
+        [Display(Name = "Cargo")]
+        public int? CargoId { get; set; }
 
         [Display(Name = "Nome")]
         public string Nome { get; set; }
@@ -48,7 +52,7 @@ namespace RecrutaPlus.Application.Filters
         [Display(Name = "Educação")]
         public int? Educacao { get; set; }
 
-        [Display(Name = "Ativo")]
+        [Display(Name = "Status")]
         public bool? Ativo { get; set; }
 
         [Display(Name = "Estado")]
