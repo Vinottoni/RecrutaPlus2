@@ -10,6 +10,9 @@ namespace RecrutaPlus.Application.ViewModels
 {
     public class DashboardViewModel
     {
-      
+        public int TotalFuncionarios { get; set; }
+        public int FuncionariosAtivos { get; set; }
+        public int FuncionariosDesativados { get; set; }
+        public int FuncionariosRecentes { get; set; }
     }
 }
