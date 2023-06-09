@@ -37,7 +37,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
 
             if (filter?.FuncionarioId != null) { _query = _query.Where(w => w.FuncionarioId == filter.FuncionarioId.GetValueOrDefault());}
             if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
-            if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
+            if (filter?.Nome != null) { _query = _query.Where(w => EF.Functions.Like(w.Nome, $"%{filter.Nome}")); }
             if (filter?.CPF != null) { _query = _query.Where(w => w.CPF == filter.CPF); }
 
             return await _query.ToListAsync();
@@ -53,9 +53,6 @@ namespace RecrutaPlus.Infra.Data.Repositories
             if (filter?.Nome != null) { _query = _query.Where(w => w.Nome == filter.Nome); }
             if (filter?.CPF != null) { _query = _query.Where(w => w.CPF == filter.CPF); }
             if (filter?.Ativo != null) { _query = _query.Where(w => w.Ativo == filter.Ativo); }
-
-            //Office
-            if (filter?.CargoFilter?.Nome != null) { _query = _query.Where(w => w.Cargo.Nome == filter.CargoFilter.Nome); }
 
             return await _query.ToListAsync();
         }

@@ -4,6 +4,9 @@
     {
         public static string MSG_SELECIONE = "Selecione...";
 
+        public static bool ATIVO_TRUE = true;
+        public static bool ATIVO_FALSE = false;
+
         //Mensage Template
         public static string LOG_INDEX = "Controller: Funcionarios | Action: Index | User: {User} | Created: {Created}";
         public static string LOG_CREATE = "Controller: Funcionarios | Action: Create | User: {User} | Created: {Created}";

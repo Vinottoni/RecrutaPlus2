@@ -43,6 +43,9 @@
                                                 <th class="table-border-left-15">
                                                     @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Nome)
                                                 </th>
+                                                <th class="table-border-left-15">
+                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().CargoId)
+                                                </th>
                                                 <th>
                                                     @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Email)
                                                 </th>
@@ -64,6 +67,9 @@
                                                 <tr>
                                                     <td class="align-middle">
                                                         @Html.DisplayFor(modelItem => item.Nome)
+                                                    </td>
+                                                    <td class="align-middle">
+                                                        @Html.DisplayFor(modelItem => item.CargoToString)
                                                     </td>
                                                     <td class="align-middle">
                                                         @Html.DisplayFor(modelItem => item.Email)
@@ -116,13 +122,22 @@
 
                         <div class="form-group col-sm-12 col-md-6">
                             <label asp-for="Filter.Nome"></label>
-                            <select asp-for="Filter.FuncionarioId" asp-items="@ViewBag.SelectListNomes" class="form-control input-filter-color">
-                            </select>
+                            <input asp-for="Filter.Nome" />
                         </div>
 
                         <div class="form-group col-sm-12 col-md-6">
+                            <label asp-for="Filter.CargoId"></label>
+                            <select asp-for="Filter.CargoId" asp-items="@ViewBag.SelectListCargos" class="form-control input-filter-color" >
+                            </select>
+                        </div>
+                        
+                        <div class="form-group col-sm-12 col-md-6">
                             <label asp-for="Filter.Ativo"></label>
-                            <select asp-for="Filter.Ativo" asp-items="@ViewBag.SelectListAtivos" class="form-control input-filter-color">
+                            <select asp-for="Filter.Ativo" class="form-control input-filter-color" >
+                                <option value="">@DefaultResource.MSG_SELECIONE</option>
+
+                                <option value="@FuncionarioConst.ATIVO_TRUE">@FuncionarioResource.MSG_ATIVO</option>
+                                <option value="@FuncionarioConst.ATIVO_FALSE">@FuncionarioResource.MSG_OFFLINE</option>
                             </select>
                         </div>
 
