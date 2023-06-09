@@ -1,7 +1,5 @@
 ﻿using RecrutaPlus.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Web.Models;
-using System.Diagnostics;
 using RecrutaPlus.Application.Searches;
 using RecrutaPlus.Application.Filters;
 using RecrutaPlus.Domain.Constants;
@@ -28,7 +26,8 @@ namespace RecrutaPlus.Web.Controllers
             _logger = logger;
             _funcionarioService = funcionarioService;
         }
-            public async Task<IActionResult> Index(int? id, bool state = false)
+
+        public async Task<IActionResult> Index(int? id, bool state = false)
         {
             FuncionarioSearch funcionarioSearch = new FuncionarioSearch();
             IEnumerable<Funcionario> funcionarios = null;
@@ -44,6 +43,35 @@ namespace RecrutaPlus.Web.Controllers
             //funcionarioSearch.FuncionariosAtivos = await _funcionarioService.CountAsync(c => c.FuncionarioId == c.Ativo == true);
             //funcionarioSearch.FuncionariosDesativados = await _funcionarioService.CountAsync(c => c.FuncionarioId == c.Ativo == false);
             //funcionarioSearch.FuncionariosRecentes = await _funcionarioService.CountAsync(c => c.FuncionarioId);
+
+            string connectionString = "server=localhost;database=recrutamais2;User Id=root;password=123456";
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            try
+            {
+                connection.Open();
+
+                // Quantidade total de funcionários
+                funcionarioSearch.TotalFuncionarios = GetQuantidadeTotalFuncionarios(connection);
+
+                // Funcionários ativos
+                funcionarioSearch.FuncionariosAtivos = GetQuantidadeFuncionariosAtivos(connection);
+
+                // Funcionários desativados
+                funcionarioSearch.FuncionariosDesativados = GetQuantidadeFuncionariosDesativados(connection);
+
+                // Funcionários mais recentes cadastrados
+                //int quantidadeFuncionariosRecentes;
+                //var funcionariosRecentes = GetFuncionariosMaisRecentes(connection, 5, out quantidadeFuncionariosRecentes);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Erro ao conectar ao banco de dados: " + ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
 
 
             if (!state)
@@ -94,10 +122,54 @@ namespace RecrutaPlus.Web.Controllers
             return View(funcionarioSearch);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        static int GetQuantidadeTotalFuncionarios(SqlConnection connection)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            string query = "SELECT COUNT(*) FROM funcionarios";
+            SqlCommand command = new SqlCommand(query, connection);
+            return (int)command.ExecuteScalar();
         }
+
+        static int GetQuantidadeFuncionariosAtivos(SqlConnection connection)
+        {
+            string query = "SELECT COUNT(*) FROM funcionarios WHERE Ativo = 'S'";
+            SqlCommand command = new SqlCommand(query, connection);
+            return (int)command.ExecuteScalar();
+        }
+
+        static int GetQuantidadeFuncionariosDesativados(SqlConnection connection)
+        {
+            string query = "SELECT COUNT(*) FROM funcionarios WHERE Ativo = 'N'";
+            SqlCommand command = new SqlCommand(query, connection);
+            return (int)command.ExecuteScalar();
+        }
+
+        //static List<Funcionario> GetFuncionariosMaisRecentes(SqlConnection connection, int quantidade, out int quantidadeTotal)
+        //{
+        //    string query = "SELECT TOP " + quantidade + " FuncionarioId, Nome, Cadastro FROM funcionarios ORDER BY DataCadastro DESC";
+        //    SqlCommand command = new SqlCommand(query, connection);
+        //    SqlDataReader reader = command.ExecuteReader();
+
+        //    List<Funcionario> funcionarios = new List<Funcionario>();
+
+        //    while (reader.Read())
+        //    {
+        //        int id = reader.GetInt32(0);
+        //        string nome = reader.GetString(1);
+        //        DateTime dataCadastro = reader.GetDateTime(2);
+
+        //        //Funcionario funcionario = new Funcionario(id, nome, dataCadastro);
+        //        //funcionarios.Add(funcionario);
+        //    }
+
+        //    reader.Close();
+
+        //    // Obter a quantidade total de funcionários
+        //    string queryTotal = "SELECT COUNT(*) FROM funcionarios";
+        //    SqlCommand commandTotal = new SqlCommand(queryTotal, connection);
+        //    quantidadeTotal = (int)commandTotal.ExecuteScalar();
+
+        //    return funcionarios;
+        //}
+
     }
 }

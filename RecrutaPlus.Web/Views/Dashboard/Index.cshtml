@@ -16,25 +16,25 @@
             <div class="base-status-employees col-sm-12 col-md-2 margin-status">
                 <div class="text-base-status">
                     <small class="text-white">Total de Funcionarios</small>
-                    <h4 class="mb-0">158</h4>
+                    <h4 class="mb-0">@Html.DisplayFor(model => model.TotalFuncionarios)</h4>
                 </div>
             </div>
             <div class="base-status-employees col-sm-12 col-md-2 margin-status">
                 <div class="text-base-status">
                     <small class="text-white">Funcionarios Ativos</small>
-                    <h4 class="mb-0">127</h4>
+                    <h4 class="mb-0">@Html.DisplayFor(model => model.FuncionariosAtivos)</h4>
                 </div>
             </div>
             <div class="base-status-employees col-sm-12 col-md-2 margin-status">
                 <div class="text-base-status">
                     <small class="text-white">Funcionarios Desativados</small>
-                    <h4 class="mb-0">31</h4>
+                    <h4 class="mb-0">@Html.DisplayFor(model => model.FuncionariosDesativados)</h4>
                 </div>
             </div>
             <div class="base-status-employees col-sm-12 col-md-2 ">
                 <div class="text-base-status">
                     <small class="text-white">Funcionarios Recentes</small>
-                    <h4 class="mb-0">5</h4>
+                    <h4 class="mb-0">@Html.DisplayFor(model => model.FuncionariosRecentes)</h4>
                 </div>
             </div>
         </div>
@@ -52,8 +52,12 @@
                         <table class="table table-employee-dashboard table-borderless">
                             <thead class="border-tb-dashboard">
                                 <tr class="text-yellowy">
-                                    <th>Nome</th>
-                                    <th>Email</th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Nome)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Email)
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
