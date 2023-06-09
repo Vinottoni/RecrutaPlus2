@@ -28,7 +28,7 @@
                         <fieldset class="gap-2 input-flex-custom">
                             <div class="position-custom col-sm-12 col-md-12">
 
-                                <input asp-for="Username" id="inputEmail" type="email" name="username" class="text-input" placeholder="Enter your Email" autocomplete="off" required>
+                                <input asp-for="Username" id="inputEmail" type="text" name="username" class="text-input" placeholder="Enter your Email" autocomplete="off" required>
                                 <label asp-for="Username" for="inputEmail" class="text-white label-custom .filled"></label>
                                 @Html.ValidationMessageFor(x => x.Username)
                             </div>

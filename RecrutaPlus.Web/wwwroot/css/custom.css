@@ -36,14 +36,14 @@ body {
     --bs-card-cap-padding-x: 1rem;
     --bs-card-cap-bg: rgba(0, 0, 0, 0.03);
     --bs-card-cap-color:;
-    --bs-card-height:70%;
+    --bs-card-height:;
     --bs-card-color:;
     --bs-card-img-overlay-padding: 1rem;
     --bs-card-group-margin: 0.75rem;
     position: relative;
     display: flex;
     flex-direction: column;
-    min-width: 100vh;
+    min-width: 0;
     min-height: var(--bs-card-height);
     word-wrap: break-word;
     background-color: var(--bs-card-bg);
@@ -451,15 +451,6 @@ body {
     background-color: var(--color-nero) !important;
     color: var(--color-white)!important;
 }
-
-/*.table-border-left-15{
-    border-top-left-radius: 15px !important;
-    border-bottom-left-radius: 15px !important;
-}
-.table-border-right-15 {
-    border-top-right-radius: 15px !important;
-    border-bottom-right-radius: 15px !important;
-}*/
 
 .btn-custom{
     background-color: var(--color-yellowy-green) !important;

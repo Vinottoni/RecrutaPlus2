@@ -82,30 +82,50 @@
     </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+@{
+    var funcionariosTotais = ViewBag.FuncionariosTotais;
+    var funcionariosAtivos = ViewBag.FuncionariosAtivos;
+    var funcionariosDesativados = ViewBag.FuncionariosDesativados;
 
-<script>
-    const ctx = document.getElementById('myChart');
-    const myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Ativos', 'Desativados', 'Recentes'],
-            datasets: [{
-                label: '158 funcionários',
-                data: [127, 31, 5],
-                backgroundColor: [
-                    'rgba(167, 215, 41, 1)',
-                    'rgba(255, 174, 174, 1)',
-                    'rgba(201, 247, 245, 1)',
-                ],
-                borderColor: [
-                    'rgba(167, 215, 4, 1)',
-                    'rgba(255, 174, 174, 1)',
-                    'rgba(201, 247, 245, 1)',
-                ],
-                borderWidth: 1
-            }]
-        },
-    });
-    const grafctx = document.getElementById('grafBar');
-</script>
+    var TotalSerializados = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(funcionariosTotais));
+    var ativosSerializados = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(funcionariosAtivos));
+    var desativadosSerializados = Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(funcionariosDesativados));
+}
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        var funcionariosTotais = @funcionariosTotais;
+        var funcionariosAtivos = @ativosSerializados;
+        var funcionariosDesativados = @desativadosSerializados;
+
+        $(document)
+        .ready(function () {
+                const ctx = document.getElementById('myChart');
+                const myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Ativos', 'Desativados'],
+                        datasets: [{
+                            label: [funcionariosTotais],
+                            data: [funcionariosAtivos, funcionariosDesativados],
+                            backgroundColor: [
+                                'rgba(167, 215, 41, 1)',
+                                'rgba(255, 174, 174, 1)',
+                            ],
+                            borderColor: [
+                                'rgba(167, 215, 4, 1)',
+                                'rgba(255, 174, 174, 1)',
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                });
+                const grafctx = document.getElementById('grafBar');
+        })
+        
+    </script>
+}
+

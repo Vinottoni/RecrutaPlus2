@@ -94,11 +94,17 @@ body {
     border: 2px solid var(--color-yellowy-green);
 }
 
-    .text-input:focus ~ .label-custom, .text-input:not(:placeholder-shown) .text-input:not(:focus) ~ label-custom{
+    .text-input:focus ~ .label-custom {
         top: -10px;
         color: #7e4ccb;
         font-size: 14px;
     }
+
+.text-input:valid ~ .label-custom{
+    top: -10px;
+    color: #FF0000;
+    font-size: 14px;
+}
 
 .text-input::placeholder{
     font-size: 16px;

@@ -39,6 +39,11 @@ namespace RecrutaPlus.Web.Controllers
             dashboardViewModel.FuncionariosDesativados = await _funcionarioService.CountAsync(c => c.Ativo == false);
             dashboardViewModel.FuncionariosRecentes = await _funcionarioService.CountAsync(c => c.Edicao >= DateTime.Now.AddDays(-30));
 
+            ViewBag.FuncionariosTotais = dashboardViewModel.TotalFuncionarios;
+            ViewBag.FuncionariosAtivos = dashboardViewModel.FuncionariosAtivos;
+            ViewBag.FuncionariosDesativados = dashboardViewModel.FuncionariosDesativados;
+
+
             funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
 
             List<FuncionarioViewModel> funcionarioViewModels = _mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(funcionarios).ToList();
