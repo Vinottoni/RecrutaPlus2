@@ -50,7 +50,7 @@ namespace RecrutaPlus.Web.Controllers
 
                     //    TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";
                     //}
-                    if (loginViewModel.Username == "RecrutaPlus" && loginViewModel.Password == "XXXrecrutaplus")
+                    if (loginViewModel.Username == "RecrutaPlus@fatec.com.br" && loginViewModel.Password == "XXXrecrutaplus")
                     {
                         return RedirectToAction("Index", "Dashboard");
                     }
