@@ -13,25 +13,34 @@
         <div class="col-lg-6 mb-5 mb-lg-0">
             <div class="cascading-right">
                 <div class="card-body p-5 shadow-5">
+                    @if(TempData["MensagemErro"] != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @TempData["MensagemErro"]
+                        </div>
+                    }
+
                     <div class="text-left mb-5">
                         <small class="text-white">Login With Your</small>
                         <h1 class="text-uppercase text-white">Account</h1>
                     </div>
-                    <form>
+                    <form asp-controller="Login" asp-action="Entrar" method="post">
                         <fieldset class="gap-2 input-flex-custom">
                             <div class="position-custom col-sm-12 col-md-12">
 
-                                <input asp-for="Username" id="inputEmail" class="text-input" type="email" placeholder="Enter your Email" autocomplete="off">
+                                <input asp-for="Username" id="inputEmail" type="text" name="username" class="text-input" placeholder="Enter your Email" autocomplete="off" required>
                                 <label asp-for="Username" for="inputEmail" class="text-white label-custom .filled"></label>
+                                @Html.ValidationMessageFor(x => x.Username)
                             </div>
                             <div class="position-custom col-sm-12 col-md-12">
 
-                                <input asp-for="Password" id="inputPassword" class="text-input" type="password" placeholder="Enter your Password">
+                                <input asp-for="Password" id="inputPassword" name="password" class="text-input" type="password" placeholder="Enter your Password" required>
                                 <label asp-for="Password" for="inputPassword" class="text-white label-custom .filled"></label>
+                                @Html.ValidationMessageFor(x => x.Password)
                             </div>
                         </fieldset>
                         <fieldset>
-                            <button type="submit" class="btn-login-custom btn-block col-md-12 mt-4 mb-4" asp-action="Index" asp-controller="Dashboard">
+                            <button type="submit" class="btn-login-custom btn-block col-md-12 mt-4 mb-4">
                                 <strong>LOGIN</strong>
                             </button>
                         </fieldset>

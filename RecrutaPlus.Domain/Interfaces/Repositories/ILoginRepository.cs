@@ -9,6 +9,8 @@ namespace RecrutaPlus.Domain.Interfaces.Repositories
 {
     public interface ILoginRepository : IRepositoryAsync<Login>
     {
+
+        //Task<Login> BuscarPorLogin(Login login);
         Task<Login> GetByIdAsync(int id);
         Task<Login> GetByIdRelatedAsync(int id);
         Task<IEnumerable<Login>> GetByFilterAsync(LoginFilter filter = null);

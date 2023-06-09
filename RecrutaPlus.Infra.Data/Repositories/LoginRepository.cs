@@ -23,6 +23,11 @@ namespace RecrutaPlus.Infra.Data.Repositories
             return await _dbContext.Logins.AsNoTrackingWithIdentityResolution().SingleOrDefaultAsync(s => s.UsuarioId == id);
         }
 
+        //public Task<Login> BuscarPorLogin(Login login)
+        //{
+        //    return _dbContext.Funcionarios.FirstOrDefault(x => x.Login.Username == login.Username);
+        //}
+
         public async Task<Login> GetByIdRelatedAsync(int id)
         {
             return await _dbContext.Logins.AsNoTrackingWithIdentityResolution()
@@ -141,5 +146,6 @@ namespace RecrutaPlus.Infra.Data.Repositories
             }
         }
 
+        
     }
 }

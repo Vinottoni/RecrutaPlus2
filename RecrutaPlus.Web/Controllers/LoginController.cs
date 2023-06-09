@@ -8,51 +8,62 @@ using AutoMapper;
 using RecrutaPlus.Domain.Interfaces;
 using RecrutaPlus.Domain.Services;
 using RecrutaPlus.Domain.Constants;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using RecrutaPlus.Domain.Interfaces.Repositories;
 
 namespace RecrutaPlus.Web.Controllers
 {
     public class LoginController : BaseController
     {
-        private readonly ILoginService _loginService;
+        private readonly ILoginRepository _loginRepository;
 
         public LoginController(
+            ILoginRepository loginRepository,
             IMapper mapper,
             IAppLogger logger,
             ILoginService loginService) : base(logger, mapper)
         {
             _mapper = mapper;
             _logger = logger;
-            _loginService = loginService;
+            _loginRepository = loginRepository;
         }
 
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index()
         {
-            /*if (id == null)
-            {
-                Funcionario employee = await _employeeService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
+            return View();
+        }
 
-                return NotFound();
+        [HttpPost]
+        public IActionResult Entrar(LoginViewModel loginViewModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //LoginViewModel usuario = _loginRepository.BuscarPorLogin(loginViewModel.Username);
+
+                    //if(usuario != null) {
+                    //    if ( usuario.SenhaValida(loginViewModel.Password))
+                    //    {
+                    //        return RedirectToAction("Index", "Dashboard");
+                    //    }
+
+                    //    TempData["MensagemErro"] = $"Usuário e/ou senha inválido(s). Por favor, tente novamente.";
+                    //}
+                    if (loginViewModel.Username == "RecrutaPlus" && loginViewModel.Password == "XXXrecrutaplus")
+                    {
+                        return RedirectToAction("Index", "Dashboard");
+                    }
+                    TempData["MensagemErro"] = $"Username ou Senha inválido(s). Por favor, tente novamente.";
+                    //TempData["MensagemErro"] = $"Senha inválido(s). Por favor, tente novamente.";
+                }
+
+                return View("Index");
             }
-            else
-            {
-                Funcionario employee = await _employeeService.GetAllAsync();
-            }*/
-
-            //Login login = await _loginService.GetByIdRelatedAsync(id.GetValueOrDefault(-1));
-
-            //if (login == null)
-            //{
-            //    return NotFound();
-            //}
-
-
-            ////AutoMapper
-            //LoginViewModel loginViewModel = _mapper.Map<Login, LoginViewModel>(login);
-            LoginViewModel loginViewModel = new LoginViewModel();
-
-            _logger.LogInformation(FuncionarioConst.LOG_INDEX, GetUserName(), DateTime.Now);
-
-            return View(loginViewModel);
+            catch (Exception erro) {
+                TempData["MensagemErro"] = $"Não foi Possivel Realizar seu Login, tente Novamente mais tarde, Detalhe do erro: {erro.Message}";
+                return RedirectToAction("Index");
+            }
         }
 
         public IActionResult Logout()
