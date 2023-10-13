@@ -120,6 +120,35 @@ namespace RecrutaPlus.Web.Controllers
             return View(funcionarioSearch);
         }
 
+        public async Task<IActionResult> ResumoFuncionario(FuncionarioSearch funcionarioSearch)
+        {
+            ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
+
+            IEnumerable<Funcionario> funcionarios;
+
+            funcionarioSearch.HasFilter = false;
+
+            if (funcionarioSearch.HasFilter)
+            {
+                funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
+            }
+            else
+            {
+                FuncionarioFilter filter = _mapper.Map<FuncionarioFilterViewModel, FuncionarioFilter>(funcionarioSearch?.Filter);
+                funcionarios = await _funcionarioService.GetByFilterRelatedAsync(filter);
+            }
+
+            List<FuncionarioViewModel> funcionarioViewModels = _mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(funcionarios).ToList();
+
+            funcionarioSearch.Itens = funcionarioViewModels;
+
+            TempData[DefaultConst.TEMPDATA_FILTERSTATE] = JsonSerializer.Serialize(funcionarioSearch, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
+
+            _logger.LogInformation(FuncionarioConst.LOG_INDEX, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            return View(funcionarioSearch);
+        }
+
         public async Task<IActionResult> Create()
         {
             ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());

@@ -30,11 +30,21 @@ namespace RecrutaPlus.Application.ViewModels
         [JsonIgnore]
         public virtual IEnumerable<FuncionarioViewModel> Funcionarios { get; set; }
 
+        public FuncionarioViewModel funcionario { get; set; }
+
         //custom
 
         public bool SenhaValida(string senha)
         {
             return Password == senha;
         }
+
+        //public string emailFuncionario
+        //{
+        //    get
+        //    {
+        //        return funcionario.Email;
+        //    }
+        //}
     }
 }

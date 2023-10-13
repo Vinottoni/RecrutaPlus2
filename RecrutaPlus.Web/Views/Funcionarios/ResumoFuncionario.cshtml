@@ -1,0 +1,171 @@
+﻿@model FuncionarioSearch
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Funcionários";
+    ViewData["SubTitle"] = "Consulta";
+}
+
+<div class="page">
+
+    <div class="page-inner">
+
+        <header class="page-title-bar">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active">
+                        <a asp-controller="Home" asp-action="Index"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Home</a>
+                        <a asp-controller="RDVConsultas" asp-action="Index"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>@ViewData["Title"]</a>
+                        <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>@ViewData["SubTitle"]</a>
+                    </li>
+                </ol>
+            </nav>
+            <h1 class="page-title"> @ViewData["Title"] </h1>
+        </header>
+
+
+        <div class="page-section">
+
+            <div class="card-deck-xl">
+
+                <div class="card card-fluid">
+
+                    <div class="card-header"> <span class="h5 mb-0">@ViewData["SubTitle"]</span> </div>
+
+                    <div class="card-body">
+
+                        <h4 class="card-title"> @ViewData["Info"] </h4>
+
+                        <hr />
+
+                        <div>
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="accordion" id="accordionDadosRDV">
+                                        <div class="card">
+                                            <div class="card-header">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-subtle-primary btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseDadosRDV">
+                                                        <span>
+                                                            RDV<span> -  </span>
+                                                        </span>
+                                                        <span class="float-right"><i class="fa-solid fa-chevron-right"></i></span>
+                                                    </button>
+                                                </h2>
+                                            </div>
+                                            <div id="collapseDadosRDV" class="collapse" data-parent="#accordionDadosRDV">
+                                                <div class="card-body">
+                                                    <div class="row col-sm-12 col-md-12">
+                                                        <div class="col-sm-4 col-md-4 col-lg-2">
+                                                            @*<label class="d-block font-weight-bold">@Html.DisplayNameFor(model => model.Funcionarios.FirstOrDefault().Nome)</label>
+                                                            <label class="d-block">@Model.Funcionarios.FirstOrDefault().Nome</label>*@
+                                                            <label class="d-block font-weight-bold">Nome</label>
+                                                            <label class="d-block">Name teste</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                    @*Lançamentos*@
+                                    <div class="col-12">
+                                        <div class="accordion" id="accordionRDVLancamento">
+                                            <div class="card">
+                                                <div class="card-header" id="headingRDVLancamento">
+                                                    <h2 class="mb-0">
+                                                        <button class="btn btn-subtle-primary btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseRDVLancamento">
+                                                            <span>CONSOLIDACAO</span><span class="float-right"><i class="fa-solid fa-chevron-right"></i></span>
+                                                        </button>
+                                                    </h2>
+                                                </div>
+
+                                                <div id="collapseRDVLancamento" class="collapse" data-parent="#accordionRDVLancamento">
+                                                    <div class="card-body">
+
+                                                        <div class="row row-cols-1 row-cols-md-3 g-4">
+                                                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                                                <div class="card h-100">
+                                                                    <table class="table table-sm">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colspan="2" class="text-left">DATA_DESPESA</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                                                <div class="card h-100">
+                                                                    <table class="table table-sm">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colspan="2" class="text-left">CONTA_CONTABIL</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                                                <div class="card h-100">
+                                                                    <table class="table table-sm">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colspan="2" class="text-left">CENTRO_CUSTO</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-md-6 col-lg-3">
+                                                                <div class="card h-100">
+                                                                    <table class="table table-sm">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th colspan="2" class="text-left">ACAOMARKETINGID_LABEL</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <hr class="mb-4">
+
+                                <div class="d-flex col-12">
+
+                                    <div class="col-6 text-left">
+                                        <a class="btn btn-secondary btn-lg" href="@ViewData["ReturnUrl"]">Voltar</a>
+                                        <a class="btn btn-primary btn-lg" asp-action="RDVReembolsoConsolidadoPrint"  target="_blank">Imprimir</a>
+                                        <a class="btn btn-primary btn-lg" asp-action="RDVReembolsoConsolidadoComprovantePrint"  target="_blank">Imprimir com Comprovante</a>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

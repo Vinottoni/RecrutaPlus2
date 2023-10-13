@@ -9,8 +9,11 @@
 <div class="content-pages text-yellowy">
     <div class="container">
         <div class="page-titles">
-            <h1 class="ml-0">
+            <h1 class="ml-0 text-title-nero">
                 @ViewData["Title"]
+                @*<span class="material-symbols-sharp">
+                   sports_bar
+                </span>*@
             </h1>
         </div>
 
@@ -21,12 +24,11 @@
                 <div class="card-custom card-fluid">
                     <div class="card-body card-body-custom card-background">
                         <fieldset>
-                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
 
                                 <div class="col-12 col-sm-12 col-md-12 justify-content-between d-flex">
                                     <div class="text-left">
-                                        <small class="text-white">@ViewData["SubTitle"]</small><br />
-                                        <h2>@ViewData["Title"]</h2>
+                                        <small class="text-white-custom">@ViewData["SubTitle"]</small><br />
+                                        <h2 class="text-title-nero">@ViewData["Title"]</h2>
                                     </div>
                                     <div>
                                         <a asp-action="Create" class="btn btn-lg btn-custom">Novo</a>
@@ -36,8 +38,8 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="form-row col-12 col-sm-12 col-md-12">
-                                    <table class="table table-borderless">
+                                <div class="table-responsive">
+                                    <table class="table table-borderless datatables-table" style="width:100%">
                                         <thead class="table-header-custom">
                                             <tr>
                                                 <th class="table-border-left-15">
@@ -95,13 +97,13 @@
                                                         <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
                                                         <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
                                                         <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
+                                                        <a asp-action="ResumoFuncionario" asp-route-id="@item.FuncionarioId"><i class="fa fa-print text-success"></i></a>
                                                     </td>
                                                 </tr>
                                             }
                                         </tbody>
                                     </table>
                                 </div>
-                            </div>
                         </fieldset>
                     </div>
                 </div>
