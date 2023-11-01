@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="~/css/custom.css" data-skin="default">
+    <link rel="stylesheet" href="~/css/customWhite.css" data-skin="default">
     @*<link rel="stylesheet" href="~/css/theme-light.css" data-skin="lightTheme">*@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
@@ -26,72 +26,76 @@
     
     
     <div class="sidebar close">
-        <div class="logo-details">
+        <div class="logo-details bg-primary shadow">
             <i><img src="~/img/RecrutaPlus.png" class="img-nav-icon" /></i>
         </div>
-        <ul class="nav-links">
+        <ul class="nav-links bg-white shadow text-primary">
             <li>
                 <a asp-area="" asp-controller="Dashboard" asp-action="Index">
-                    <i class="fa-solid fa-house"></i>
+                    <i class="fa-solid fa-house text-primary"></i>
                     <span class="link_name">Dashboard</span>
                 </a>
             </li>
             <li>
                 <a asp-area="" asp-controller="Funcionarios" asp-action="Index">
-                    <i class="fa-regular fa-address-card"></i>
+                    <i class="fa-regular fa-address-card text-primary"></i>
                     <span class="link_name">Funcionarios</span>
                 </a>
             </li>
-            <hr class="hr-color" />
+            <hr class="hr-color  text-primary" />
             @*<li>
                 <a asp-area="" asp-controller="Profile" asp-action="Index" asp-route-id="">
                     <i class="fa-regular fa-user"></i>
                     <span class="link_name">Perfil</span>
                 </a>
             </li>*@
-            <li>
+            @*<li>
                 <a asp-area="" data-toggle="skin">
                     <i class="fa-solid fa-moon"></i>
                     <span class="link_name">DarkTheme</span>
                 </a>
-            </li>
+            </li>*@
             <li>
                 <a asp-area="" data-bs-toggle="modal" data-bs-target="#modalSair">
-                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket text-primary"></i>
                     <span class="link_name">Sair</span>
                 </a>
             </li>
         </ul>
     </div>
     <section class="home-section">
-        <header class="layout-header sticky-top">
-            <i class='bx bx-menu text-yellowy'></i>
+        <header class="layout-header sticky-top bg-primary">
+            <i class='bx bx-menu'></i>
         </header>
         <div class="home-content">
-            @RenderBody()
+            <card class="w-100">
+                @RenderBody()
+            </card>
+            
         </div>
-        <footer class="layout-footer">
-            <h6 class="text-white mb-0 pl-4">&nbsp; developed by Gabriel Kennedy and Vinicius Ottoni <strong class="text-yellowy">@DateTime.Now.ToString("yyyy")</strong></h6>
+        <footer class="layout-footer justify-content-center">
+            <h6 class="text-primary mb-0 pl-4">&nbsp; developed by Gabriel Kennedy and Vinicius Ottoni <strong class="text-primary">@DateTime.Now.ToString("yyyy")</strong></h6>
         </footer>
     </section>
+   
 
     <div class="modal fade " id="modalSair" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content  form-modal-custom">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-yellowy" id="staticBackdropLabel">Confirmar Saida?</h1>
+                    <h1 class="modal-title fs-5 text-primary" id="staticBackdropLabel">Confirmar Saida?</h1>
                 </div>
                 <form asp-action="index" asp-controller="login" method="post">
                     <div class="modal-body">
                         <div class="d-flex gap-2">
 
-                            <span>Você tem certeza que deseja <strong class="text-yellowy">deslogar?</strong></span>
+                            <span>Você tem certeza que deseja <strong class="text-primary">deslogar?</strong></span>
 
                         </div>
                     </div>
                     <div class="modal-footer justify-content-end">
-                        <button type="button" class="btn btn-dark-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
-                        <button type="submit" class="btn btn-green-default">Logout</button>
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Logout</button>
                     </div>
                 </form>
             </div>

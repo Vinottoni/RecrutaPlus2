@@ -120,33 +120,32 @@ namespace RecrutaPlus.Web.Controllers
             return View(funcionarioSearch);
         }
 
-        public async Task<IActionResult> ResumoFuncionario(FuncionarioSearch funcionarioSearch)
+        public async Task<IActionResult> ResumoFuncionario(int? id)
         {
-            ViewBag.SelectListCargos = await Task.Run(() => SelectListCargos());
+            ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
+            ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
+            ViewBag.SelectListCargoToString = await Task.Run(() => SelectListCargoToString());
 
-            IEnumerable<Funcionario> funcionarios;
-
-            funcionarioSearch.HasFilter = false;
-
-            if (funcionarioSearch.HasFilter)
+            if (id == null)
             {
-                funcionarios = await _funcionarioService.GetByTakeLastRelatedAsync(funcionarioSearch.TakeLast);
-            }
-            else
-            {
-                FuncionarioFilter filter = _mapper.Map<FuncionarioFilterViewModel, FuncionarioFilter>(funcionarioSearch?.Filter);
-                funcionarios = await _funcionarioService.GetByFilterRelatedAsync(filter);
+                return NotFound();
             }
 
-            List<FuncionarioViewModel> funcionarioViewModels = _mapper.Map<IEnumerable<Funcionario>, IEnumerable<FuncionarioViewModel>>(funcionarios).ToList();
+            IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
 
-            funcionarioSearch.Itens = funcionarioViewModels;
+            Funcionario funcionario = funcionarios.FirstOrDefault();
 
-            TempData[DefaultConst.TEMPDATA_FILTERSTATE] = JsonSerializer.Serialize(funcionarioSearch, new JsonSerializerOptions() { DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull });
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
 
-            _logger.LogInformation(FuncionarioConst.LOG_INDEX, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+            //AutoMapper
+            var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
 
-            return View(funcionarioSearch);
+            _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            return View(funcionarioViewModel);
         }
 
         public async Task<IActionResult> Create()

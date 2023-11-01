@@ -6,107 +6,113 @@
     ViewData["SubTitle"] = "Consulta";
 }
 
-<div class="content-pages text-yellowy">
+<div class="content-pages">
     <div class="container">
         <div class="page-titles">
-            <h1 class="ml-0 text-title-nero">
-                @ViewData["Title"]
-                @*<span class="material-symbols-sharp">
-                   sports_bar
-                </span>*@
-            </h1>
+            <small>Resumo</small><br />
+            <h2 class="text-title-nero">@ViewData["Title"]</h2>
         </div>
 
         <div class="page-section">
 
             <div class="card-deck-xl">
 
-                <div class="card-custom card-fluid">
-                    <div class="card-body card-body-custom card-background">
+                <div class="card-custom card-fluid shadow">
+                    <div class="card-body">
                         <fieldset>
+                            <div class="col-12 col-sm-12 col-md-12 justify-content-between d-flex flex-wrap">
+                                <div class="text-left col-12 col-sm-8 col-md-6">
+                                    <h4 class="text-title-nero">@ViewData["SubTitle"]</h4>
+                                </div>
+                                <div class="text-left col-12 col-sm-4 col-md-6 d-flex justify-content-end">
+                                    <div>
+                                        <a asp-action="Create" class="btn btn-primary">Novo</a>
 
-                                <div class="col-12 col-sm-12 col-md-12 justify-content-between d-flex">
-                                    <div class="text-left">
-                                        <small class="text-white-custom">@ViewData["SubTitle"]</small><br />
-                                        <h2 class="text-title-nero">@ViewData["Title"]</h2>
                                     </div>
                                     <div>
-                                        <a asp-action="Create" class="btn btn-lg btn-custom">Novo</a>
-                                        <button type="button" class="btn btn-sm btn-filter-custom" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                        <button type="button" class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                             <i class="fa fa-filter"></i>
                                             Filtro
                                         </button>
                                     </div>
                                 </div>
-                                <div class="table-responsive">
-                                    <table class="table table-borderless datatables-table" style="width:100%">
-                                        <thead class="table-header-custom">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12">&nbsp;</div>
+                            <div class="table-responsive">
+                                <table class="table table-striped table-hover datatables-table table-borderless" style="width:100%">
+                                    <thead>
+                                        <tr class="text-white border border-primary bg-primary">
+                                            <th class="table-border-left-15">
+                                                @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Nome)
+                                            </th>
+                                            <th class="table-border-left-15">
+                                                @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().CargoId)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Email)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Salario)
+                                            </th>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Telefone)
+                                            </th>
+                                            <th class="text-center">
+                                                @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Ativo)
+                                            </th>
+                                            <th class="table-border-right-15"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="border border-primary">
+                                        @foreach (FuncionarioViewModel item in Model.Itens)
+                                        {
                                             <tr>
-                                                <th class="table-border-left-15">
-                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Nome)
-                                                </th>
-                                                <th class="table-border-left-15">
-                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().CargoId)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Email)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Salario)
-                                                </th>
-                                                <th>
-                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Telefone)
-                                                </th>
-                                                <th class="text-center">
-                                                    @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Ativo)
-                                                </th>
-                                                <th class="table-border-right-15"></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-body-color">
-                                            @foreach (FuncionarioViewModel item in Model.Itens)
-                                            {
-                                                <tr>
-                                                    <td class="align-middle">
-                                                        @Html.DisplayFor(modelItem => item.Nome)
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        @Html.DisplayFor(modelItem => item.CargoToString)
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        @Html.DisplayFor(modelItem => item.Email)
-                                                    </td>
-                                                    <td class="align-middle">
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => item.Nome)
+                                                </td>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => item.CargoToString)
+                                                </td>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => item.Email)
+                                                </td>
+                                                <td class="align-middle">
 
-                                                        <small>R$&nbsp;</small>@Html.DisplayFor(modelItem => item.Salario)
-                                                    </td>
-                                                    <td class="align-middle">
-                                                        @Html.DisplayFor(modelItem => item.Telefone)
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        @if (item.Ativo == true)
-                                                        {
-                                                            <span class="badge badge-subtle btn-badge-active">@FuncionarioResource.MSG_ATIVO</span>
-                                                        }
-                                                        else
-                                                        {
-                                                            <span class="badge badge-subtle btn-badge-off">@FuncionarioResource.MSG_OFFLINE</span>
-                                                        }
-                                                    </td>
-                                                    <td class="text-center align-middle">
-                                                        <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
-                                                        <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
-                                                        <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
-                                                        <a asp-action="ResumoFuncionario" asp-route-id="@item.FuncionarioId"><i class="fa fa-print text-success"></i></a>
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
+                                                    <small>R$&nbsp;</small>@Html.DisplayFor(modelItem => item.Salario)
+                                                </td>
+                                                <td class="align-middle">
+                                                    @Html.DisplayFor(modelItem => item.Telefone)
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    @if (item.Ativo == true)
+                                                    {
+                                                        <span class="badge badge-subtle btn-badge-active">@FuncionarioResource.MSG_ATIVO</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span class="badge badge-subtle btn-badge-off">@FuncionarioResource.MSG_OFFLINE</span>
+                                                    }
+                                                </td>
+                                                <td class="text-center align-middle">
+                                                    <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
+                                                    <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
+                                                    <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
+                                                    <a asp-action="ResumoFuncionario" asp-route-id="@item.FuncionarioId"><i class="fa fa-print text-success"></i></a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
                         </fieldset>
+                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
+                            <a class="btn btn-dark btn-lg" asp-controller="Dashboard" asp-action="Index" asp-route-state="true">Voltar</a>
+                        </div>
+
                     </div>
                 </div>
+
+                
             </div>
         </div>
     </div>
@@ -114,9 +120,9 @@
 
 <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content  form-modal-custom">
+        <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5 text-yellowy" id="staticBackdropLabel">Filtro</h1>
+                <h1 class="modal-title fs-5 text-primary" id="staticBackdropLabel">Filtro</h1>
             </div>
             <form asp-action="Index" method="post">
                 <div class="modal-body">
@@ -124,12 +130,12 @@
 
                         <div class="form-group col-sm-12 col-md-6">
                             <label asp-for="Filter.Nome"></label>
-                            <input asp-for="Filter.Nome" class="form-control input-filter-color" />
+                            <input asp-for="Filter.Nome" class="form-control select-select2" />
                         </div>
 
                         <div class="form-group col-sm-12 col-md-6">
                             <label asp-for="Filter.Ativo"></label>
-                            <select asp-for="Filter.Ativo" class="form-control input-filter-color">
+                            <select asp-for="Filter.Ativo" class="form-control select-select2">
                                 <option value="">@DefaultResource.MSG_SELECIONE</option>
 
                                 <option value="@FuncionarioConst.ATIVO_TRUE">@FuncionarioResource.MSG_ATIVO</option>
@@ -137,17 +143,17 @@
                             </select>
                         </div>
                     </div>
-                        <div class="form-group col-sm-12 col-md-12">
-                            <label asp-for="Filter.CargoId"></label>
-                            <select asp-for="Filter.CargoId" asp-items="@ViewBag.SelectListCargos" class="form-control input-filter-color" >
-                            </select>
-                        </div>
+                    <div class="form-group col-sm-12 col-md-12">
+                        <label asp-for="Filter.CargoId"></label>
+                        <select asp-for="Filter.CargoId" asp-items="@ViewBag.SelectListCargos" class="form-control select-select2">
+                        </select>
+                    </div>
 
-                    
+
                 </div>
                 <div class="modal-footer justify-content-start">
-                    <button type="submit" class="btn btn-green-default">Aplicar filtro</button>
-                    <button type="button" class="btn btn-dark-secondary" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Aplicar filtro</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">Cancelar</button>
                 </div>
             </form>
         </div>
@@ -155,6 +161,9 @@
 </div>
 
 @section Scripts{
+
+    <partial name="~/Views/Shared/_DataTableScriptsPartialResponsive.cshtml" />
+    <partial name="~/Views/Shared/_TakeLastScriptsPartial.cshtml" />
 
     <script>
         const myModal = document.getElementById('myModal')

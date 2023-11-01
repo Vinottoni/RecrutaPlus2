@@ -5,56 +5,56 @@
     ViewData["Title"] = "Dashboard - RecrutaPlus";
 }
 
-<div class="content-pages  text-yellowy">
+<div class="content-pages">
     <div class="container">
         <div class="page-titles">
             <h2 class="text-title-nero">
-                Geral Information 
+                <strong>Geral Information </strong>
             </h2>
         </div>
         <div class="section-block">
             <h5 class="section-title"> Dashboard</h5>
             <div class="metric-row d-flex flex-wrap justify-content-between">
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
-                    <div class="card-metric-custom">
+                    <div class="card-metric-custom bg-primary shadow">
                         <div>
                                 <p class="metric-value h1">
-                                <sub><i class="fa-solid fa-chart-line text-white-custom"></i></sub> <span class="value">@Html.DisplayFor(model => model.DashboardViewModel.TotalFuncionarios)</span>
+                                <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.TotalFuncionarios)</span>
                                 </p>
-                            <label class="metric-label text-white-custom">Total de Funcionarios</label>
+                            <label class="metric-label text-white">Total de Funcionarios</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
-                    <div class="card-metric-custom">
+                    <div class="card-metric-custom bg-primary shadow">
                         <div>
                                 <p class="metric-value h1">
-                                <sub><i class="fa-solid fa-chart-line text-white-custom"></i></sub> <span class="value">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosAtivos)</span>
+                                <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosAtivos)</span>
                                 </p>
-                            <label class="metric-label text-white-custom">Funcionarios Ativos</label>
+                            <label class="metric-label text-white">Funcionarios Ativos</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
-                    <div class="card-metric-custom">
+                    <div class="card-metric-custom bg-primary shadow">
                         <div>
                                 <p class="metric-value h1">
-                                <sub><i class="fa-solid fa-chart-line text-white-custom"></i></sub> <span class="value">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosDesativados)</span>
+                                <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosDesativados)</span>
                                 </p>
-                            <label class="metric-label text-white-custom">Funcionarios Desativados</label>
+                            <label class="metric-label text-white">Funcionarios Desativados</label>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
-                    <div class="card-metric-custom">
+                    <div class="card-metric-custom bg-primary shadow">
                         <div>
                                 <p class="metric-value h1">
-                                <sub><i class="fa-solid fa-chart-line text-white-custom"></i></sub> <span class="value">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosRecentes)</span>
+                                <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosRecentes)</span>
                                 </p>
-                            <label class="metric-label text-white-custom">Funcionarios Recentes</label>
+                            <label class="metric-label text-white">Funcionarios Recentes</label>
                         </div>
                     </div>
                 </div>
@@ -64,10 +64,10 @@
         <hr class="hr-color" />
        
         <div class="accordion" id="accordionPanelsStayOpenExample">
-            <div class="accordion-item collapse-color">
+            <div class="accordion-item shadow">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                    <button class="accordion-button-custom" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                        <strong>Funcionários Recentes</strong>
+                    <button class="accordion-button bg-primary" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                        <strong class="text-white">Funcionários Recentes</strong>
                     </button>
                 </h2>
                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
@@ -75,8 +75,8 @@
                         <div class="table-responsive">
 
                             <table class="table datatables-table table-borderless" style="width:100%">
-                                <thead class="border-tb-dashboard table-header-custom">
-                                    <tr class="text-yellowy">
+                                <thead>
+                                    <tr class="text-primary border border-primary">
                                         <th>
                                             @Html.DisplayNameFor(model => model.Itens.FirstOrDefault().Nome)
                                         </th>
@@ -85,10 +85,10 @@
                                         </th>
                                     </tr>
                                 </thead>
-                                <tbody class="table-body-color">
+                                <tbody class="border border-primary">
                                     @foreach (FuncionarioViewModel item in Model.Itens.Take(3))
                                     {
-                                        <tr class="text-white-custom">
+                                        <tr>
                                             <td class="text-left align-middle">
                                                 @Html.DisplayFor(modelItem => item.Nome)
                                             </td>
@@ -108,8 +108,8 @@
 
         <div class="col-sm-12 col-md-12">&nbsp;</div>
 
-        <div class="card-custom">
-            <div class="card-body card-body-custom d-flex card-background justify-content-center">
+        <div class="card shadow">
+            <div class="card-body d-flex justify-content-center">
                 <div class="col-sm-12 col-md-6 justify-content-center d-flex">
                     <canvas id="myChart" class="size-canva"></canvas>
                 </div>

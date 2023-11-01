@@ -1,0 +1,38 @@
+﻿
+<script>
+
+    $(document).ready(function () {
+
+        var table = $('.datatables-table').DataTable(
+            {
+                responsive: true,
+                dom: 'frtip', //Default Value: lfrtip
+                language: {
+                    url: '@Url.Content("~/")' + 'Portuguese-Brasil.json',
+                },
+                buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+            });
+
+        //copy
+        $("#dataTableExportCopy").on("click", function () {
+            table.button('.buttons-copy').trigger();
+        });
+
+        //excel
+        $("#dataTableExportExcel").on("click", function () {
+            table.button('.buttons-excel').trigger();
+        });
+
+        //print
+        $("#dataTableExportPrint").on("click", function () {
+            table.button('.buttons-print').trigger();
+        });
+
+        //pdf
+        $("#dataTableExportPDF").on("click", function () {
+            table.button('.buttons-pdf').trigger();
+        });
+
+    });
+
+</script>

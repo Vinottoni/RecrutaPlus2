@@ -21,26 +21,26 @@
                     }
 
                     <div class="text-left mb-5">
-                        <small class="text-white">Login With Your</small>
-                        <h1 class="text-uppercase text-white">Account</h1>
+                        <small class="fw-bold">Login With Your</small>
+                        <h1 class="text-uppercase text-primary">Account</h1>
                     </div>
                     <form asp-controller="Login" asp-action="Entrar" method="post">
                         <fieldset class="gap-2 input-flex-custom">
                             <div class="position-custom col-sm-12 col-md-12">
 
-                                <input asp-for="Username" id="inputEmail" type="text" name="username" class="text-input" placeholder="Enter your Email" autocomplete="off" required>
-                                <label asp-for="Username" for="inputEmail" class="text-white label-custom .filled"></label>
+                                <input asp-for="Username" id="inputEmail" type="text" name="username" class="text-input text-primary" placeholder="Enter your Email" autocomplete="off" required>
+                                <label asp-for="Username" for="inputEmail" class="label-custom filled fw-bold"></label>
                                 @Html.ValidationMessageFor(x => x.Username)
                             </div>
                             <div class="position-custom col-sm-12 col-md-12">
 
-                                <input asp-for="Password" id="inputPassword" name="password" class="text-input" type="password" placeholder="Enter your Password" required>
-                                <label asp-for="Password" for="inputPassword" class="text-white label-custom .filled"></label>
+                                <input asp-for="Password" id="inputPassword" name="password" class="text-input text-primary" type="password" placeholder="Enter your Password" required>
+                                <label asp-for="Password" for="inputPassword" class="label-custom filled fw-bold"></label>
                                 @Html.ValidationMessageFor(x => x.Password)
                             </div>
                         </fieldset>
                         <fieldset>
-                            <button type="submit" class="btn-login-custom btn-block col-md-12 mt-4 mb-4">
+                            <button type="submit" class="btn-login-custom btn-block col-md-12 mt-4 mb-4 bg-primary">
                                 <strong>LOGIN</strong>
                             </button>
                         </fieldset>

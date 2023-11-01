@@ -13,6 +13,7 @@
     --color-sundown: #FFAEAE;
     --color-red: #FF0000;
     --color-bittersweet-error-mensagem: #FF5B5B;
+    --color-primary-custom: #0d6efd;
 }
 
 body {
@@ -59,50 +60,49 @@ body {
     transition: all 0.2s;
     padding: 0 2px;
     z-index: 1;
-    color: #b3b3b3;
 }
 
 
-.text-input{
+.text-input {
     top: 0;
     left: 0;
     padding: 0.8rem;
     width: 80%;
     height: 100%;
     border: 2px solid var(--color-dark-nero);
-    background: var(--color-dark-nero);
     border-radius: 5px;
     font-size: 18px;
     outline: none;
     transition: all 0.3s;
-    color: var(--color-yellowy-green);
+    color: var(--color-primary-custom);
 }
 
 
 .label-custom::before{
     content: "";
     height: 5px;
-    background: #272530;
+    background: #FFFFFF;
     position: absolute;
     left: 0px;
     top: 10px;
     width: 100%;
     z-index: -1;
+    color: var(--color-dark-nero);
 }
 
 .text-input:focus{
-    border: 2px solid var(--color-yellowy-green);
+    border: 2px solid var(--color-primary-custom);
 }
 
     .text-input:focus ~ .label-custom {
         top: -10px;
-        color: #7e4ccb;
+        color: var(--color-primary-custom);
         font-size: 14px;
     }
 
-.text-input:valid ~ .label-custom{
+.text-input:valid ~ .label-custom {
     top: -10px;
-    color: #FF0000;
+    color: var(--color-primary-custom);
     font-size: 14px;
 }
 
@@ -130,7 +130,6 @@ body {
     height: 100%;
     width: 80% !important;
     padding: 0.8rem;
-    background-color: var(--color-yellowy-green);
     border-radius: 15px;
     border:none;
 }

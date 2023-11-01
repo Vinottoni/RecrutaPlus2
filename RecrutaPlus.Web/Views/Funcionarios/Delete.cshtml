@@ -7,21 +7,21 @@
     ViewData["Informacoes"] = "Informações";
 }
 
-<div class="content-pages text-yellowy">
+<div class="content-pages">
     <div class="container">
         <div class="page-titles">
-            <h1 class="ml-0 text-white-custom">
+            <h2 class="ml-0">
                 @ViewData["Title"]
-            </h1>
+            </h2>
         </div>
 
         <div class="page-section">
 
             <div class="card-deck-xl">
 
-                <div class="card-custom card-fluid">
+                <div class="card-custom card-fluid shadow">
 
-                    <div class="card-body card-body-custom card-background">
+                    <div class="card-body">
 
                         <form asp-action="Delete" class="col-12 col-sm-12 col-md-12">
 
@@ -30,82 +30,82 @@
 
                                     <div class="col-12 col-sm-12 col-md-12">
                                         <div class="text-left">
-                                            <small class="text-white-custom">@ViewData["SubTitle"]</small><br />
-                                            <h2 class="text-white-custom">@ViewData["Informacoes"]</h2>
+                                            <small class="text-primary fw-bold">@ViewData["SubTitle"]</small><br />
+                                            <h2>@ViewData["Informacoes"]</h2>
                                         </div>
-                                        <hr class="hr-color" />
+                                        <hr class="hr-color text-primary" />
                                     </div>
                                     <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
 
                                         <dl class="flex-custom col-12 col-sm-12 col-md-12">
                                             <div class="col-12 col-sm-12 col-md-12 flex-custom">
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Nome)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.Nome)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Nome)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.Nome)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Email)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.Email)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Email)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.Email)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Telefone)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.Telefone)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Telefone)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.Telefone)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.CPF)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.CPF)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.CPF)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.CPF)</dd>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-12 flex-custom justify-content-between">
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.RG)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.RG)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.RG)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.RG)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.DataNascimento)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.DataNascimento)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.DataNascimento)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.DataNascimento)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Genero)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.GeneroToString)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Genero)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.GeneroToString)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Educacao)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.EducacaoToString)</dd>
-                                                </div>
-                                            </div>
-
-                                            <div class="col-12 col-sm-12 col-md-12 flex-custom ">
-                                                <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Endereco)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.Endereco)</dd>
-                                                </div>
-                                                <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.CEP)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.CEP)</dd>
-                                                </div>
-                                                <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Bairro)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.Bairro)</dd>
-                                                </div>
-                                                <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Estado)</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.Estado)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Educacao)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.EducacaoToString)</dd>
                                                 </div>
                                             </div>
 
                                             <div class="col-12 col-sm-12 col-md-12 flex-custom ">
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@FuncionarioResource.LABEL_CARGOS</dt>
-                                                    <dd class="text-white-custom">@Html.DisplayFor(model => model.CargoToString)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Endereco)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.Endereco)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Salario)</dt>
-                                                    <dd class="text-white-custom"><small>R$&nbsp;</small>@Html.DisplayFor(model => model.Salario)</dd>
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.CEP)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.CEP)</dd>
                                                 </div>
                                                 <div class="h5 col-12 col-sm-12 col-md-3">
-                                                    <dt class="text-yellowy-custom">@Html.DisplayNameFor(model => model.Ativo)</dt>
-                                                    <dd class="text-white-custom">
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Bairro)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.Bairro)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Estado)</dt>
+                                                    <dd>@Html.DisplayFor(model => model.Estado)</dd>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-12 col-sm-12 col-md-12 flex-custom ">
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt class="text-primary fw-bold">@FuncionarioResource.LABEL_CARGOS</dt>
+                                                    <dd>@Html.DisplayFor(model => model.CargoToString)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Salario)</dt>
+                                                    <dd><small>R$&nbsp;</small>@Html.DisplayFor(model => model.Salario)</dd>
+                                                </div>
+                                                <div class="h5 col-12 col-sm-12 col-md-3">
+                                                    <dt class="text-primary fw-bold">@Html.DisplayNameFor(model => model.Ativo)</dt>
+                                                    <dd>
                                                         @if (Model.Ativo == true)
                                                         {
                                                             <span class="badge badge-subtle btn-badge-active">@DefaultResource.MSG_SIM</span>
@@ -124,8 +124,8 @@
                             </fieldset>
                         </form>
                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
-                            <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-route-state="true">Voltar</a>
-                            <button class="btn btn-danger btn-lg btn-delete-custom" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Deletar</button>
+                            <a class="btn btn-dark btn-lg" asp-action="Index" asp-route-state="true">Voltar</a>
+                            <button class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Deletar</button>
                         </div>
                     </div>
                 </div>
@@ -138,19 +138,19 @@
 {
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content  form-modal-custom">
+            <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Deseja Excluir?</h1>
+                    <h1 class="modal-title fs-5 text-primary fw-bold" id="staticBackdropLabel">Deseja Excluir?</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <span>O Funcionário @Html.DisplayFor(model => model.Nome) Será Deletado Permanentemente.</span>
+                    <span>O Funcionário <span class="text-primary fw-bold">@Html.DisplayFor(model => model.Nome)</span> Será Deletado Permanentemente.</span>
                 </div>
                 <div class="modal-footer">
                     <form asp-action="Delete">
                         <input type="hidden" asp-for="FuncionarioId" />
-                        <button type="button" class="btn btn-dark-secondary" data-bs-dismiss="modal">Fechar</button>
-                        <button class="btn btn-green-default" type="submit">Deletar</button>
+                        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
+                        <button class="btn btn-danger" type="submit">Deletar</button>
                     </form>
                 </div>
             </div>
@@ -161,16 +161,16 @@ else
 {
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content  form-modal-custom">
+            <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Erro</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <span>O Funcionário @Html.DisplayFor(model => model.Nome) Está Ativo. Observação: Desativar o Funcionário Na Tela De Edição Para Poder Excluir.</span>
+                    <span>O Funcionário <span class="text-primary fw-bold">@Html.DisplayFor(model => model.Nome)</span> Está Ativo. Observação: Desativar o Funcionário Na Tela De Edição Para Poder Excluir.</span>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-dark-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
         </div>

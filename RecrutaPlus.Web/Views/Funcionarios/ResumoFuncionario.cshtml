@@ -1,171 +1,306 @@
-﻿@model FuncionarioSearch
+﻿@model FuncionarioViewModel
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Funcionários";
+    ViewData["Title"] = "Funcionário";
     ViewData["SubTitle"] = "Consulta";
 }
 
-<div class="page">
+<div class="content-pages">
 
-    <div class="page-inner">
+    <div class="container">
 
-        <header class="page-title-bar">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item active">
-                        <a asp-controller="Home" asp-action="Index"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>Home</a>
-                        <a asp-controller="RDVConsultas" asp-action="Index"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>@ViewData["Title"]</a>
-                        <a href="#"><i class="breadcrumb-icon fa fa-angle-left mr-2"></i>@ViewData["SubTitle"]</a>
-                    </li>
-                </ol>
-            </nav>
-            <h1 class="page-title"> @ViewData["Title"] </h1>
+        <header class="page-title-bar mt-3">
+            <div>
+                <small>@ViewData["Title"]</small>
+                <h3 class="page-title text-primary">@Model.Nome</h3>
+            </div>
         </header>
 
 
         <div class="page-section">
 
-            <div class="card-deck-xl">
 
-                <div class="card card-fluid">
+            <div class="card-custom card-fluid shadow">
 
-                    <div class="card-header"> <span class="h5 mb-0">@ViewData["SubTitle"]</span> </div>
+                <div class="card-body">
+                    <div>
+                        <div class="row">
 
-                    <div class="card-body">
+                            <!--DADOS PESSOAIS DO FUNCIONÁRIO-->
+                            <div class="col-12">
+                                <div class="accordion" id="accordionPanelsStayOpenExample">
+                                    <div class="accordion-item shadow">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingDadosPessoais">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseDadosPessoais" aria-expanded="true" aria-controls="panelsStayOpen-collapseDadosPessoais">
+                                                <strong>Dados do Funcionário</strong>
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseDadosPessoais" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingDadosPessoais">
+                                            <div class="accordion-body">
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <h4 class="fw-bold">Dados Pessoais</h4>
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Nome)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.Nome)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Email)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.Email)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Telefone)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.Telefone)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.CPF)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.CPF)</label>
+                                                    </div>
 
-                        <h4 class="card-title"> @ViewData["Info"] </h4>
-
-                        <hr />
-
-                        <div>
-
-                            <div class="row">
-                                <div class="col-12">
-                                    <div class="accordion" id="accordionDadosRDV">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h2 class="mb-0">
-                                                    <button class="btn btn-subtle-primary btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseDadosRDV">
-                                                        <span>
-                                                            RDV<span> -  </span>
-                                                        </span>
-                                                        <span class="float-right"><i class="fa-solid fa-chevron-right"></i></span>
-                                                    </button>
-                                                </h2>
-                                            </div>
-                                            <div id="collapseDadosRDV" class="collapse" data-parent="#accordionDadosRDV">
-                                                <div class="card-body">
-                                                    <div class="row col-sm-12 col-md-12">
-                                                        <div class="col-sm-4 col-md-4 col-lg-2">
-                                                            @*<label class="d-block font-weight-bold">@Html.DisplayNameFor(model => model.Funcionarios.FirstOrDefault().Nome)</label>
-                                                            <label class="d-block">@Model.Funcionarios.FirstOrDefault().Nome</label>*@
-                                                            <label class="d-block font-weight-bold">Nome</label>
-                                                            <label class="d-block">Name teste</label>
-                                                        </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.RG)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.RG)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.DataNascimento)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.DataNascimento)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Genero)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.GeneroToString)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Educacao)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.EducacaoToString)</label>
                                                     </div>
                                                 </div>
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <hr class="text-primary" />
+                                                        <h4 class="fw-bold">Endereço</h4>
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Endereco)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.Endereco)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.CEP)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.CEP)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Bairro)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.Bairro)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Estado)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.Estado)</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <hr class="text-primary" />
+                                                        <h4 class="fw-bold">@FuncionarioResource.LABEL_CARGOS</h4>
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@FuncionarioResource.LABEL_CARGOS</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.CargoToString)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Salario)</label>
+                                                        <label class="d-block"><small>R$&nbsp;</small>@Html.DisplayFor(model => model.Salario)</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Ativo)</label>
+                                                        <label class="d-block">
+                                                            @if (Model.Ativo == true)
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-active">@DefaultResource.MSG_SIM</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-off">@DefaultResource.MSG_NAO</span>
+                                                            }
+                                                        </label>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            </div>
 
-                                    @*Lançamentos*@
-                                    <div class="col-12">
-                                        <div class="accordion" id="accordionRDVLancamento">
-                                            <div class="card">
-                                                <div class="card-header" id="headingRDVLancamento">
-                                                    <h2 class="mb-0">
-                                                        <button class="btn btn-subtle-primary btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseRDVLancamento">
-                                                            <span>CONSOLIDACAO</span><span class="float-right"><i class="fa-solid fa-chevron-right"></i></span>
-                                                        </button>
-                                                    </h2>
-                                                </div>
+                            <!--DADOS RELACIONADOS A EMPRESA-->
+                            <div class="col-12">&nbsp;</div>
 
-                                                <div id="collapseRDVLancamento" class="collapse" data-parent="#accordionRDVLancamento">
-                                                    <div class="card-body">
-
-                                                        <div class="row row-cols-1 row-cols-md-3 g-4">
-                                                            <div class="col-sm-6 col-md-6 col-lg-3">
-                                                                <div class="card h-100">
-                                                                    <table class="table table-sm">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th colspan="2" class="text-left">DATA_DESPESA</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6 col-md-6 col-lg-3">
-                                                                <div class="card h-100">
-                                                                    <table class="table table-sm">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th colspan="2" class="text-left">CONTA_CONTABIL</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6 col-md-6 col-lg-3">
-                                                                <div class="card h-100">
-                                                                    <table class="table table-sm">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th colspan="2" class="text-left">CENTRO_CUSTO</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-6 col-md-6 col-lg-3">
-                                                                <div class="card h-100">
-                                                                    <table class="table table-sm">
-                                                                        <thead>
-                                                                            <tr>
-                                                                                <th colspan="2" class="text-left">ACAOMARKETINGID_LABEL</th>
-                                                                            </tr>
-                                                                        </thead>
-                                                                        <tbody>
-                                                                            
-                                                                        </tbody>
-                                                                    </table>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
+                            <div class="col-12">
+                                <div class="accordion" id="accordionPanelsStayOpenExample">
+                                    <div class="accordion-item shadow">
+                                        <h2 class="accordion-header" id="panelsStayOpen-headingDadosEmpresaFuncionario">
+                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseDadosEmpresaFuncionario" aria-expanded="true" aria-controls="panelsStayOpen-collapseDadosEmpresaFuncionario">
+                                                <strong>Dados Relacionados a Empresa</strong>
+                                            </button>
+                                        </h2>
+                                        <div id="panelsStayOpen-collapseDadosEmpresaFuncionario" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingDadosEmpresaFuncionario">
+                                            <div class="accordion-body">
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <h4 class="fw-bold">Recibo de Pagamento de Salário</h4>
+                                                        <small>Mês de Referência: [Mês passado]</small>
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <label class="d-block fw-bold">Empregador</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Nome da Empresa</label>
+                                                        <label class="d-block">[nome]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Endereço</label>
+                                                        <label class="d-block">[endereço]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">CNPJ</label>
+                                                        <label class="d-block">[cnpj]</label>
                                                     </div>
                                                 </div>
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Código do Funcionário</label>
+                                                        <label class="d-block">[id funcionario]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Nome do Funcionário</label>
+                                                        <label class="d-block">[Nome Funcionário]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Data de Admissão</label>
+                                                        <label class="d-block">[Data que foi Cadastrado]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Função</label>
+                                                        <label class="d-block">[Cargo]</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <div class="table-responsive">
+                                                            <table class="table datatables-table table-borderless" style="width:100%">
+                                                                <thead>
+                                                                    <tr class="text-primary border border-primary">
+                                                                        <th>
+                                                                            @Html.DisplayNameFor(model => model.Nome)
+                                                                        </th>
+                                                                        <th>
+                                                                            @Html.DisplayNameFor(model => model.Email)
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="border border-primary">
+                                                                    <tr>
+                                                                        <td class="text-left align-middle">
+                                                                            @Html.DisplayFor(modelItem => Model.Nome)
+                                                                        </td>
+                                                                        <td class="text-left align-middle">
+                                                                            @Html.DisplayFor(modelItem => Model.Email)
+                                                                        </td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Total de Vencimentos</label>
+                                                        <label class="d-block">[Total de Vencimentos]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Total de Descontos</label>
+                                                        <label class="d-block">[Total de Descontos]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Valor Líquido</label>
+                                                        <label class="d-block">[Valor Líquido]</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">Salário Base</label>
+                                                        <label class="d-block">[Salário Base]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">salario contribuição inss</label>
+                                                        <label class="d-block">[salario contribuição inss]</label>
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-2">
+                                                        <label class="d-block text-primary fw-bold">fgts</label>
+                                                        <label class="d-block">[fgts]</label>
+                                                    </div>
+                                                </div>
+                                                <div class="row col-sm-12 col-md-12">
+                                                    <div class="col-sm-12 col-md-12 col-lg-12">
+                                                        <hr class="text-primary" />
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                                        <label class="d-block text-primary fw-bold">Declaro ter recebido a importância liquida discriminada neste recibo</label>
+                                                    </div>
+                                                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                                        &nbsp;
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                                                        <label class="d-block text-primary fw-bold">______/______/______/</label>
+                                                        <label class="d-block">Data</label>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                                                        <label class="d-block text-primary fw-bold">____________________________</label>
+                                                        <label class="d-block">Assinatura do Funcionário</label>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
-                                <hr class="mb-4">
-
-                                <div class="d-flex col-12">
-
-                                    <div class="col-6 text-left">
-                                        <a class="btn btn-secondary btn-lg" href="@ViewData["ReturnUrl"]">Voltar</a>
-                                        <a class="btn btn-primary btn-lg" asp-action="RDVReembolsoConsolidadoPrint"  target="_blank">Imprimir</a>
-                                        <a class="btn btn-primary btn-lg" asp-action="RDVReembolsoConsolidadoComprovantePrint"  target="_blank">Imprimir com Comprovante</a>
-                                    </div>
-
                                 </div>
-
                             </div>
 
                         </div>
+
+                        <hr class="mb-4 mt-4 text-primary">
+
+                        <div class="d-flex col-12">
+
+                            <div class="col-6 text-left">
+                                <a class="btn btn-lg btn-dark" asp-action="Index">Voltar</a>
+                                <a class="btn btn-lg btn-primary" asp-action="RDVReembolsoConsolidadoPrint" target="_blank">Imprimir</a>
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
+</div>
+
+</div>
