@@ -28,6 +28,7 @@ namespace RecrutaPlus.Infra.Data.Repositories
         {
             return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
+                .Include(i => i.Ferias)
                 .SingleOrDefaultAsync(s => s.FuncionarioId == id);
         }
 
@@ -46,7 +47,8 @@ namespace RecrutaPlus.Infra.Data.Repositories
         public async Task<IEnumerable<Funcionario>> GetByFilterRelatedAsync(FuncionarioFilter filter = null)
         {
             var _query = _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
-                .Include(i => i.Cargo).AsQueryable();
+                .Include(i => i.Cargo).AsQueryable()
+                .Include(i => i.Ferias).AsQueryable();
 
             if (filter?.FuncionarioId != null) { _query = _query.Where(w => w.FuncionarioId == filter.FuncionarioId.GetValueOrDefault()); }
             if (filter?.CargoId != null) { _query = _query.Where(w => w.CargoId == filter.CargoId); }
@@ -75,12 +77,14 @@ namespace RecrutaPlus.Infra.Data.Repositories
             {
                 return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                     .Include(i => i.Cargo)
+                    .Include(i => i.Ferias)
                     .ToListAsync();
             }
             else
             {
                 return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                     .Include(i => i.Cargo)
+                    .Include(i => i.Ferias)
                     .Where(predicate).ToListAsync();
             }
         }
@@ -103,12 +107,14 @@ namespace RecrutaPlus.Infra.Data.Repositories
             {
                 return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
+                .Include(i => i.Ferias)
                 .OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
             }
             else
             {
                 return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
+                .Include(i => i.Ferias)
                 .Where(predicate).OrderBy(o => o.FuncionarioId).Skip(skip).Take(take).ToListAsync();
             }
         }
@@ -119,12 +125,14 @@ namespace RecrutaPlus.Infra.Data.Repositories
             {
                 return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
+                .Include(i => i.Ferias)
                 .OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
             }
             else
             {
                 return await _dbContext.Funcionarios.AsNoTrackingWithIdentityResolution()
                 .Include(i => i.Cargo)
+                .Include(i => i.Ferias)
                 .Where(predicate).OrderBy(o => o.FuncionarioId).Take(takeLast).ToListAsync();
             }
         }

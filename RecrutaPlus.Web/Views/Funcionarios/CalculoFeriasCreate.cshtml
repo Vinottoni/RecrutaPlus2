@@ -2,7 +2,7 @@
 
 @{
     Layout = "_Layout";
-    ViewData["Title"] = "Funcionário";
+    ViewData["Title"] = "Funcionário - Cálculo de Férias";
     ViewData["SubTitle"] = "Consulta";
 }
 
@@ -36,7 +36,7 @@
                                                 <strong>Dados do Funcionário</strong>
                                             </button>
                                         </h2>
-                                        <div id="panelsStayOpen-collapseDadosPessoais" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingDadosPessoais">
+                                        <div id="panelsStayOpen-collapseDadosPessoais" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingDadosPessoais">
                                             <div class="accordion-body">
                                                 <div class="row col-sm-12 col-md-12">
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
@@ -75,11 +75,6 @@
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Educacao)</label>
                                                         <label class="d-block">@Html.DisplayFor(model => model.EducacaoToString)</label>
-                                                    </div>
-
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Dependentes)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.Dependentes)</label>
                                                     </div>
                                                 </div>
                                                 <div class="row col-sm-12 col-md-12">
@@ -140,7 +135,7 @@
                                 </div>
                             </div>
 
-                            <!--DADOS RELACIONADOS A EMPRESA-->
+                            <!--DADOS RELACIONADOS AO CÁLCULO DE FÉRIAS-->
                             <div class="col-12">&nbsp;</div>
 
                             <div class="col-12">
@@ -148,123 +143,80 @@
                                     <div class="accordion-item shadow">
                                         <h2 class="accordion-header" id="panelsStayOpen-headingDadosEmpresaFuncionario">
                                             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseDadosEmpresaFuncionario" aria-expanded="true" aria-controls="panelsStayOpen-collapseDadosEmpresaFuncionario">
-                                                <strong>Dados Relacionados a Empresa</strong>
+                                                <strong>Inserir Dados do Funcionário para o Cálculo</strong>
                                             </button>
                                         </h2>
                                         <div id="panelsStayOpen-collapseDadosEmpresaFuncionario" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingDadosEmpresaFuncionario">
                                             <div class="accordion-body">
                                                 <div class="row col-sm-12 col-md-12">
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <h4 class="fw-bold">Recibo de Pagamento de Salário</h4>
-                                                        <small>Mês de Referência: @Html.DisplayFor(model => model.MesReferencia)</small>
+                                                        <h4 class="fw-bold">Cálculo de Férias</h4>
                                                         <hr class="text-primary" />
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <label class="d-block fw-bold">Empregador</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-3">
-                                                        <label class="d-block text-primary fw-bold">Nome da Empresa</label>
-                                                        <label class="d-block">Casa do Norte Mônica</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-6">
-                                                        <label class="d-block text-primary fw-bold">Endereço</label>
-                                                        <label class="d-block">Rua Jose Ricardo dos Santos Nascimento</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-3">
-                                                        <label class="d-block text-primary fw-bold">CNPJ</label>
-                                                        <label class="d-block">22.760.062/0001-34</label>
                                                     </div>
                                                 </div>
-                                                <div class="row col-sm-12 col-md-12">
-                                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <hr class="text-primary" />
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">Código do Funcionário</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.FuncionarioId)</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">Nome do Funcionário</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.Nome)</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">Data de Admissão</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.Cadastro)</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">Função</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.CargoToString)</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row col-sm-12 col-md-12">
-                                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <hr class="text-primary" />
-                                                    </div>
-                                                    <div class="row col-sm-12 col-md-12 col-lg-12">
-                                                        <div class="col-sm-4 col-md-4 col-lg-4">
-                                                            <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.ValeAlimentacao)</label>
-                                                            <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.ValeRefeicao)</label>
-                                                            <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.ValeTransporte)</label>
-                                                            <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.INSS)</label>
-                                                            <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.FGTS)</label>
-                                                            <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.IRRF)</label>
+                                                <form asp-controller="Funcionarios" asp-action="CalculoFeriasCreate" id="formCreate" class="col-12 col-sm-12 col-md-12">
+
+                                                    <fieldset>
+                                                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
+
+                                                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom gap-register">
+
+                                                                <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
+                                                                    <div class="form-group col-12 col-sm-12 col-md-3">
+                                                                        <label class="text-primary fw-bold">Valor do Salário Bruto</label>
+                                                                        <input asp-for="Salario" class="form-control" disabled>
+                                                                        <span asp-validation-for="Nome" class="form-text text-danger small"></span>
+                                                                    </div>
+
+                                                                    <div class="form-group col-12 col-sm-12 col-md-3">
+                                                                        <label asp-for="ferias.ValorHoraExtra" class="text-primary fw-bold">Valor Médio de Horas Extras</label>
+                                                                        <input asp-for="ferias.ValorHoraExtra" class="form-control " placeholder="Digite a Quantidade de Horas Extras" required min="0">
+                                                                        <span asp-validation-for="ferias.ValorHoraExtra" class="form-text text-danger small"></span>
+                                                                    </div>
+
+                                                                    <div class="form-group col-12 col-sm-12 col-md-3">
+                                                                        <label asp-for="Dependentes" class="text-primary fw-bold"></label>
+                                                                        <input asp-for="Dependentes" class="form-control " disabled>
+                                                                        <span asp-validation-for="Dependentes" class="form-text text-danger small"></span>
+                                                                    </div>
+
+                                                                    <div class="form-group col-12 col-sm-12 col-md-3">
+                                                                        <label asp-for="ferias.DiasFerias" class="text-primary fw-bold"></label>
+                                                                        <input asp-for="ferias.DiasFerias" class="form-control " placeholder="Quantidade de dias que deseja" required min="0" max="30">
+                                                                        <span asp-validation-for="ferias.DiasFerias" class="form-text text-danger small"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-row col-12 col-sm-12 col-md-12 d-flex justify-content-center">
+                                                                    <div class="form-group col-12 col-sm-12 col-md-2">
+                                                                        <label asp-for="ferias.AbonoPecuniario" class="text-primary fw-bold">Abono Pecuniário:</label>
+                                                                        <div class="mt-1 form-check form-switch">
+                                                                            <label class="form-check-label">
+                                                                                <input asp-for="ferias.AbonoPecuniario" type="checkbox" class="form-check-input switch-size">
+                                                                            </label>
+                                                                        </div>
+                                                                        <span asp-validation-for="ferias.AbonoPecuniario" class="form-text text-danger small"></span>
+
+                                                                    </div>
+
+                                                                    <div class="form-group col-12 col-sm-12 col-md-2">
+                                                                        <label asp-for="ferias.DecimoTerceiro" class="text-primary fw-bold">Adiantar 1ª parcela 13º:</label>
+                                                                        <div class="mt-1 form-check form-switch">
+                                                                            <label class="form-check-label">
+                                                                                <input asp-for="ferias.DecimoTerceiro" type="checkbox" class="form-check-input switch-size">
+                                                                            </label>
+                                                                        </div>
+                                                                        <span asp-validation-for="ferias.DecimoTerceiro" class="form-text text-danger small"></span>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
                                                         </div>
-                                                        <div class="col-sm-4 col-md-4 col-lg-6">
-                                                            <label class="d-block">@Html.DisplayFor(model => model.ValeAlimentacao)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.ValeRefeicao)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.ValeTransporte)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.INSS)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.FGTS)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.IRRF)</label>
-
-
-                                                        </div>
+                                                    </fieldset>
+                                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
+                                                        <button form="formCreate" class="btn btn-success btn-lg" type="submit">Cálcular</button>
                                                     </div>
-                                                </div>
-                                                <div class="row col-sm-12 col-md-12">
-                                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <hr class="text-primary" />
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">Salário Base</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.Salario)</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">Total de Descontos</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.TotalDescontos)</label>
-                                                    </div>
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">Valor Líquido</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.SalarioLiquido)</label>
-                                                    </div>
-                                                </div>
-                                                <div class="row col-sm-12 col-md-12">
-                                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <hr class="text-primary" />
-                                                    </div>
-                                                    
-                                                    
-                                                </div>
-                                                @*<div class="row col-sm-12 col-md-12">
-                                                    <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <hr class="text-primary" />
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                                                        <label class="d-block text-primary fw-bold">Declaro ter recebido a importância liquida discriminada neste recibo</label>
-                                                    </div>
-                                                    <div class="col-sm-12 col-md-12 col-lg-12 text-center">
-                                                        &nbsp;
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-lg-6 text-center">
-                                                        <label class="d-block text-primary fw-bold">______/______/______/</label>
-                                                        <label class="d-block">Data</label>
-                                                    </div>
-                                                    <div class="col-sm-6 col-md-6 col-lg-6 text-center">
-                                                        <label class="d-block text-primary fw-bold">____________________________</label>
-                                                        <label class="d-block">Assinatura do Funcionário</label>
-                                                    </div>
-                                                </div>*@
+                                                </form>
 
                                             </div>
                                         </div>
@@ -280,7 +232,6 @@
 
                             <div class="col-6 text-left">
                                 <a class="btn btn-lg btn-dark" asp-action="Index">Voltar</a>
-                                <a class="btn btn-lg btn-primary" asp-controller="Funcionarios" asp-action="ResumoFuncionarioPrint" asp-route-id="@Model.FuncionarioId" target="_blank">Imprimir</a>
                             </div>
 
                         </div>

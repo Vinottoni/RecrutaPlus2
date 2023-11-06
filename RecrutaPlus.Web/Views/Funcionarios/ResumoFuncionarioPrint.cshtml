@@ -1,0 +1,296 @@
+﻿@model FuncionarioViewModel
+
+@{
+    Layout = "_LayoutPrint";
+    ViewData["Title"] = "Funcionário";
+    ViewData["SubTitle"] = "Consulta";
+}
+
+<div class="content-pages">
+
+    <div class="page-section">
+
+
+        <div class="">
+
+            <div class="card-body">
+                <div>
+                    <div class="row">
+
+                        <!--DADOS PESSOAIS DO FUNCIONÁRIO-->
+                        <div class="col-12">
+                            <div>
+                                <div>
+                                    <h2 class="" id="panelsStayOpen-headingDadosPessoais">
+                                        <strong>Dados do Funcionário</strong>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseDadosPessoais" class="" aria-labelledby="panelsStayOpen-headingDadosPessoais">
+                                        <div class="">
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <h4 class="fw-bold">Dados Pessoais</h4>
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Nome)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Nome)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Email)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Email)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Telefone)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Telefone)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.CPF)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.CPF)</label>
+                                                </div>
+
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.RG)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.RG)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.DataNascimento)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.DataNascimento)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Genero)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.GeneroToString)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Educacao)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.EducacaoToString)</label>
+                                                </div>
+
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Dependentes)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Dependentes)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                    <h4 class="fw-bold">Endereço</h4>
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Endereco)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Endereco)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.CEP)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.CEP)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Bairro)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Bairro)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Estado)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Estado)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                    <h4 class="fw-bold">@FuncionarioResource.LABEL_CARGOS</h4>
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@FuncionarioResource.LABEL_CARGOS</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.CargoToString)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Salario)</label>
+                                                    <label class="d-block"><small>R$&nbsp;</small>@Html.DisplayFor(model => model.Salario)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Ativo)</label>
+                                                    <label class="d-block">
+                                                        @if (Model.Ativo == true)
+                                                        {
+                                                            <span class="badge badge-subtle btn-badge-active">@DefaultResource.MSG_SIM</span>
+                                                        }
+                                                        else
+                                                        {
+                                                            <span class="badge badge-subtle btn-badge-off">@DefaultResource.MSG_NAO</span>
+                                                        }
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--DADOS RELACIONADOS A EMPRESA-->
+                        <div class="col-12">&nbsp;</div>
+
+                        <div class="col-12">
+                            <div>
+                                <div>
+                                    <h2 class="" id="panelsStayOpen-headingDadosEmpresaFuncionario">
+                                        <strong>Dados Relacionados a Empresa</strong>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseDadosEmpresaFuncionario" class="" aria-labelledby="panelsStayOpen-headingDadosEmpresaFuncionario">
+                                        <div class="">
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <h4 class="fw-bold">Recibo de Pagamento de Salário</h4>
+                                                    <small>Mês de Referência: @Html.DisplayFor(model => model.MesReferencia)</small>
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block fw-bold">Empregador</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-3">
+                                                    <label class="d-block text-dark fw-bold">Nome da Empresa</label>
+                                                    <label class="d-block">Casa do Norte Mônica</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-6">
+                                                    <label class="d-block text-dark fw-bold">Endereço</label>
+                                                    <label class="d-block">Rua Jose Ricardo dos Santos Nascimento</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-3">
+                                                    <label class="d-block text-dark fw-bold">CNPJ</label>
+                                                    <label class="d-block">22.760.062/0001-34</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Código do Funcionário</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.FuncionarioId)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Nome do Funcionário</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Nome)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Data de Admissão</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Cadastro)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Função</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.CargoToString)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="row col-sm-12 col-md-12 col-lg-12">
+                                                    <div class="col-sm-4 col-md-4 col-lg-4">
+                                                        <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.ValeAlimentacao)</label>
+                                                        <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.ValeRefeicao)</label>
+                                                        <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.ValeTransporte)</label>
+                                                        <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.INSS)</label>
+                                                        <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.FGTS)</label>
+                                                        <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.IRRF)</label>
+
+                                                    </div>
+                                                    <div class="col-sm-4 col-md-4 col-lg-6">
+                                                        <label class="d-block">@Html.DisplayFor(model => model.ValeAlimentacao)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.ValeRefeicao)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.ValeTransporte)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.INSS)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.FGTS)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.IRRF)</label>
+
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Salário Base</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Salario)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Total de Descontos</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.TotalDescontos)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Valor Líquido</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.SalarioLiquido)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">Salário Base</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Salario)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">salario contribuição inss</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.INSS)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">fgts</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.FGTS)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                                    <label class="d-block text-dark fw-bold">Declaro ter recebido a importância liquida discriminada neste recibo</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12 text-center">
+                                                    &nbsp;
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                                                    <label class="d-block text-dark fw-bold">______/______/______/</label>
+                                                    <label class="d-block">Data</label>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                                                    <label class="d-block text-dark fw-bold">_________________________</label>
+                                                    <label class="d-block">Assinatura do Funcionário</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <hr class="mb-4 mt-4 text-dark">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        /*Print*/
+        $(document).ready(function () {
+
+            setTimeout(function () { window.print(); }, 1000);
+
+            window.onafterprint = function () {
+                window.close();
+            }
+
+        });
+
+    </script>
+}

@@ -31,7 +31,7 @@ body {
     position: absolute;
     width: 100%;
     height: 100vh;
-    background: linear-gradient(90deg, #262626 43.23%, rgba(255, 255, 255, 0.8) 100%);
+    background: linear-gradient(90deg, #6da8ff 43.23%, rgba(255, 255, 255, 0.8) 100%);
 }
 
 .img-logo {
@@ -95,14 +95,14 @@ body {
 }
 
     .text-input:focus ~ .label-custom {
-        top: -10px;
-        color: var(--color-primary-custom);
+        top: 0px;
+        color: var(--color-dark-nero);
         font-size: 14px;
     }
 
 .text-input:valid ~ .label-custom {
-    top: -10px;
-    color: var(--color-primary-custom);
+    top: 0px;
+    color: var(--color-dark-nero);
     font-size: 14px;
 }
 

@@ -21,17 +21,20 @@ namespace RecrutaPlus.Web.Controllers
     {
         private readonly IFuncionarioService _funcionarioService;
         private readonly ICargoService _cargoService;
+        private readonly IFeriasService _feriasService;
 
         public FuncionariosController(
             IMapper mapper,
             IAppLogger logger,
             IFuncionarioService funcionarioService,
-            ICargoService cargoService) : base(logger, mapper)
+            ICargoService cargoService,
+            IFeriasService feriasService) : base(logger, mapper)
         {
             _mapper = mapper;
             _logger = logger;
             _funcionarioService = funcionarioService;
             _cargoService = cargoService;
+            _feriasService = feriasService;
         }
 
         public async Task<IActionResult> Index(int? id, bool state = false)
@@ -122,9 +125,6 @@ namespace RecrutaPlus.Web.Controllers
 
         public async Task<IActionResult> ResumoFuncionario(int? id)
         {
-            ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
-            ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
-            ViewBag.SelectListCargoToString = await Task.Run(() => SelectListCargoToString());
 
             if (id == null)
             {
@@ -142,10 +142,173 @@ namespace RecrutaPlus.Web.Controllers
 
             //AutoMapper
             var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+            int DiasDeTrabalho = 22;
+
+            funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
+            funcionarioViewModel.ValeRefeicao = funcionario.Salario * (decimal)0.06;
+            funcionarioViewModel.ValeTransporte = funcionario.Salario * (decimal)0.06;
+
+            funcionarioViewModel.MesReferencia = DateTime.Now.AddMonths(-1);
 
             _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
             return View(funcionarioViewModel);
+        }
+
+        public async Task<IActionResult> ResumoFuncionarioPrint(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            Funcionario funcionario = funcionarios.FirstOrDefault();
+
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
+
+            //AutoMapper
+            var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+            int DiasDeTrabalho = 22;
+
+            funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
+            funcionarioViewModel.ValeRefeicao = funcionario.Salario * (decimal)0.06;
+            funcionarioViewModel.ValeTransporte = funcionario.Salario * (decimal)0.06;
+
+            funcionarioViewModel.MesReferencia = DateTime.Now.AddMonths(-1);
+
+            _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            return View(funcionarioViewModel);
+        }
+
+        public async Task<IActionResult> CalculoFeriasCreate(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            Funcionario funcionario = funcionarios.FirstOrDefault();
+
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
+
+            var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+
+            _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            return View(funcionarioViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CalculoFeriasCreate(int? id, FeriasViewModel feriasViewModel, FuncionarioViewModel funcionarioViewModel)
+        {
+            //AutoMapper
+            var ferias = _mapper.Map<FeriasViewModel, Ferias>(feriasViewModel);
+            var funcionario = _mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
+
+            funcionario.Salario = funcionarioViewModel.SalarioFinal;
+
+            #region Cálculos da Folha de Pagamento
+
+            int DiasDeTrabalho = 22;
+            double SalarioINSS = 0;
+            decimal descontoIRRF = 0;
+            double SalarioFuncionario = (double)funcionario.Salario;
+
+            funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
+
+            #region Desconto Inss
+            if (SalarioFuncionario <= 1302.00)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.075;
+            }
+            else if (SalarioFuncionario >= 1302.01 && SalarioFuncionario <= 2571.29)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.09;
+            }
+            else if (SalarioFuncionario >= 2571.30 && SalarioFuncionario <= 3856.94)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.12;
+            }
+            else if (SalarioFuncionario >= 3856.95 && SalarioFuncionario <= 7507.49)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.14;
+            }
+            #endregion
+
+            SalarioINSS = SalarioFuncionario - (double)funcionario.INSS;
+
+            #region Desconto IRRF
+            if (SalarioINSS <= 1903.98)
+            {
+                descontoIRRF = 0;
+            }
+            else if (SalarioINSS >= 1903.99 && SalarioINSS <= 2826.65)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.075;
+            }
+            else if (SalarioINSS >= 2826.66 && SalarioINSS <= 3751.05)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.15;
+            }
+            else if (SalarioINSS >= 3751.06 && SalarioINSS <= 4664.68)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.225;
+            }
+            else if (SalarioINSS > 4664.68)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.275;
+            }
+
+            funcionario.IRRF = descontoIRRF + (decimal)(funcionario.Dependentes * 189.59);
+            funcionario.FGTS = funcionario.Salario * (decimal)0.08;
+
+            funcionario.TotalDescontos = funcionario.INSS + funcionario.IRRF + funcionario.FGTS;
+
+            funcionario.SalarioLiquido = funcionario.Salario - funcionario.TotalDescontos;
+            #endregion
+
+            #endregion
+
+            #region Cálculos das Férias
+
+            //ferias.DiasFerias = 30;
+            //ferias.ValorHoraExtra = 10;
+
+
+            #endregion
+
+            ferias.Cadastro = DateTime.Now;
+            ferias.CadastradoPor = User.Identity.Name ?? DefaultConst.USER_ANONYMOUS;
+            ferias.Edicao = DateTime.Now;
+            ferias.EditadoPor = User.Identity.Name ?? DefaultConst.USER_ANONYMOUS;
+            ferias.GuidStamp = Guid.NewGuid();
+
+            ServiceResult serviceResult = _funcionarioService.Add(funcionario);
+
+            _ = await _funcionarioService.SaveChangesAsync();
+
+            //ServiceResult serviceResult = _feriasService.Add(ferias);
+
+            //_ = await _feriasService.SaveChangesAsync();
+
+            SuccessMessage = FuncionarioResource.MSG_SAVED_SUCCESSFULLY;
+
+            _logger.LogInformation(FuncionarioConst.LOG_CREATE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Create()
@@ -154,9 +317,9 @@ namespace RecrutaPlus.Web.Controllers
             ViewBag.SelectListGenero = await Task.Run(() => SelectListGenero());
             ViewBag.SelectListEducacao = await Task.Run(() => SelectListEducacao());
 
-            _logger.LogInformation(FuncionarioConst.LOG_CREATE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
-
             FuncionarioViewModel funcionarioViewModel = await Task.Run(() => new FuncionarioViewModel());
+
+            _logger.LogInformation(FuncionarioConst.LOG_CREATE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
             return View(funcionarioViewModel);
         }
@@ -172,6 +335,64 @@ namespace RecrutaPlus.Web.Controllers
             funcionario.Salario = funcionarioViewModel.SalarioFinal;
 
             funcionario.Ativo = true;
+
+            int DiasDeTrabalho = 22;
+            double SalarioINSS = 0;
+            decimal descontoIRRF = 0;
+            double SalarioFuncionario = (double)funcionario.Salario;
+
+            funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
+
+            #region Desconto Inss
+            if (SalarioFuncionario <= 1302.00)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.075;
+            }
+            else if (SalarioFuncionario >= 1302.01 && SalarioFuncionario <= 2571.29)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.09;
+            }
+            else if (SalarioFuncionario >= 2571.30 && SalarioFuncionario <= 3856.94)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.12;
+            }
+            else if (SalarioFuncionario >= 3856.95 && SalarioFuncionario <= 7507.49)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.14;
+            }
+            #endregion
+
+            SalarioINSS = SalarioFuncionario - (double)funcionario.INSS;
+
+            #region Desconto IRRF
+            if (SalarioINSS <= 1903.98)
+            {
+                descontoIRRF = 0;
+            }
+            else if (SalarioINSS >= 1903.99 && SalarioINSS <= 2826.65)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.075;
+            }
+            else if (SalarioINSS >= 2826.66 && SalarioINSS <= 3751.05)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.15;
+            }
+            else if (SalarioINSS >= 3751.06 && SalarioINSS <= 4664.68)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.225;
+            }
+            else if (SalarioINSS > 4664.68)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.275;
+            }
+
+            funcionario.IRRF = descontoIRRF + (decimal)(funcionario.Dependentes * 189.59);
+            funcionario.FGTS = funcionario.Salario * (decimal)0.08;
+
+            funcionario.TotalDescontos = funcionario.INSS + funcionario.IRRF + funcionario.FGTS;
+
+            funcionario.SalarioLiquido = funcionario.Salario - funcionario.TotalDescontos;
+            #endregion
 
             funcionario.Cadastro = DateTime.Now;
             funcionario.CadastradoPor = User.Identity.Name ?? DefaultConst.USER_ANONYMOUS;
@@ -272,7 +493,67 @@ namespace RecrutaPlus.Web.Controllers
             //AutoMapper
             var funcionario = _mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
+
             funcionario.Salario = funcionarioViewModel.SalarioFinal;
+
+            int DiasDeTrabalho = 22;
+            double SalarioINSS = 0;
+            decimal descontoIRRF = 0;
+            double SalarioFuncionario = (double)funcionario.Salario;
+
+            funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
+
+            #region Desconto Inss
+            if (SalarioFuncionario <= 1302.00)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.075;
+            }
+            else if (SalarioFuncionario >= 1302.01 && SalarioFuncionario <= 2571.29)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.09;
+            }
+            else if (SalarioFuncionario >= 2571.30 && SalarioFuncionario <= 3856.94)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.12;
+            }
+            else if (SalarioFuncionario >= 3856.95 && SalarioFuncionario <= 7507.49)
+            {
+                funcionario.INSS = funcionario.Salario * (decimal)0.14;
+            }
+            #endregion
+
+            SalarioINSS = SalarioFuncionario - (double)funcionario.INSS;
+
+            #region Desconto IRRF
+            if (SalarioINSS <= 1903.98)
+            {
+                descontoIRRF = 0;
+            }
+            else if (SalarioINSS >= 1903.99 && SalarioINSS <= 2826.65)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.075;
+            }
+            else if (SalarioINSS >= 2826.66 && SalarioINSS <= 3751.05)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.15;
+            }
+            else if (SalarioINSS >= 3751.06 && SalarioINSS <= 4664.68)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.225;
+            }
+            else if (SalarioINSS > 4664.68)
+            {
+                descontoIRRF = funcionario.Salario * (decimal)0.275;
+            }
+
+            funcionario.IRRF = descontoIRRF + (decimal)(funcionario.Dependentes * 189.59);
+            funcionario.FGTS = funcionario.Salario * (decimal)0.08;
+
+            funcionario.TotalDescontos = funcionario.INSS + funcionario.IRRF + funcionario.FGTS;
+
+            funcionario.SalarioLiquido = funcionario.Salario - funcionario.TotalDescontos;
+
+            #endregion
 
             funcionario.Edicao = DateTime.Now;
             funcionario.EditadoPor = User.Identity.Name ?? DefaultConst.USER_ANONYMOUS;

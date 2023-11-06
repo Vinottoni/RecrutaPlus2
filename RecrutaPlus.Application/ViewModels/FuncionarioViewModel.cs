@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using AutoMapper.Configuration.Annotations;
 using RecrutaPlus.Domain.ValueObjects;
+using System.ComponentModel;
 
 namespace RecrutaPlus.Application.ViewModels
 {
@@ -60,6 +61,27 @@ namespace RecrutaPlus.Application.ViewModels
         [Display(Name = "Salário")]
         public decimal Salario { get; set; }
 
+        [Display(Name = "Diária VA")]
+        public decimal DiariaVA { get; set; }
+
+        [Display(Name = "Quantidade de Horas por Mês")]
+        public int QuantidadeHoraMes { get; set; }
+
+        //Novo
+        [Display(Name = "Salário Liquído")]
+        public decimal SalarioLiquido { get; set; }
+        [Display(Name = "INSS")]
+        public decimal INSS { get; set; }
+        [Display(Name = "IRRF")]
+        public decimal IRRF { get; set; }
+        [Display(Name = "FGTS")]
+        public decimal FGTS { get; set; }
+        [Display(Name = "Depententes")]
+        public int Dependentes { get; set; }
+        [Display(Name = "Total Desconto")]
+        public decimal TotalDescontos { get; set; }
+
+
         //Default
         public DateTime Cadastro { get; set; }
         public string CadastradoPor { get; set; }
@@ -70,13 +92,23 @@ namespace RecrutaPlus.Application.ViewModels
 
         [JsonIgnore]
         public virtual IList<CargoViewModel> CargoViewModels { get; set; }
+        public FeriasViewModel ferias { get; set; }
 
         //Custom
+        [Display(Name = "Vale Alimentação")]
+        public decimal ValeAlimentacao { get; set; }
+        [Display(Name = "Vale Refeição")]
+        public decimal ValeRefeicao { get; set; }
+        [Display(Name = "Vale Transporte")]
+        public decimal ValeTransporte { get; set; }
+        
+        [Display(Name = "Mês de Referência")]
+        public DateTime MesReferencia { get; set; }
         [Display(Name = "Valor por Hora")]
         public decimal ValorPorHora { get; set; }
+        
 
-        [Display(Name = "Quantidade de Horas por Mês")]
-        public int QuantidadeHoraMes { get; set; }
+
 
         [Ignore]
         public decimal SalarioFinal

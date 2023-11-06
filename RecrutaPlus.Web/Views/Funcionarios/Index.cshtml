@@ -9,7 +9,7 @@
 <div class="content-pages">
     <div class="container">
         <div class="page-titles">
-            <small>Resumo</small><br />
+            <small class="fw-bold text-primary">Resumo</small><br />
             <h2 class="text-title-nero">@ViewData["Title"]</h2>
         </div>
 
@@ -95,9 +95,11 @@
                                                 </td>
                                                 <td class="text-center align-middle">
                                                     <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
+                                                    <a asp-action="CalculoFeriasCreate" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-calendar-plus text-primary"></i></a>
                                                     <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
                                                     <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
-                                                    <a asp-action="ResumoFuncionario" asp-route-id="@item.FuncionarioId"><i class="fa fa-print text-success"></i></a>
+                                                    <a asp-action="ResumoFuncionario" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-file-invoice-dollar text-success"></i></a>
+                                                    <a asp-action="CalculoFeriasDetails" asp-route-id="@item.FuncionarioId"><i class="fa fa-print text-primary"></i></a>
                                                 </td>
                                             </tr>
                                         }

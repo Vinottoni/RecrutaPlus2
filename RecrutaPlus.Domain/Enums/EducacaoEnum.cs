@@ -2,11 +2,11 @@
 {
     public enum EducacaoEnum
     {
-        EnsinoFundamental = 0,
-        EnsinoFundamentalIncompleto = 1,
-        EnsinoMedio = 2,
-        EnsinoMedioIncompleto = 3,
-        EnsinoSuperior = 4,
-        EnsinoSuperiorIncompleto = 5
+        EnsinoFundamental = 1,
+        EnsinoFundamentalIncompleto = 2,
+        EnsinoMedio = 3,
+        EnsinoMedioIncompleto = 4,
+        EnsinoSuperior = 5,
+        EnsinoSuperiorIncompleto = 6
     }
 }

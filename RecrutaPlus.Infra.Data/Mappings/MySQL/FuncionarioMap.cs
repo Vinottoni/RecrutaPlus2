@@ -60,7 +60,7 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
 
             builder.Property(e => e.Ativo)
                 .IsRequired()
-                .HasColumnType(MySQLDataTypes.BOOLEAN())
+                .HasColumnType(MySQLDataTypes.CHAR(1))
                 .HasConversion(_boolToStringConverter);
 
             builder.Property(e => e.Estado)
@@ -82,6 +82,29 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
             builder.Property(e => e.Bairro)
                 .IsRequired()
                 .HasColumnType(MySQLDataTypes.VARCHAR(255));
+
+            builder.Property(e => e.SalarioLiquido)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.DECIMAL(20, 2));
+
+            builder.Property(e => e.INSS)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.DECIMAL(20, 2));
+
+            builder.Property(e => e.IRRF)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.DECIMAL(20, 2));
+            
+            builder.Property(e => e.FGTS)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.DECIMAL(20, 2));
+
+            builder.Property(e => e.Dependentes)
+                .HasColumnType(MySQLDataTypes.INT());
+
+            builder.Property(e => e.TotalDescontos)
+                .IsRequired()
+                .HasColumnType(MySQLDataTypes.DECIMAL(20, 2));
 
             builder.Property(e => e.Cadastro)
                 .HasColumnType(MySQLDataTypes.DATETIME());
@@ -116,6 +139,14 @@ namespace RecrutaPlus.Infra.Data.Mappings.MySQL
             builder.HasOne(d => d.Cargo)
                 .WithMany(p => p.Funcionarios)
                 .HasForeignKey(d => d.CargoId);
+
+            //Index
+            builder.HasIndex(d => d.FeriasId);
+
+            //FK
+            builder.HasOne(d => d.Ferias)
+                .WithMany(p => p.Funcionarios)
+                .HasForeignKey(d => d.FeriasId);
         }
     }
 }

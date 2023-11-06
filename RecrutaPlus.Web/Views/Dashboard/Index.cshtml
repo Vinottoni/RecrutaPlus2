@@ -18,9 +18,9 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
                     <div class="card-metric-custom bg-primary shadow">
                         <div>
-                                <p class="metric-value h1">
+                            <p class="metric-value h1">
                                 <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.TotalFuncionarios)</span>
-                                </p>
+                            </p>
                             <label class="metric-label text-white">Total de Funcionarios</label>
                         </div>
                     </div>
@@ -29,9 +29,9 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
                     <div class="card-metric-custom bg-primary shadow">
                         <div>
-                                <p class="metric-value h1">
+                            <p class="metric-value h1">
                                 <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosAtivos)</span>
-                                </p>
+                            </p>
                             <label class="metric-label text-white">Funcionarios Ativos</label>
                         </div>
                     </div>
@@ -40,9 +40,9 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
                     <div class="card-metric-custom bg-primary shadow">
                         <div>
-                                <p class="metric-value h1">
+                            <p class="metric-value h1">
                                 <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosDesativados)</span>
-                                </p>
+                            </p>
                             <label class="metric-label text-white">Funcionarios Desativados</label>
                         </div>
                     </div>
@@ -51,9 +51,9 @@
                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-2">
                     <div class="card-metric-custom bg-primary shadow">
                         <div>
-                                <p class="metric-value h1">
+                            <p class="metric-value h1">
                                 <sub><i class="fa-solid fa-chart-line text-white"></i></sub> <span class="value text-white">@Html.DisplayFor(model => model.DashboardViewModel.FuncionariosRecentes)</span>
-                                </p>
+                            </p>
                             <label class="metric-label text-white">Funcionarios Recentes</label>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
             </div>
         </div>
         <hr class="hr-color" />
-       
+
         <div class="accordion" id="accordionPanelsStayOpenExample">
             <div class="accordion-item shadow">
                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
@@ -138,7 +138,7 @@
         var funcionariosDesativados = @desativadosSerializados;
 
         $(document)
-        .ready(function () {
+            .ready(function () {
                 const ctx = document.getElementById('myChart');
                 const myChart = new Chart(ctx, {
                     type: 'doughnut',
@@ -160,8 +160,8 @@
                     },
                 });
                 const grafctx = document.getElementById('grafBar');
-        })
-        
+            })
+
     </script>
 }
 

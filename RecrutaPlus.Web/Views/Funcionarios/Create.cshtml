@@ -7,153 +7,162 @@
     ViewData["Informacoes"] = "Informações";
 }
 
-<div class="content-pages text-yellowy">
+<div class="content-pages">
     <div class="container">
         <div class="page-titles">
-            <h1 class="ml-0 text-white-custom">
+            <h1 class="ml-0">
                 @ViewData["Title"]
             </h1>
         </div>
 
         <div class="page-section">
 
-            <div class="card-deck-xl">
 
-                <div class="card-custom card-fluid">
+            <div class="card card-fluid shadow">
 
-                    <div class="card-body card-body-custom card-background">
+                <div class="card-body">
 
-                        <form asp-action="Create" id="formCreate" class="col-12 col-sm-12 col-md-12">
+                    <form asp-action="Create" id="formCreate" class="col-12 col-sm-12 col-md-12">
 
-                            <fieldset>
-                                <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
+                        <fieldset>
+                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
 
-                                    <div class="col-12 col-sm-12 col-md-12">
-                                        <div class="text-left">
-                                            <small class="text-white-custom">@ViewData["SubTitle"]</small><br />
-                                            <h2 class="text-white-custom">@ViewData["Informacoes"]</h2>
-                                        </div>
-                                        <hr class="hr-color" />
+                                <div class="col-12 col-sm-12 col-md-12">
+                                    <div class="text-left">
+                                        <small class="text-primary fw-bold">@ViewData["SubTitle"]</small><br />
+                                        <h2>@ViewData["Informacoes"]</h2>
                                     </div>
-                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom gap-register">
+                                    <hr class="text-primary" />
+                                </div>
+                                <div class="form-row col-12 col-sm-12 col-md-12 flex-custom gap-register">
 
-                                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
-                                            <div class="form-group col-12 col-sm-12 col-md-5">
-                                                <label asp-for="Nome" class="label-custom"></label>
-                                                <input asp-for="Nome" class="form-control input-color" placeholder="Digite seu Name" required min="0">
-                                                <span asp-validation-for="Nome" class="form-text text-danger small"></span>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-4">
-                                                <label asp-for="Email" class="label-custom"></label>@*<sup class="text-danger">*</sup>*@
-                                                <input asp-for="Email" class="form-control input-color" placeholder="Digite seu Email" required min="0">
-                                                <span asp-validation-for="Email" class="form-text text-danger small"></span>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-2">
-                                                <label asp-for="Telefone" class="label-custom"></label>
-                                                <input asp-for="Telefone" class="form-control input-color" placeholder="Digite seu Celular">
-                                                <span asp-validation-for="Telefone" class="form-text text-danger small"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
-                                            <div class="form-group col-12 col-sm-12 col-md-3">
-                                                <label asp-for="CPF" class="label-custom"></label>
-                                                <input asp-for="CPF" class="form-control input-color" placeholder="Digite seu CPF">
-                                                <span asp-validation-for="CPF" class="form-text text-danger small"></span>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-3">
-                                                <label asp-for="RG" class="label-custom"></label>
-                                                <input asp-for="RG" class="form-control input-color" placeholder="Digite seu RG">
-                                                <span asp-validation-for="RG" class="form-text text-danger small"></span>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-2">
-                                                <label asp-for="DataNascimento" class="label-custom"></label>
-                                                <input asp-for="DataNascimento" class="form-control input-color" placeholder="Digite sua Data de Nascimento">
-                                                <span asp-validation-for="DataNascimento" class="form-text text-danger small"></span>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-3">
-                                                <label asp-for="Genero" class="label-custom"></label>
-                                                <select id="Genero" asp-for="Genero" asp-items="@ViewBag.SelectListGenero" class="form-control form-control-custom" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
-                                            <div class="form-group col-12 col-sm-12 col-md-5">
-                                                <label asp-for="Educacao" class="label-custom"></label>
-                                                <select id="Educacao" asp-for="Educacao" asp-items="@ViewBag.SelectListEducacao" class="form-control form-control-custom" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
-                                                </select>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-6">
-                                                <label asp-for="Endereco" class="label-custom"></label>
-                                                <input asp-for="Endereco" class="form-control input-color" placeholder="Digite seu Endereço">
-                                                <span asp-validation-for="Endereco" class="form-text text-danger small"></span>
-                                            </div>
-                                        </div>
-
-                                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
-                                            <div class="form-group col-12 col-sm-12 col-md-2">
-                                                <label asp-for="CEP" class="label-custom"></label>
-                                                <input asp-for="CEP" class="form-control input-color" placeholder="Digite seu CEP">
-                                                <span asp-validation-for="CEP" class="form-text text-danger small"></span>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-4">
-                                                <label asp-for="Bairro" class="label-custom"></label>
-                                                <input asp-for="Bairro" class="form-control input-color" placeholder="Digite seu Bairro">
-                                                <span asp-validation-for="Bairro" class="form-text text-danger small"></span>
-                                            </div>
-
-                                            <div class="form-group col-12 col-sm-12 col-md-2">
-                                                <label asp-for="Estado" class="label-custom"></label>
-                                                <input asp-for="Estado" class="form-control input-color" placeholder="Digite seu Estado">
-                                                <span asp-validation-for="Estado" class="form-text text-danger small"></span>
-                                            </div>
-                                            <div class="form-group col-12 col-sm-12 col-md-3">
-                                                <span class="label-custom">@FuncionarioResource.LABEL_CARGOS</span>
-                                                <select id="CargoId" asp-for="CargoId" asp-items="@ViewBag.SelectListCargos" class="form-control form-control-custom" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-12 col-sm-12 col-md-12">
-                                        <hr class="hr-color" />
-                                        <div class="text-left">
-                                            <small class="text-white-custom">Registrar</small><br />
-                                            <h2 class="text-white-custom">Salário</h2>
-                                        </div>
-                                        <hr class="hr-color" />
-                                    </div>
-
-                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register">
-                                        <div class="form-group col-12 col-sm-12 col-md-4">
-                                            <label asp-for="ValorPorHora" class="label-custom"></label>
-                                            <input asp-for="ValorPorHora" class="form-control input-color" placeholder="Valor por Hora">
-                                            <span asp-validation-for="ValorPorHora" class="form-text text-danger small"></span>
+                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
+                                        <div class="form-group col-12 col-sm-12 col-md-5">
+                                            <label asp-for="Nome" class="text-primary fw-bold"></label>
+                                            <input asp-for="Nome" class="form-control" placeholder="Digite seu Name" required min="0">
+                                            <span asp-validation-for="Nome" class="form-text text-danger small"></span>
                                         </div>
 
                                         <div class="form-group col-12 col-sm-12 col-md-4">
-                                            <label asp-for="QuantidadeHoraMes" class="label-custom"></label>
-                                            <input asp-for="QuantidadeHoraMes" class="form-control input-color" placeholder="Quatidade de Horas por Mês">
-                                            <span asp-validation-for="QuantidadeHoraMes" class="form-text text-danger small"></span>
+                                            <label asp-for="Email" class="text-primary fw-bold"></label>@*<sup class="text-danger">*</sup>*@
+                                            <input asp-for="Email" class="form-control " placeholder="Digite seu Email" required min="0">
+                                            <span asp-validation-for="Email" class="form-text text-danger small"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-2">
+                                            <label asp-for="Telefone" class="text-primary fw-bold"></label>
+                                            <input asp-for="Telefone" class="form-control " placeholder="Digite seu Celular" required>
+                                            <span asp-validation-for="Telefone" class="form-text text-danger small"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <label asp-for="CPF" class="text-primary fw-bold"></label>
+                                            <input asp-for="CPF" class="form-control " placeholder="Digite seu CPF" required>
+                                            <span asp-validation-for="CPF" class="form-text text-danger small"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <label asp-for="RG" class="text-primary fw-bold"></label>
+                                            <input asp-for="RG" class="form-control " placeholder="Digite seu RG" required>
+                                            <span asp-validation-for="RG" class="form-text text-danger small"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-2">
+                                            <label asp-for="DataNascimento" class="text-primary fw-bold"></label>
+                                            <input asp-for="DataNascimento" class="form-control " placeholder="Digite sua Data de Nascimento" required>
+                                            <span asp-validation-for="DataNascimento" class="form-text text-danger small"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <label asp-for="Genero" class="text-primary fw-bold"></label>
+                                            <select id="Genero" asp-for="Genero" asp-items="@ViewBag.SelectListGenero" class="form-control" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
+                                        <div class="form-group col-12 col-sm-12 col-md-2">
+                                            <label asp-for="Dependentes" class="text-primary fw-bold"></label>
+                                            <input asp-for="Dependentes" class="form-control " placeholder="Tem quantos Dependentes?" required>
+                                            <span asp-validation-for="Dependentes" class="form-text text-danger small"></span>
+                                        </div>
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <label asp-for="Educacao" class="text-primary fw-bold"></label>
+                                            <select id="Educacao" asp-for="Educacao" asp-items="@ViewBag.SelectListEducacao" class="form-control" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-6">
+                                            <label asp-for="Endereco" class="text-primary fw-bold"></label>
+                                            <input asp-for="Endereco" class="form-control " placeholder="Digite seu Endereço" required>
+                                            <span asp-validation-for="Endereco" class="form-text text-danger small"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
+                                        <div class="form-group col-12 col-sm-12 col-md-2">
+                                            <label asp-for="CEP" class="text-primary fw-bold"></label>
+                                            <input asp-for="CEP" class="form-control " placeholder="Digite seu CEP" required>
+                                            <span asp-validation-for="CEP" class="form-text text-danger small"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-4">
+                                            <label asp-for="Bairro" class="text-primary fw-bold"></label>
+                                            <input asp-for="Bairro" class="form-control " placeholder="Digite seu Bairro" required>
+                                            <span asp-validation-for="Bairro" class="form-text text-danger small"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-2">
+                                            <label asp-for="Estado" class="text-primary fw-bold"></label>
+                                            <input asp-for="Estado" class="form-control " placeholder="Digite seu Estado" required>
+                                            <span asp-validation-for="Estado" class="form-text text-danger small"></span>
+                                        </div>
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <span class="text-primary fw-bold">@FuncionarioResource.LABEL_CARGOS</span>
+                                            <select id="CargoId" asp-for="CargoId" asp-items="@ViewBag.SelectListCargos" class="form-control" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
+                                            </select>
                                         </div>
                                     </div>
                                 </div>
-                            </fieldset>
-                            <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
-                                <a class="btn btn-secondary btn-lg btn-back" asp-action="Index" asp-route-state="true">Voltar</a>
-                                <button form="formCreate" class="btn btn-primary btn-lg btn-register" type="submit">Salvar</button>
+
+
+                                <div class="col-12 col-sm-12 col-md-12">
+                                    <hr class="text-primary" />
+                                    <div class="text-left">
+                                        <small class="text-primary fw-bold">Registrar</small><br />
+                                        <h2>Salário</h2>
+                                    </div>
+                                    <hr class="text-primary" />
+                                </div>
+
+                                <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register">
+                                    <div class="form-group col-12 col-sm-12 col-md-3">
+                                        <label asp-for="ValorPorHora" class="text-primary fw-bold"></label>
+                                        <input asp-for="ValorPorHora" class="form-control " placeholder="Valor por Hora" required>
+                                        <span asp-validation-for="ValorPorHora" class="form-text text-danger small"></span>
+                                    </div>
+
+                                    <div class="form-group col-12 col-sm-12 col-md-3">
+                                        <label asp-for="QuantidadeHoraMes" class="text-primary fw-bold"></label>
+                                        <input asp-for="QuantidadeHoraMes" class="form-control " placeholder="Quatidade de Horas por Mês" required>
+                                        <span asp-validation-for="QuantidadeHoraMes" class="form-text text-danger small"></span>
+                                    </div>
+
+                                    <div class="form-group col-12 col-sm-12 col-md-3">
+                                        <label asp-for="DiariaVA" class="text-primary fw-bold"></label>
+                                        <input asp-for="DiariaVA" class="form-control" placeholder="Diária do Vale Alimentação" required>
+                                        <span asp-validation-for="DiariaVA" class="form-text text-danger small"></span>
+                                    </div>
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                        </fieldset>
+                        <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register-salary">
+                            <a class="btn btn-lg btn-dark" asp-action="Index" asp-route-state="true">Voltar</a>
+                            <button form="formCreate" class="btn btn-primary btn-lg" type="submit">Salvar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

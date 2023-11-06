@@ -1,0 +1,22 @@
+﻿using RecrutaPlus.Application.ViewModels;
+using RecrutaPlus.Domain.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+
+namespace RecrutaPlus.Domain.Interfaces.Repositories
+{
+    public interface IFeriasRepository : IRepositoryAsync<Ferias>
+    {
+        Task<Ferias> GetByIdAsync(int id);
+        Task<Ferias> GetByIdRelatedAsync(int id);
+        Task<IEnumerable<Ferias>> GetByFilterAsync(FeriasFilter filter = null);
+        Task<IEnumerable<Ferias>> GetByFilterRelatedAsync(FeriasFilter filter = null);
+        Task<IEnumerable<Ferias>> GetByPageAsync(int skip, int take, Expression<Func<Ferias, bool>> predicate = null);
+        Task<IEnumerable<Ferias>> GetByPageRelatedAsync(int skip, int take, Expression<Func<Ferias, bool>> predicate = null);
+        Task<IEnumerable<Ferias>> GetByTakeLastAsync(int takeLast, Expression<Func<Ferias, bool>> predicate = null);
+        Task<IEnumerable<Ferias>> GetByTakeLastRelatedAsync(int takeLast, Expression<Func<Ferias, bool>> predicate = null);
+        Task<IEnumerable<Ferias>> GetByQueryRelatedAsync(Expression<Func<Ferias, bool>> predicate = null);
+    }
+}

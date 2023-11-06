@@ -92,7 +92,13 @@
                                         </div>
 
                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom">
-                                            <div class="form-group col-12 col-sm-12 col-md-5">
+                                            <div class="form-group col-12 col-sm-12 col-md-2">
+                                                <label asp-for="Dependentes" class="text-primary fw-bold"></label>
+                                                <input asp-for="Dependentes" class="form-control " placeholder="Tem quantos Dependentes?" required>
+                                                <span asp-validation-for="Dependentes" class="form-text text-danger small"></span>
+                                            </div>
+
+                                            <div class="form-group col-12 col-sm-12 col-md-3">
                                                 <label asp-for="Educacao" class="text-primary fw-bold"></label>
                                                 <select id="Educacao" asp-for="Educacao" asp-items="@ViewBag.SelectListEducacao" class="form-control" data-allow-clear="true" data-placeholder="Selecione..." data-language="pt-BR">
                                                 </select>
@@ -156,16 +162,22 @@
                                     </div>
 
                                     <div class="form-row col-12 col-sm-12 col-md-12 flex-custom justify-content-center gap-register">
-                                        <div class="form-group col-12 col-sm-12 col-md-4">
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
                                             <label asp-for="ValorPorHora" class="text-primary fw-bold"></label>
                                             <input asp-for="ValorPorHora" class="form-control" placeholder="Valor por Hora">
                                             <span asp-validation-for="ValorPorHora" class="form-text text-danger small"></span>
                                         </div>
 
-                                        <div class="form-group col-12 col-sm-12 col-md-4">
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
                                             <label asp-for="QuantidadeHoraMes" class="text-primary fw-bold"></label>
                                             <input asp-for="QuantidadeHoraMes" class="form-control" placeholder="Quatidade de Horas por Mês">
                                             <span asp-validation-for="QuantidadeHoraMes" class="form-text text-danger small"></span>
+                                        </div>
+
+                                        <div class="form-group col-12 col-sm-12 col-md-3">
+                                            <label asp-for="DiariaVA" class="text-primary fw-bold"></label>
+                                            <input asp-for="DiariaVA" class="form-control" placeholder="Quatidade de Horas por Mês">
+                                            <span asp-validation-for="DiariaVA" class="form-text text-danger small"></span>
                                         </div>
                                     </div>
                                 </div>

@@ -2,9 +2,9 @@
 {
     public enum GeneroEnum
     {
-        Masculino = 0,
-        Feminino = 1,
-        LGBTQIAMAIS = 2,
-        PrefiroNaoResponder = 3
+        Masculino = 1,
+        Feminino = 2,
+        LGBTQIAMAIS = 3,
+        PrefiroNaoResponder = 4
     }
 }

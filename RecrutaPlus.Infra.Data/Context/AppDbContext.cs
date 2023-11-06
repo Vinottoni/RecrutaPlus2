@@ -57,12 +57,14 @@ namespace RecrutaPlus.Infra.Data.Context
         public DbSet<Login> Logins { get; set; }
         public DbSet<Cargo> Cargos { get; set; }
         public DbSet<AppLogger> AppLoggers { get; set; }
+        public DbSet<Ferias> Ferias { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfiguration(new FuncionarioMap());
             builder.ApplyConfiguration(new LoginMap());
             builder.ApplyConfiguration(new CargoMap());
+            builder.ApplyConfiguration(new FeriasMap());
         }
 
     }
