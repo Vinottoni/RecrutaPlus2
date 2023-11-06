@@ -92,7 +92,7 @@ namespace RecrutaPlus.Application.ViewModels
 
         [JsonIgnore]
         public virtual IList<CargoViewModel> CargoViewModels { get; set; }
-        public FeriasViewModel ferias { get; set; }
+        public virtual FeriasViewModel ferias { get; set; }
 
         //Custom
         [Display(Name = "Vale Alimentação")]
