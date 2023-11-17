@@ -11,9 +11,9 @@ namespace RecrutaPlus.Domain.Entities
     public class Ferias : Entity
     {
         public int FeriasId { get; set; }
-        public int FuncionarioId { get; set; }
+        public int? FuncionarioId { get; set; }
         public decimal ValorHoraExtra { get; set; }
-        public int Dependentes { get; set; }
+        public int? Dependentes { get; set; }
         public int DiasFerias { get; set; }
         public bool AbonoPecuniario { get; set; }
         public bool DecimoTerceiro { get; set; }

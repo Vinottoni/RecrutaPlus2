@@ -198,12 +198,17 @@ namespace RecrutaPlus.Web.Controllers
 
             Funcionario funcionario = funcionarios.FirstOrDefault();
 
+            //IEnumerable<Ferias> feriass = await _feriasService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            //Ferias ferias = feriass.FirstOrDefault();
+
             if (funcionario == null)
             {
                 return NotFound();
             }
 
-            var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+            FuncionarioViewModel funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+
 
             _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
@@ -212,14 +217,22 @@ namespace RecrutaPlus.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> CalculoFeriasCreate(int? id, FeriasViewModel feriasViewModel, FuncionarioViewModel funcionarioViewModel)
+        public async Task<IActionResult> CalculoFeriasCreate(int? id, FuncionarioViewModel funcionarioViewModel)
         {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
             //AutoMapper
-            var ferias = _mapper.Map<FeriasViewModel, Ferias>(feriasViewModel);
+            var ferias = _mapper.Map<FeriasViewModel, Ferias>(funcionarioViewModel.ferias);
             var funcionario = _mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
-            funcionario.Salario = funcionarioViewModel.SalarioFinal;
+            ferias.FuncionarioId = id;
+            funcionario.FeriasId = funcionarioViewModel.ferias.FeriasId;
 
+            funcionario.Salario = funcionarioViewModel.SalarioFinal;
+                
             #region Cálculos da Folha de Pagamento
 
             int DiasDeTrabalho = 22;
@@ -284,9 +297,8 @@ namespace RecrutaPlus.Web.Controllers
 
             #region Cálculos das Férias
 
-            //ferias.DiasFerias = 30;
-            //ferias.ValorHoraExtra = 10;
-
+            ferias.Dependentes = funcionario.Dependentes;
+            ferias.ValorHoraExtra = funcionarioViewModel.ferias.ValorHoraExtra;
 
             #endregion
 
@@ -296,19 +308,79 @@ namespace RecrutaPlus.Web.Controllers
             ferias.EditadoPor = User.Identity.Name ?? DefaultConst.USER_ANONYMOUS;
             ferias.GuidStamp = Guid.NewGuid();
 
-            ServiceResult serviceResult = _funcionarioService.Add(funcionario);
+            ServiceResult serviceResult = _feriasService.Add(ferias);
 
-            _ = await _funcionarioService.SaveChangesAsync();
-
-            //ServiceResult serviceResult = _feriasService.Add(ferias);
-
-            //_ = await _feriasService.SaveChangesAsync();
+            _ = await _feriasService.SaveChangesAsync();
 
             SuccessMessage = FuncionarioResource.MSG_SAVED_SUCCESSFULLY;
 
             _logger.LogInformation(FuncionarioConst.LOG_CREATE, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
             return RedirectToAction(nameof(Index));
+        }
+
+        public async Task<IActionResult> CalculoFeriasDetails(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            Funcionario funcionario = funcionarios.FirstOrDefault();
+
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
+
+            //AutoMapper
+            var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+            int DiasDeTrabalho = 22;
+
+            funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
+            funcionarioViewModel.ValeRefeicao = funcionario.Salario * (decimal)0.06;
+            funcionarioViewModel.ValeTransporte = funcionario.Salario * (decimal)0.06;
+
+            funcionarioViewModel.MesReferencia = DateTime.Now.AddMonths(-1);
+
+            _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            return View(funcionarioViewModel);
+        }
+
+        public async Task<IActionResult> CalculoFeriasDetailsPrint(int? id)
+        {
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            Funcionario funcionario = funcionarios.FirstOrDefault();
+
+            if (funcionario == null)
+            {
+                return NotFound();
+            }
+
+            //AutoMapper
+            var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+            int DiasDeTrabalho = 22;
+
+            funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
+            funcionarioViewModel.ValeRefeicao = funcionario.Salario * (decimal)0.06;
+            funcionarioViewModel.ValeTransporte = funcionario.Salario * (decimal)0.06;
+
+            funcionarioViewModel.MesReferencia = DateTime.Now.AddMonths(-1);
+
+            _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
+
+            return View(funcionarioViewModel);
         }
 
         public async Task<IActionResult> Create()

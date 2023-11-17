@@ -1,0 +1,155 @@
+﻿@model FuncionarioViewModel
+
+@{
+    Layout = "_LayoutPrint";
+    ViewData["Title"] = "Funcionário";
+    ViewData["SubTitle"] = "Consulta";
+}
+
+<div class="content-pages">
+
+
+    <div class="page-section">
+
+
+        <div class="">
+
+            <div class="card-body">
+                <div>
+                    <div class="row">
+
+                        <!--DADOS PESSOAIS DO FUNCIONÁRIO-->
+                        <div class="col-12">
+                            <div>
+                                <div>
+                                    <h2 id="panelsStayOpen-headingDadosPessoais">
+                                        <strong>Resultado do cálculo de férias</strong>
+                                    </h2>
+                                    <div id="panelsStayOpen-collapseDadosPessoais" class="" aria-labelledby="panelsStayOpen-headingDadosPessoais">
+                                        <div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <h4 class="fw-bold">Informações inseridas:</h4>
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Salario)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Salario)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.ferias.ValorHoraExtra)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.ferias.ValorHoraExtra)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Dependentes)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.Dependentes)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.ferias.DiasFerias)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.ferias.DiasFerias)</label>
+                                                </div>
+
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.ferias.AbonoPecuniario)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.ferias.AbonoPecuniario)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.ferias.DecimoTerceiro)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.ferias.DecimoTerceiro)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">[Total de Verbas]</label>
+                                                    <label class="d-block">[Total de Verbas]</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                    <h4 class="fw-bold">Descontos</h4>
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.INSS)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.INSS)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.IRRF)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.IRRF)</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.Dependentes)</label>
+                                                    <label class="d-block">[desconto por depententes]</label>
+                                                </div>
+                                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                                    <label class="d-block text-dark fw-bold">@Html.DisplayNameFor(model => model.TotalDescontos)</label>
+                                                    <label class="d-block">@Html.DisplayFor(model => model.TotalDescontos)</label>
+                                                </div>
+                                            </div>
+                                            <div class="row col-sm-12 col-md-12">
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <hr class="text-dark" />
+                                                    <h4 class="fw-bold">Recibo de Férias</h4>
+                                                    <hr class="text-dark" />
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block text-dark">Recebi de ________________________________________________________</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block text-dark">a importância de R$ 0,00 referente ao pagamento das minhas férias do mês de..................... de........., a saber:</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block text-dark">Férias: R$ [Valor Ferias]</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block text-dark">Desconto INSS: R$ @Html.DisplayFor(model => model.INSS)</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block text-dark">Imposto de Renda: R$ @Html.DisplayFor(model => model.IRRF)</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block text-dark">Líquido de férias: R$ [Líquido de Ferias]</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12">
+                                                    <label class="d-block text-dar">Local e data: __________________, ___ de ________________ de_________</label>
+                                                </div>
+                                                <div class="col-sm-12 col-md-12 col-lg-12 d-flex mt-5">
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                                                        <label class="d-block text-dark fw-bold">_____________________________</label>
+                                                        <label class="d-block">Nome do empregado</label>
+                                                    </div>
+                                                    <div class="col-sm-6 col-md-6 col-lg-6 text-center">
+                                                        <label class="d-block text-dark fw-bold">_____________________________</label>
+                                                        <label class="d-block">Assinatura</label>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        /*Print*/
+        $(document).ready(function () {
+
+            setTimeout(function () { window.print(); }, 1000);
+
+            window.onafterprint = function () {
+                window.close();
+            }
+
+        });
+
+    </script>
+}

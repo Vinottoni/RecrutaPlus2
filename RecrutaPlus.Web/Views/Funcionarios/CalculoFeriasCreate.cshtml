@@ -157,6 +157,23 @@
                                                 <form asp-controller="Funcionarios" asp-action="CalculoFeriasCreate" id="formCreate" class="col-12 col-sm-12 col-md-12">
 
                                                     <fieldset>
+
+                                                        <input type="hidden" asp-for="FuncionarioId"/>
+                                                        <input type="hidden" asp-for="Dependentes"/>
+                                                        <input type="hidden" asp-for="Salario"/>
+                                                        <input type="hidden" asp-for="INSS"/>
+                                                        <input type="hidden" asp-for="FGTS"/>
+                                                        <input type="hidden" asp-for="IRRF"/>
+                                                        <input type="hidden" asp-for="SalarioLiquido"/>
+                                                        <input type="hidden" asp-for="SalarioFinal"/>
+                                                        <input type="hidden" asp-for="ValorPorHora"/>
+                                                        <input type="hidden" asp-for="DiariaVA"/>
+                                                        <input type="hidden" asp-for="QuantidadeHoraMes"/>
+                                                        <input type="hidden" asp-for="TotalDescontos"/>
+                                                        <input type="hidden" asp-for="ValeAlimentacao"/>
+                                                        <input type="hidden" asp-for="ValeRefeicao"/>
+                                                        <input type="hidden" asp-for="ValeTransporte"/>
+
                                                         <div class="form-row col-12 col-sm-12 col-md-12 flex-custom container">
 
                                                             <div class="form-row col-12 col-sm-12 col-md-12 flex-custom gap-register">
@@ -176,7 +193,7 @@
 
                                                                     <div class="form-group col-12 col-sm-12 col-md-3">
                                                                         <label asp-for="Dependentes" class="text-primary fw-bold"></label>
-                                                                        <input asp-for="Dependentes" class="form-control " disabled>
+                                                                        <input asp-for="Dependentes" class="form-control" disabled>
                                                                         <span asp-validation-for="Dependentes" class="form-text text-danger small"></span>
                                                                     </div>
 
