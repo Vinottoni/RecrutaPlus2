@@ -211,13 +211,13 @@
 
                                                         </div>
                                                         <div class="col-sm-4 col-md-4 col-lg-6">
-                                                            <label class="d-block">@Html.DisplayFor(model => model.ValeAlimentacao)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.ValeRefeicao)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.ValeTransporte)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.INSS)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.FGTS)</label>
-                                                            <label class="d-block">@Html.DisplayFor(model => model.IRRF)</label>
 
+                                                            <label class="d-block">@Model.ValeAlimentacao.ToString("C")</label>
+                                                            <label class="d-block">@Model.ValeRefeicao.ToString("C")</label>
+                                                            <label class="d-block">@Model.ValeTransporte.ToString("C")</label>
+                                                            <label class="d-block">@Model.INSS.ToString("C")</label>
+                                                            <label class="d-block">@Model.FGTS.ToString("C")</label>
+                                                            <label class="d-block">@Model.IRRF.ToString("C")</label>
 
                                                         </div>
                                                     </div>
@@ -228,15 +228,15 @@
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">Salário Base</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.Salario)</label>
+                                                        <label class="d-block">@Model.Salario.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">Total de Descontos</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.TotalDescontos)</label>
+                                                        <label class="d-block">@Model.TotalDescontos.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">Valor Líquido</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.SalarioLiquido)</label>
+                                                        <label class="d-block">@Model.SalarioLiquido.ToString("C")</label>
                                                     </div>
                                                 </div>
                                                 <div class="row col-sm-12 col-md-12">
