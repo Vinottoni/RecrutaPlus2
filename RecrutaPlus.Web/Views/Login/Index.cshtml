@@ -6,13 +6,13 @@
 }
 
 <div class="text-center text-lg-start BlackGradient">
-    <div class="container py-4 d-flex justify-content-center size-background-container">
-        <div class="col-lg-6 mb-5 mb-lg-0">
+    <div class="container py-4 d-flex justify-content-center size-background-container flex-wrap">
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-5 mb-lg-0">
             <img src="~/img/RecrutaPlus.png" class="img-logo w-100 rounded-4 shadow-4" />
         </div>
-        <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="col-sm-12 col-md-12 col-lg-6 mb-5 mb-lg-0">
             <div class="cascading-right">
-                <div class="card-body p-5 shadow-5">
+                <div class="card-body shadow-5">
                     @if(TempData["MensagemErro"] != null)
                     {
                         <div class="alert alert-danger" role="alert">
@@ -26,16 +26,14 @@
                     </div>
                     <form asp-controller="Login" asp-action="Entrar" method="post">
                         <fieldset class="gap-2 input-flex-custom">
-                            <div class="position-custom col-sm-12 col-md-12">
-
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-wrap justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                                <label asp-for="Username" for="inputEmail" class="filled fw-bold col-12 col-sm-12 col-md-12 col-lg-12"></label>
                                 <input asp-for="Username" id="inputEmail" type="text" name="username" class="text-input text-primary" placeholder="Enter your Email" autocomplete="off" required>
-                                <label asp-for="Username" for="inputEmail" class="label-custom filled fw-bold"></label>
                                 @Html.ValidationMessageFor(x => x.Username)
                             </div>
-                            <div class="position-custom col-sm-12 col-md-12">
-
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-wrap justify-content-center justify-content-sm-center justify-content-md-center justify-content-lg-start">
+                                <label asp-for="Password" for="inputPassword" class="filled fw-bold col-12 col-sm-12 col-md-12 col-lg-12"></label>
                                 <input asp-for="Password" id="inputPassword" name="password" class="text-input text-primary" type="password" placeholder="Enter your Password" required>
-                                <label asp-for="Password" for="inputPassword" class="label-custom filled fw-bold"></label>
                                 @Html.ValidationMessageFor(x => x.Password)
                             </div>
                         </fieldset>

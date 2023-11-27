@@ -225,11 +225,11 @@ namespace RecrutaPlus.Web.Controllers
             }
 
             //AutoMapper
-            var ferias = _mapper.Map<FeriasViewModel, Ferias>(funcionarioViewModel.ferias);
+            var ferias = _mapper.Map<FeriasViewModel, Ferias>(funcionarioViewModel.Ferias);
             var funcionario = _mapper.Map<FuncionarioViewModel, Funcionario>(funcionarioViewModel);
 
             ferias.FuncionarioId = id;
-            funcionario.FeriasId = funcionarioViewModel.ferias.FeriasId;
+            
 
             funcionario.Salario = funcionarioViewModel.SalarioFinal;
                 
@@ -298,7 +298,7 @@ namespace RecrutaPlus.Web.Controllers
             #region Cálculos das Férias
 
             ferias.Dependentes = funcionario.Dependentes;
-            ferias.ValorHoraExtra = funcionarioViewModel.ferias.ValorHoraExtra;
+            ferias.ValorHoraExtra = funcionarioViewModel.Ferias.ValorHoraExtra;
 
             #endregion
 
@@ -326,8 +326,10 @@ namespace RecrutaPlus.Web.Controllers
             {
                 return NotFound();
             }
-
             IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+            IEnumerable<Ferias> feriass = await _feriasService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            Ferias ferias = feriass.LastOrDefault();
 
             Funcionario funcionario = funcionarios.FirstOrDefault();
 
@@ -336,15 +338,75 @@ namespace RecrutaPlus.Web.Controllers
                 return NotFound();
             }
 
+            if (funcionario.Ativo == false)
+            {
+                return NotFound();
+            }
+
+
             //AutoMapper
             var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+            var feriasViewModel = _mapper.Map<Ferias, FeriasViewModel>(ferias);
+
             int DiasDeTrabalho = 22;
 
+            if(funcionario.Dependentes > 0)
+            {
+                funcionarioViewModel.DescontoDependente = (decimal)(funcionario?.Dependentes * 189.59);
+            }
+            else
+            {
+                funcionarioViewModel.DescontoDependente = 0;
+            }
+
+            funcionarioViewModel.DiasFerias = ferias.DiasFerias;
             funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
             funcionarioViewModel.ValeRefeicao = funcionario.Salario * (decimal)0.06;
             funcionarioViewModel.ValeTransporte = funcionario.Salario * (decimal)0.06;
+            funcionarioViewModel.ValorHoraExtra = ferias.ValorHoraExtra;
+            funcionarioViewModel.AbonoPecuniario = ferias.AbonoPecuniario;
+            funcionarioViewModel.DecimoTerceiro = ferias.DecimoTerceiro;
 
             funcionarioViewModel.MesReferencia = DateTime.Now.AddMonths(-1);
+
+            #region Cálculo de Férias
+
+            //Valores Brutos
+            decimal ValorDasFerias = (funcionario.Salario / 30) * ferias.DiasFerias;
+            decimal UmTercoFerias = ValorDasFerias / 3; //Calcular 1/3 das Ferias
+            decimal ValorDecimoTerceiro = 0;
+            decimal ValorAbono = 0;
+            decimal UmTercoAbono = 0;
+
+            //Cálculo do 13º
+            if (ferias.DecimoTerceiro == true)
+            {
+                ValorDecimoTerceiro = funcionario.Salario / 2;
+            }
+            else
+            {
+                ValorDecimoTerceiro = 0;
+            }
+
+
+            //Cálculo do Abono Pecuniário
+            if (ferias.AbonoPecuniario == true)
+            {
+                ValorAbono = (funcionario.Salario / 30) * 10;
+                UmTercoAbono = ValorAbono / 3;
+            }
+            else
+            {
+                ValorAbono = 0;
+                UmTercoAbono = 0;
+            }
+
+            funcionarioViewModel.TotalBruto = funcionario.Salario + UmTercoFerias + ValorDecimoTerceiro + ValorAbono + UmTercoAbono; //Somar o bruto de tudo, salario, 1/3 das ferias, abono etc...
+
+            //Descontos
+            funcionarioViewModel.TotalLiquidoFerias = funcionarioViewModel.TotalBruto - funcionario.INSS - funcionario.IRRF;
+            #endregion
+
 
             _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 
@@ -358,8 +420,10 @@ namespace RecrutaPlus.Web.Controllers
             {
                 return NotFound();
             }
-
             IEnumerable<Funcionario> funcionarios = await _funcionarioService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+            IEnumerable<Ferias> feriass = await _feriasService.GetByQueryRelatedAsync(w => w.FuncionarioId == id.GetValueOrDefault(-1));
+
+            Ferias ferias = feriass.LastOrDefault();
 
             Funcionario funcionario = funcionarios.FirstOrDefault();
 
@@ -370,13 +434,67 @@ namespace RecrutaPlus.Web.Controllers
 
             //AutoMapper
             var funcionarioViewModel = _mapper.Map<Funcionario, FuncionarioViewModel>(funcionario);
+            var feriasViewModel = _mapper.Map<Ferias, FeriasViewModel>(ferias);
+
             int DiasDeTrabalho = 22;
 
+            if (funcionario.Dependentes > 0)
+            {
+                funcionarioViewModel.DescontoDependente = (decimal)(funcionario?.Dependentes * 189.59);
+            }
+            else
+            {
+                funcionarioViewModel.DescontoDependente = 0;
+            }
+
+            funcionarioViewModel.DiasFerias = ferias.DiasFerias;
             funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
             funcionarioViewModel.ValeRefeicao = funcionario.Salario * (decimal)0.06;
             funcionarioViewModel.ValeTransporte = funcionario.Salario * (decimal)0.06;
+            funcionarioViewModel.ValorHoraExtra = ferias.ValorHoraExtra;
+            funcionarioViewModel.AbonoPecuniario = ferias.AbonoPecuniario;
+            funcionarioViewModel.DecimoTerceiro = ferias.DecimoTerceiro;
 
             funcionarioViewModel.MesReferencia = DateTime.Now.AddMonths(-1);
+
+            #region Cálculo de Férias
+
+            //Valores Brutos
+            decimal ValorDasFerias = (funcionario.Salario / 30) * ferias.DiasFerias;
+            decimal UmTercoFerias = ValorDasFerias / 3; //Calcular 1/3 das Ferias
+            decimal ValorDecimoTerceiro = 0;
+            decimal ValorAbono = 0;
+            decimal UmTercoAbono = 0;
+
+            //Cálculo do 13º
+            if (ferias.DecimoTerceiro == true)
+            {
+                ValorDecimoTerceiro = funcionario.Salario / 2;
+            }
+            else
+            {
+                ValorDecimoTerceiro = 0;
+            }
+
+
+            //Cálculo do Abono Pecuniário
+            if (ferias.AbonoPecuniario == true)
+            {
+                ValorAbono = (funcionario.Salario / 30) * 10;
+                UmTercoAbono = ValorAbono / 3;
+            }
+            else
+            {
+                ValorAbono = 0;
+                UmTercoAbono = 0;
+            }
+
+            funcionarioViewModel.TotalBruto = funcionario.Salario + UmTercoFerias + ValorDecimoTerceiro + ValorAbono + UmTercoAbono; //Somar o bruto de tudo, salario, 1/3 das ferias, abono etc...
+
+            //Descontos
+            funcionarioViewModel.TotalLiquidoFerias = funcionarioViewModel.TotalBruto - funcionario.INSS - funcionario.IRRF;
+            #endregion
+
 
             _logger.LogInformation(FuncionarioConst.LOG_DETAILS, User.Identity.Name ?? DefaultConst.USER_ANONYMOUS, DateTime.Now);
 

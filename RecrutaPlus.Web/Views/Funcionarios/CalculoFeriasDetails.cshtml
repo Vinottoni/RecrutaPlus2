@@ -17,9 +17,7 @@
             </div>
         </header>
 
-
         <div class="page-section">
-
 
             <div class="card-custom card-fluid shadow">
 
@@ -45,32 +43,47 @@
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Salario)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.Salario)</label>
+                                                        @*<label class="d-block">@Html.DisplayFor(model => model.Salario)</label>*@
+                                                        <label class="d-block">@Model.Salario.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.ferias.ValorHoraExtra)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.ferias.ValorHoraExtra)</label>
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Ferias.ValorHoraExtra)</label>
+                                                        @*<label class="d-block">@Html.DisplayFor(model => model.ValorHoraExtra)</label>*@
+                                                        <label class="d-block">@Model.ValorHoraExtra.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Dependentes)</label>
                                                         <label class="d-block">@Html.DisplayFor(model => model.Dependentes)</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.ferias.DiasFerias)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.ferias.DiasFerias)</label>
-                                                    </div>
-
-                                                    <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.ferias.AbonoPecuniario)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.ferias.AbonoPecuniario)</label>
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.DiasFerias)</label>
+                                                        <label class="d-block">@Html.DisplayFor(model => model.DiasFerias)</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.ferias.DecimoTerceiro)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.ferias.DecimoTerceiro)</label>
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Ferias.AbonoPecuniario)</label>
+                                                        <label class="d-block">
+                                                            @if (Model.AbonoPecuniario == true)
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-active">@DefaultResource.MSG_SIM</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-off">@DefaultResource.MSG_NAO</span>
+                                                            }
+                                                        </label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
-                                                        <label class="d-block text-primary fw-bold">[Total de Verbas]</label>
-                                                        <label class="d-block">[Total de Verbas]</label>
+                                                        <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Ferias.DecimoTerceiro)</label>
+                                                        <label class="d-block">
+                                                            @if (Model.DecimoTerceiro == true)
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-active">@DefaultResource.MSG_SIM</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="badge badge-subtle btn-badge-off">@DefaultResource.MSG_NAO</span>
+                                                            }
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <div class="row col-sm-12 col-md-12">
@@ -81,19 +94,22 @@
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.INSS)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.INSS)</label>
+                                                        @*<label class="d-block">@Html.DisplayFor(model => model.INSS)</label>*@
+                                                        <label class="d-block">@Model.INSS.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.IRRF)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.IRRF)</label>
+                                                        @*<label class="d-block">@Html.DisplayFor(model => model.IRRF)</label>*@
+                                                        <label class="d-block">@Model.IRRF.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.Dependentes)</label>
-                                                        <label class="d-block">[desconto por depententes]</label>
+                                                        @*<label class="d-block">@Html.DisplayFor(model => model.DescontoDependente)</label>*@
+                                                        <label class="d-block">@Model.DescontoDependente.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-4 col-md-4 col-lg-2">
                                                         <label class="d-block text-primary fw-bold">@Html.DisplayNameFor(model => model.TotalDescontos)</label>
-                                                        <label class="d-block">@Html.DisplayFor(model => model.TotalDescontos)</label>
+                                                        <label class="d-block">@Model.TotalDescontos.ToString("C")</label>
                                                     </div>
                                                 </div>
                                                 <div class="row col-sm-12 col-md-12">
@@ -106,19 +122,19 @@
                                                         <label class="d-block text-dark">Recebi de ________________________________________________________</label>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <label class="d-block text-dark">a importância de R$ 0,00 referente ao pagamento das minhas férias do mês de..................... de........., a saber:</label>
+                                                        <label class="d-block text-dark">a importância de @Model.TotalLiquidoFerias.ToString("C") referente ao pagamento das minhas férias do mês de..................... de........., a saber:</label>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <label class="d-block text-dark">Férias: R$ [Valor Ferias]</label>
+                                                        <label class="d-block text-dark">Férias: @Model.TotalBruto.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <label class="d-block text-dark">Desconto INSS: R$ @Html.DisplayFor(model => model.INSS)</label>
+                                                        <label class="d-block text-dark">Desconto INSS: @Model.INSS.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <label class="d-block text-dark">Imposto de Renda: R$ @Html.DisplayFor(model => model.IRRF)</label>
+                                                        <label class="d-block text-dark">Imposto de Renda: @Model.IRRF.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
-                                                        <label class="d-block text-dark">Líquido de férias: R$ [Líquido de Ferias]</label>
+                                                        <label class="d-block text-dark">Líquido de férias: @Model.TotalLiquidoFerias.ToString("C")</label>
                                                     </div>
                                                     <div class="col-sm-12 col-md-12 col-lg-12">
                                                         <label class="d-block text-dar">Local e data: __________________, ___ de ________________ de_________</label>

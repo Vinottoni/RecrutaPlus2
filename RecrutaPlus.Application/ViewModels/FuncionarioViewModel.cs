@@ -92,7 +92,7 @@ namespace RecrutaPlus.Application.ViewModels
 
         [JsonIgnore]
         public virtual IList<CargoViewModel> CargoViewModels { get; set; }
-        public virtual FeriasViewModel ferias { get; set; }
+        public virtual FeriasViewModel Ferias { get; set; }
 
         //Custom
         [Display(Name = "Vale Alimentação")]
@@ -106,7 +106,18 @@ namespace RecrutaPlus.Application.ViewModels
         public DateTime MesReferencia { get; set; }
         [Display(Name = "Valor por Hora")]
         public decimal ValorPorHora { get; set; }
-        
+        [Display(Name = "Desconto por Dependentes")]
+        public decimal DescontoDependente { get; set; }
+        public decimal ValorHoraExtra { get; set; }
+        [Display(Name = "Dias de Férias")]
+        public int DiasFerias { get; set; }
+        [Display(Name = "Abono Pecuniário")]
+        public bool AbonoPecuniario { get; set; }
+        [Display(Name = "Décimo Terceiro")]
+        public bool DecimoTerceiro { get; set; }
+        public decimal TotalLiquidoFerias { get; set; }
+        public decimal TotalBruto { get; set; }
+
 
 
 
