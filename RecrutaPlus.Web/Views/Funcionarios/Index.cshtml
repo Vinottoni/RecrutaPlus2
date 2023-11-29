@@ -94,12 +94,19 @@
                                                     }
                                                 </td>
                                                 <td class="text-center align-middle">
-                                                    <a asp-action="Edit" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
-                                                    <a asp-action="CalculoFeriasCreate" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-calendar-plus text-primary"></i></a>
-                                                    <a asp-action="Details" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
-                                                    <a asp-action="Delete" asp-route-id="@item.FuncionarioId"><i class="fa-regular fa-trash-can text-danger"></i></a>
-                                                    <a asp-action="ResumoFuncionario" asp-route-id="@item.FuncionarioId"><i class="fa-solid fa-file-invoice-dollar text-success"></i></a>
-                                                    <a asp-action="CalculoFeriasDetails" asp-route-id="@item.FuncionarioId"><i class="fa fa-print text-primary"></i></a>
+                                                    <div class="d-grid">
+                                                        <div>
+                                                            <a asp-action="Edit" asp-route-id="@item.FuncionarioId" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa-regular fa-pen-to-square text-warning"></i></a>
+                                                            <a asp-action="Details" asp-route-id="@item.FuncionarioId" data-toggle="tooltip" data-placement="top" title="Ver Detalhes"><i class="fa-solid fa-magnifying-glass text-info"></i></a>
+                                                            <a asp-action="Delete" asp-route-id="@item.FuncionarioId" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa-regular fa-trash-can text-danger"></i></a>
+                                                        </div>
+                                                        <div>
+                                                            <a asp-action="ResumoFuncionario" asp-route-id="@item.FuncionarioId" data-toggle="tooltip" data-placement="top" title="Folha de Pagamento"><i class="fa-solid fa-file-invoice-dollar text-success"></i></a>
+                                                            <a asp-action="CalculoFeriasCreate" asp-route-id="@item.FuncionarioId" data-toggle="tooltip" data-placement="top" title="Cálcular Ferias"><i class="fa-regular fa-calendar-plus text-primary"></i></a>
+                                                            <a asp-action="CalculoFeriasDetails" asp-route-id="@item.FuncionarioId" data-toggle="tooltip" data-placement="top" title="Resumo Ferias"><i class="fa fa-print text-primary"></i></a>
+                                                        </div>
+                                                    </div>
+
                                                 </td>
                                             </tr>
                                         }

@@ -13,6 +13,17 @@
                 buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
             });
 
+        // Adicionar tooltips do Bootstrap para botões e links
+        $('.datatables-table tbody').on('mouseenter', '[data-toggle="tooltip"]', function () {
+            var title = $(this).attr('title');
+            $(this).tooltip({
+                title: title,
+                placement: 'top',
+                trigger: 'hover'
+            });
+            $(this).tooltip('show');
+        });
+
         //copy
         $("#dataTableExportCopy").on("click", function () {
             table.button('.buttons-copy').trigger();
@@ -36,3 +47,4 @@
     });
 
 </script>
+

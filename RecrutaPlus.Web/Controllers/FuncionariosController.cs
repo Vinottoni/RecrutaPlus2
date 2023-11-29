@@ -242,50 +242,138 @@ namespace RecrutaPlus.Web.Controllers
 
             funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
 
+            decimal totalFaixaUm = 0;
+            decimal totalFaixaDois = 0;
+            decimal totalFaixaTres = 0;
+            decimal totalFaixaQuatro = 0;
+
+            decimal descontoFaixaUm = 0;
+            decimal descontoFaixaDois = 0;
+            decimal descontoFaixaTres = 0;
+            decimal descontoFaixaQuatro = 0;
+
             #region Desconto Inss
-            if (SalarioFuncionario <= 1302.00)
+            if (SalarioFuncionario <= 1320.00)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.075;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                descontoFaixaUm = totalFaixaUm - (decimal)((1320.00 - SalarioFuncionario) * 0.075);
             }
-            else if (SalarioFuncionario >= 1302.01 && SalarioFuncionario <= 2571.29)
+            else if (SalarioFuncionario >= 1320.01 && SalarioFuncionario <= 2571.29)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.09;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.09;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois - (decimal)((2571.29 - SalarioFuncionario) * 0.09);
             }
             else if (SalarioFuncionario >= 2571.30 && SalarioFuncionario <= 3856.94)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.12;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.12;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.30) * 0.12);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres - (decimal)((3856.94 - SalarioFuncionario) * 0.12);
             }
             else if (SalarioFuncionario >= 3856.95 && SalarioFuncionario <= 7507.49)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.14;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.14;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.301) * 0.12);
+                totalFaixaQuatro = (decimal)((7507.49 - 3856.95) * 0.14);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres;
+                descontoFaixaQuatro = totalFaixaQuatro - (decimal)((7507.49 - SalarioFuncionario) * 0.14);
+            }
+            else if (SalarioFuncionario > 7507.49)
+            {
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.301) * 0.12);
+                totalFaixaQuatro = (decimal)((7507.49 - 3856.95) * 0.14);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres;
+                descontoFaixaQuatro = totalFaixaQuatro;
             }
             #endregion
 
+            funcionario.INSS = totalFaixaUm + totalFaixaDois + totalFaixaTres + totalFaixaQuatro;
+
             SalarioINSS = SalarioFuncionario - (double)funcionario.INSS;
+            decimal totalFaixaUmIRRF = 0;
+            decimal totalFaixaDoisIRRF = 0;
+            decimal totalFaixaTresIRRF = 0;
+            decimal totalFaixaQuatroIRRF = 0;
+            decimal totalFaixaCincoIRRF = 0;
+
+            decimal descontoFaixaUmIRRF = 0;
+            decimal descontoFaixaDoisIRRF = 0;
+            decimal descontoFaixaTresIRRF = 0;
+            decimal descontoFaixaQuatroIRRF = 0;
+            decimal descontoFaixaCincoIRRF = 0;
+            decimal descontoTotalIrrf = 0;
+
+            double SalarioIRRF = 0;
+
+            SalarioIRRF = SalarioFuncionario - ((double)funcionario.INSS + (double)(funcionario.Dependentes * 189.59));
 
             #region Desconto IRRF
-            if (SalarioINSS <= 1903.98)
+            if (SalarioIRRF <= 2112.00)
             {
-                descontoIRRF = 0;
+                totalFaixaUmIRRF = 0;
             }
-            else if (SalarioINSS >= 1903.99 && SalarioINSS <= 2826.65)
+            else if (SalarioIRRF >= 2112.01 && SalarioIRRF <= 2826.65)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.075;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF - (decimal)((2826.65 - SalarioIRRF) * 0.075);
             }
-            else if (SalarioINSS >= 2826.66 && SalarioINSS <= 3751.05)
+            else if (SalarioIRRF >= 2826.66 && SalarioIRRF <= 3751.05)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.15;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF - (decimal)((3751.05 - SalarioIRRF) * 0.15);
             }
-            else if (SalarioINSS >= 3751.06 && SalarioINSS <= 4664.68)
+            else if (SalarioIRRF >= 3751.06 && SalarioIRRF <= 4664.68)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.225;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+                totalFaixaQuatroIRRF = (decimal)((4664.68 - 3751.06) * 0.225);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF;
+                descontoFaixaQuatroIRRF = totalFaixaQuatroIRRF - (decimal)((4664.68 - SalarioIRRF) * 0.225);
             }
-            else if (SalarioINSS > 4664.68)
+            else if (SalarioIRRF > 4664.68)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.275;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+                totalFaixaQuatroIRRF = (decimal)((4664.68 - 3751.06) * 0.225);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF;
+                descontoFaixaQuatroIRRF = totalFaixaQuatroIRRF;
+                descontoFaixaCincoIRRF = (decimal)((SalarioIRRF - 4664.68) * 0.275);
             }
 
-            funcionario.IRRF = descontoIRRF + (decimal)(funcionario.Dependentes * 189.59);
+            descontoTotalIrrf = descontoIRRF + descontoFaixaDoisIRRF + descontoFaixaTresIRRF + descontoFaixaQuatroIRRF + descontoFaixaCincoIRRF;
+
+            funcionario.IRRF = descontoTotalIrrf;
+
             funcionario.FGTS = funcionario.Salario * (decimal)0.08;
 
             funcionario.TotalDescontos = funcionario.INSS + funcionario.IRRF + funcionario.FGTS;
@@ -533,51 +621,137 @@ namespace RecrutaPlus.Web.Controllers
 
             funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
 
+            decimal totalFaixaUm = 0;
+            decimal totalFaixaDois = 0;
+            decimal totalFaixaTres = 0;
+            decimal totalFaixaQuatro = 0;
+
+            decimal descontoFaixaUm = 0;
+            decimal descontoFaixaDois = 0;
+            decimal descontoFaixaTres = 0;
+            decimal descontoFaixaQuatro = 0;
+
             #region Desconto Inss
-            if (SalarioFuncionario <= 1302.00)
+            if (SalarioFuncionario <= 1320.00)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.075;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                descontoFaixaUm = totalFaixaUm - (decimal)((1320.00 - SalarioFuncionario) * 0.075);
             }
-            else if (SalarioFuncionario >= 1302.01 && SalarioFuncionario <= 2571.29)
+            else if (SalarioFuncionario >= 1320.01 && SalarioFuncionario <= 2571.29)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.09;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.09;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois - (decimal)((2571.29 - SalarioFuncionario) * 0.09);
             }
             else if (SalarioFuncionario >= 2571.30 && SalarioFuncionario <= 3856.94)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.12;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.12;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.30) * 0.12);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres - (decimal)((3856.94 - SalarioFuncionario) * 0.12);
             }
             else if (SalarioFuncionario >= 3856.95 && SalarioFuncionario <= 7507.49)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.14;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.14;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.301) * 0.12);
+                totalFaixaQuatro = (decimal)((7507.49 - 3856.95) * 0.14);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres;
+                descontoFaixaQuatro = totalFaixaQuatro - (decimal)((7507.49 - SalarioFuncionario) * 0.14);
+            }
+            else if (SalarioFuncionario > 7507.49)
+            {
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.301) * 0.12);
+                totalFaixaQuatro = (decimal)((7507.49 - 3856.95) * 0.14);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres;
+                descontoFaixaQuatro = totalFaixaQuatro;
             }
             #endregion
 
+            funcionario.INSS = totalFaixaUm + totalFaixaDois + totalFaixaTres + totalFaixaQuatro;
+
             SalarioINSS = SalarioFuncionario - (double)funcionario.INSS;
+            decimal totalFaixaUmIRRF = 0;
+            decimal totalFaixaDoisIRRF = 0;
+            decimal totalFaixaTresIRRF = 0;
+            decimal totalFaixaQuatroIRRF = 0;
+            decimal totalFaixaCincoIRRF = 0;
+
+            decimal descontoFaixaUmIRRF = 0;
+            decimal descontoFaixaDoisIRRF = 0;
+            decimal descontoFaixaTresIRRF = 0;
+            decimal descontoFaixaQuatroIRRF = 0;
+            decimal descontoFaixaCincoIRRF = 0;
+            decimal descontoTotalIrrf = 0;
+
+            double SalarioIRRF = 0;
+
+            SalarioIRRF = SalarioFuncionario - ((double)funcionario.INSS + (double)(funcionario.Dependentes * 189.59));
 
             #region Desconto IRRF
-            if (SalarioINSS <= 1903.98)
+            if (SalarioIRRF <= 2112.00)
             {
-                descontoIRRF = 0;
+                totalFaixaUmIRRF = 0;
             }
-            else if (SalarioINSS >= 1903.99 && SalarioINSS <= 2826.65)
+            else if (SalarioIRRF >= 2112.01 && SalarioIRRF <= 2826.65)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.075;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF - (decimal)((2826.65 - SalarioIRRF) * 0.075);
             }
-            else if (SalarioINSS >= 2826.66 && SalarioINSS <= 3751.05)
+            else if (SalarioIRRF >= 2826.66 && SalarioIRRF <= 3751.05)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.15;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF - (decimal)((3751.05 - SalarioIRRF) * 0.15);
             }
-            else if (SalarioINSS >= 3751.06 && SalarioINSS <= 4664.68)
+            else if (SalarioIRRF >= 3751.06 && SalarioIRRF <= 4664.68)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.225;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+                totalFaixaQuatroIRRF = (decimal)((4664.68 - 3751.06) * 0.225);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF;
+                descontoFaixaQuatroIRRF = totalFaixaQuatroIRRF - (decimal)((4664.68 - SalarioIRRF) * 0.225);
             }
-            else if (SalarioINSS > 4664.68)
+            else if (SalarioIRRF > 4664.68)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.275;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+                totalFaixaQuatroIRRF = (decimal)((4664.68 - 3751.06) * 0.225);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF;
+                descontoFaixaQuatroIRRF = totalFaixaQuatroIRRF;
+                descontoFaixaCincoIRRF = (decimal)((SalarioIRRF - 4664.68) * 0.275);
             }
 
-            funcionario.IRRF = descontoIRRF + (decimal)(funcionario.Dependentes * 189.59);
-            funcionario.FGTS = funcionario.Salario * (decimal)0.08;
+            descontoTotalIrrf = descontoIRRF + descontoFaixaDoisIRRF + descontoFaixaTresIRRF + descontoFaixaQuatroIRRF + descontoFaixaCincoIRRF;
+
+            funcionario.IRRF = descontoTotalIrrf;
 
             funcionario.TotalDescontos = funcionario.INSS + funcionario.IRRF + funcionario.FGTS;
 
@@ -693,50 +867,139 @@ namespace RecrutaPlus.Web.Controllers
 
             funcionarioViewModel.ValeAlimentacao = funcionarioViewModel.DiariaVA * DiasDeTrabalho;
 
+            decimal totalFaixaUm = 0;
+            decimal totalFaixaDois = 0;
+            decimal totalFaixaTres = 0;
+            decimal totalFaixaQuatro = 0;
+
+            decimal descontoFaixaUm = 0;
+            decimal descontoFaixaDois = 0;
+            decimal descontoFaixaTres = 0;
+            decimal descontoFaixaQuatro = 0;
+
             #region Desconto Inss
-            if (SalarioFuncionario <= 1302.00)
+            if (SalarioFuncionario <= 1320.00)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.075;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                descontoFaixaUm = totalFaixaUm - (decimal)((1320.00 - SalarioFuncionario) * 0.075);
             }
-            else if (SalarioFuncionario >= 1302.01 && SalarioFuncionario <= 2571.29)
+            else if (SalarioFuncionario >= 1320.01 && SalarioFuncionario <= 2571.29)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.09;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.09;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois - (decimal)((2571.29 - SalarioFuncionario) * 0.09);
             }
             else if (SalarioFuncionario >= 2571.30 && SalarioFuncionario <= 3856.94)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.12;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.12;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.30) * 0.12);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres - (decimal)((3856.94 - SalarioFuncionario) * 0.12);
             }
             else if (SalarioFuncionario >= 3856.95 && SalarioFuncionario <= 7507.49)
             {
-                funcionario.INSS = funcionario.Salario * (decimal)0.14;
+                //funcionario.INSS = funcionario.Salario * (decimal)0.14;
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.301) * 0.12);
+                totalFaixaQuatro = (decimal)((7507.49 - 3856.95) * 0.14);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres;
+                descontoFaixaQuatro = totalFaixaQuatro - (decimal)((7507.49 - SalarioFuncionario) * 0.14);
+            }
+            else if (SalarioFuncionario > 7507.49)
+            {
+                totalFaixaUm = (decimal)(1320.00 * 0.075);
+                totalFaixaDois = (decimal)((2571.29 - 1320.01) * 0.09);
+                totalFaixaTres = (decimal)((3856.94 - 2571.301) * 0.12);
+                totalFaixaQuatro = (decimal)((7507.49 - 3856.95) * 0.14);
+
+                descontoFaixaUm = totalFaixaUm;
+                descontoFaixaDois = totalFaixaDois;
+                descontoFaixaTres = totalFaixaTres;
+                descontoFaixaQuatro = totalFaixaQuatro;
             }
             #endregion
 
+            funcionario.INSS = descontoFaixaUm + descontoFaixaDois + descontoFaixaTres + descontoFaixaQuatro;
+
             SalarioINSS = SalarioFuncionario - (double)funcionario.INSS;
 
+            decimal totalFaixaUmIRRF = 0;
+            decimal totalFaixaDoisIRRF = 0;
+            decimal totalFaixaTresIRRF = 0;
+            decimal totalFaixaQuatroIRRF = 0;
+            decimal totalFaixaCincoIRRF = 0;
+
+            decimal descontoFaixaUmIRRF = 0;
+            decimal descontoFaixaDoisIRRF = 0;
+            decimal descontoFaixaTresIRRF = 0;
+            decimal descontoFaixaQuatroIRRF = 0;
+            decimal descontoFaixaCincoIRRF = 0;
+            decimal descontoTotalIrrf = 0;
+
+            double SalarioIRRF = 0;
+
+            SalarioIRRF = SalarioFuncionario - ((double)funcionario.INSS + (double)(funcionario.Dependentes * 189.59));
+
             #region Desconto IRRF
-            if (SalarioINSS <= 1903.98)
+            if (SalarioIRRF <= 2112.00)
             {
-                descontoIRRF = 0;
+                totalFaixaUmIRRF = 0;
             }
-            else if (SalarioINSS >= 1903.99 && SalarioINSS <= 2826.65)
+            else if (SalarioIRRF >= 2112.01 && SalarioIRRF <= 2826.65)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.075;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF - (decimal)((2826.65 - SalarioIRRF) * 0.075);
             }
-            else if (SalarioINSS >= 2826.66 && SalarioINSS <= 3751.05)
+            else if (SalarioIRRF >= 2826.66 && SalarioIRRF <= 3751.05)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.15;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF - (decimal)((3751.05 - SalarioIRRF) * 0.15);
             }
-            else if (SalarioINSS >= 3751.06 && SalarioINSS <= 4664.68)
+            else if (SalarioIRRF >= 3751.06 && SalarioIRRF <= 4664.68)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.225;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+                totalFaixaQuatroIRRF = (decimal)((4664.68 - 3751.06) * 0.225);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF;
+                descontoFaixaQuatroIRRF = totalFaixaQuatroIRRF - (decimal)((4664.68 - SalarioIRRF) * 0.225);
             }
-            else if (SalarioINSS > 4664.68)
+            else if (SalarioIRRF > 4664.68)
             {
-                descontoIRRF = funcionario.Salario * (decimal)0.275;
+                totalFaixaUmIRRF = 0;
+                totalFaixaDoisIRRF = (decimal)((2826.65 - 2112.01) * 0.075);
+                totalFaixaTresIRRF = (decimal)((3751.05 - 2826.66) * 0.15);
+                totalFaixaQuatroIRRF = (decimal)((4664.68 - 3751.06) * 0.225);
+
+                descontoFaixaDoisIRRF = totalFaixaDoisIRRF;
+                descontoFaixaTresIRRF = totalFaixaTresIRRF;
+                descontoFaixaQuatroIRRF = totalFaixaQuatroIRRF;
+                descontoFaixaCincoIRRF = (decimal)((SalarioIRRF - 4664.68) * 0.275);
             }
 
-            funcionario.IRRF = descontoIRRF + (decimal)(funcionario.Dependentes * 189.59);
+            descontoTotalIrrf = descontoIRRF + descontoFaixaDoisIRRF + descontoFaixaTresIRRF + descontoFaixaQuatroIRRF + descontoFaixaCincoIRRF;
+
+            funcionario.IRRF = descontoTotalIrrf;
+
             funcionario.FGTS = funcionario.Salario * (decimal)0.08;
 
             funcionario.TotalDescontos = funcionario.INSS + funcionario.IRRF + funcionario.FGTS;

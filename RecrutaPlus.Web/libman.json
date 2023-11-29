@@ -36,6 +36,36 @@
       "provider": "cdnjs",
       "library": "Chart.js@4.3.0",
       "destination": "wwwroot/lib/chartjs/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables.net@1.12.1",
+      "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables.net-bs4@1.12.1",
+      "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables.net-buttons@2.2.3",
+      "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables.net-buttons-bs4@2.2.3",
+      "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables.net-responsive@2.5.0",
+      "destination": "wwwroot/lib/datatables/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "datatables.net-responsive-bs4@2.5.0",
+      "destination": "wwwroot/lib/datatables/"
     }
 
   ]

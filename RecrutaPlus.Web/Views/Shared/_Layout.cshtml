@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" />
 
+    <link href="~/lib/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="~/lib/datatables/responsive.bootstrap4.min.css" rel="stylesheet" />
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -106,6 +109,24 @@
     <script src="~/lib/jquery/jquery.min.js"></script>
     <script src="~/lib/popper.js/umd/popper.min.js"></script>
     <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="~/lib/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/lib/datatables/dataTables.bootstrap4.min.js"></script>
+
+    <script src="~/lib/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/lib/datatables/responsive.bootstrap4.min.js"></script>
+
+    <script src="~/lib/datatables/js/dataTables.buttons.min.js"></script>
+    <script src="~/lib/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/lib/datatables/js/buttons.html5.min.js"></script>
+    <script src="~/lib/datatables/js/buttons.print.min.js"></script>
+    <script src="~/lib/datatables/js/buttons.colVis.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
 
     <script>
         let arrow = document.querySelectorAll(".arrow");
