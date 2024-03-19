@@ -1,9 +1,9 @@
-﻿using RecrutaPlus.Domain.Services;
+﻿using Safety.Domain.Services;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Text;
 using System.Text.Json;
 
-namespace RecrutaPlus.Web.Extensions
+namespace Safety.Web.Extensions
 {
     public static class ServiceResultExtension
     {

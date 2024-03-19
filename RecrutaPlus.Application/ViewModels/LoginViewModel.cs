@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace RecrutaPlus.Application.ViewModels
+namespace Safety.Application.ViewModels
 {
     public class LoginViewModel
     {

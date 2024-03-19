@@ -1,4 +1,4 @@
-﻿namespace RecrutaPlus.Infra.Data
+﻿namespace Safety.Infra.Data
 {
     public struct AppDataSettingsConfigurationConst
     {

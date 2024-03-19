@@ -1,14 +1,14 @@
-﻿using RecrutaPlus.Application.ViewModels;
+﻿using Safety.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Web.Models;
+using Safety.Web.Models;
 using System.Diagnostics;
 using AutoMapper;
-using RecrutaPlus.Domain.Interfaces.Services;
-using RecrutaPlus.Domain.Interfaces;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Constants;
+using Safety.Domain.Interfaces.Services;
+using Safety.Domain.Interfaces;
+using Safety.Domain.Entities;
+using Safety.Domain.Constants;
 
-namespace RecrutaPlus.Web.Controllers
+namespace Safety.Web.Controllers
 {
     public class SettingsController : BaseController
     {

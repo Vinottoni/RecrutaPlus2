@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 using AutoMapper.Configuration.Annotations;
-using RecrutaPlus.Domain.ValueObjects;
+using Safety.Domain.ValueObjects;
 using System.ComponentModel;
 
-namespace RecrutaPlus.Application.ViewModels
+namespace Safety.Application.ViewModels
 {
     public class FuncionarioViewModel
     {

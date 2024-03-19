@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Application.ViewModels
+namespace Safety.Application.ViewModels
 {
     public class AppLoggerViewModel
     {

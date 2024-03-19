@@ -1,5 +1,5 @@
-﻿using RecrutaPlus.Application.ViewModels;
-using RecrutaPlus.Domain.ValueObjects;
+﻿using Safety.Application.ViewModels;
+using Safety.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +9,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace RecrutaPlus.Application.Filters
+namespace Safety.Application.Filters
 {
     public class FuncionarioFilterViewModel
     {

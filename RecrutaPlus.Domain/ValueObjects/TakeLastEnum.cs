@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace RecrutaPlus.Domain.ValueObjects
+namespace Safety.Domain.ValueObjects
 {
     public enum TakeLastEnum
     {

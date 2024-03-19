@@ -1,21 +1,21 @@
-﻿using RecrutaPlus.Application.ViewModels;
+﻿using Safety.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Domain.Interfaces.Services;
+using Safety.Domain.Interfaces.Services;
 using AutoMapper;
-using RecrutaPlus.Domain.Interfaces;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Constants;
+using Safety.Domain.Interfaces;
+using Safety.Domain.Entities;
+using Safety.Domain.Constants;
 using System.Text.Json.Serialization;
 using System.Text.Json;
-using RecrutaPlus.Application.Searches;
-using RecrutaPlus.Application.Filters;
-using RecrutaPlus.Domain.Services;
-using RecrutaPlus.Domain.Resources;
-using RecrutaPlus.Web.Extensions;
+using Safety.Application.Searches;
+using Safety.Application.Filters;
+using Safety.Domain.Services;
+using Safety.Domain.Resources;
+using Safety.Web.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using RecrutaPlus.Domain.Enums;
+using Safety.Domain.Enums;
 
-namespace RecrutaPlus.Web.Controllers
+namespace Safety.Web.Controllers
 {
     public class FuncionariosController : BaseController
     {
@@ -252,6 +252,10 @@ namespace RecrutaPlus.Web.Controllers
             decimal descontoFaixaTres = 0;
             decimal descontoFaixaQuatro = 0;
 
+            
+
+            funcionario.INSS = totalFaixaUm + totalFaixaDois + totalFaixaTres + totalFaixaQuatro;
+
             #region Desconto Inss
             if (SalarioFuncionario <= 1320.00)
             {
@@ -305,9 +309,10 @@ namespace RecrutaPlus.Web.Controllers
             }
             #endregion
 
-            funcionario.INSS = totalFaixaUm + totalFaixaDois + totalFaixaTres + totalFaixaQuatro;
-
             SalarioINSS = SalarioFuncionario - (double)funcionario.INSS;
+
+            #region Desconto IRRF
+
             decimal totalFaixaUmIRRF = 0;
             decimal totalFaixaDoisIRRF = 0;
             decimal totalFaixaTresIRRF = 0;
@@ -325,7 +330,7 @@ namespace RecrutaPlus.Web.Controllers
 
             SalarioIRRF = SalarioFuncionario - ((double)funcionario.INSS + (double)(funcionario.Dependentes * 189.59));
 
-            #region Desconto IRRF
+            
             if (SalarioIRRF <= 2112.00)
             {
                 totalFaixaUmIRRF = 0;

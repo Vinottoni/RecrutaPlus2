@@ -1,4 +1,4 @@
-namespace RecrutaPlus.Web.Models
+namespace Safety.Web.Models
 {
     public class ErrorViewModel
     {

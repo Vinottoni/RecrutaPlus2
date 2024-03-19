@@ -1,16 +1,16 @@
-﻿using RecrutaPlus.Application.ViewModels;
+﻿using Safety.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Domain.Interfaces.Services;
+using Safety.Domain.Interfaces.Services;
 using AutoMapper;
-using RecrutaPlus.Domain.Interfaces;
-using RecrutaPlus.Domain.Constants;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Application.Filters;
-using RecrutaPlus.Application.Searches;
+using Safety.Domain.Interfaces;
+using Safety.Domain.Constants;
+using Safety.Domain.Entities;
+using Safety.Application.Filters;
+using Safety.Application.Searches;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 
-namespace RecrutaPlus.Web.Controllers
+namespace Safety.Web.Controllers
 {
     public class ProfileController : BaseController
     {

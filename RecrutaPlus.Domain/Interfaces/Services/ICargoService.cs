@@ -1,11 +1,11 @@
-﻿using RecrutaPlus.Application.ViewModels;
-using RecrutaPlus.Domain.Entities;
+﻿using Safety.Application.ViewModels;
+using Safety.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Interfaces.Services
+namespace Safety.Domain.Interfaces.Services
 {
     public interface ICargoService: IService<Cargo>
     {

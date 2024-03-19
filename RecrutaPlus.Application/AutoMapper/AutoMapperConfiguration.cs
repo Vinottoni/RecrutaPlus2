@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace RecrutaPlus.Application.AutoMapper
+namespace Safety.Application.AutoMapper
 {
     public class AutoMapperConfiguration
     {

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace RecrutaPlus.Infra.Data.Migrations
+namespace Safety.Infra.Data.Migrations
 {
     /// <inheritdoc />
     public partial class db : Migration

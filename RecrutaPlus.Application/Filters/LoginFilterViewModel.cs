@@ -1,4 +1,4 @@
-﻿using RecrutaPlus.Application.ViewModels;
+﻿using Safety.Application.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace RecrutaPlus.Application.Filters
+namespace Safety.Application.Filters
 {
     public class LoginFilterViewModel
     {

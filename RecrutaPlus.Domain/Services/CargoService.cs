@@ -1,9 +1,9 @@
-﻿using RecrutaPlus.Application.ViewModels;
-using RecrutaPlus.Domain.Constants;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.Repositories;
-using RecrutaPlus.Domain.Interfaces.Services;
-using RecrutaPlus.Domain.Interfaces;
+﻿using Safety.Application.ViewModels;
+using Safety.Domain.Constants;
+using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.Repositories;
+using Safety.Domain.Interfaces.Services;
+using Safety.Domain.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +11,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Services
+namespace Safety.Domain.Services
 {
     public class CargoService : Service<Cargo>, ICargoService
     {

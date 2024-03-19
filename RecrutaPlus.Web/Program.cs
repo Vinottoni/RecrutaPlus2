@@ -1,9 +1,9 @@
-using RecrutaPlus.Web;
-using RecrutaPlus.Web.Extensions;
+using Safety.Web;
+using Safety.Web.Extensions;
 using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
-using RecrutaPlus.Infra.Data.Context;
-using RecrutaPlus.Infra.Data.IoC;
+using Safety.Infra.Data.Context;
+using Safety.Infra.Data.IoC;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,8 +1,8 @@
-﻿using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.RepositorySqlRaws;
-using RecrutaPlus.Infra.Data.Context;
+﻿using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.RepositorySqlRaws;
+using Safety.Infra.Data.Context;
 
-namespace RecrutaPlus.Infra.Data.RepositorySqlRaws
+namespace Safety.Infra.Data.RepositorySqlRaws
 {
     public class RepositorySqlRaw<T> : IRepositorySqlRaw<T> where T : Entity
     {

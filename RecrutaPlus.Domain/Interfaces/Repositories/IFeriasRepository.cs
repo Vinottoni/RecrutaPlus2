@@ -1,11 +1,11 @@
-﻿using RecrutaPlus.Application.ViewModels;
-using RecrutaPlus.Domain.Entities;
+﻿using Safety.Application.ViewModels;
+using Safety.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Interfaces.Repositories
+namespace Safety.Domain.Interfaces.Repositories
 {
     public interface IFeriasRepository : IRepositoryAsync<Ferias>
     {

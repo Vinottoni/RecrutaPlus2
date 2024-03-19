@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using RecrutaPlus.Domain.Entities;
+using Safety.Domain.Entities;
 
-namespace RecrutaPlus.Domain.Validators
+namespace Safety.Domain.Validators
 {
     public class FuncionarioValidator : AbstractValidator<Funcionario>
     {

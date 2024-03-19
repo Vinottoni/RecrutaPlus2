@@ -5,7 +5,7 @@ using System;
 using System.Data.Common;
 using System.IO;
 
-namespace RecrutaPlus.Infra.Data.Context
+namespace Safety.Infra.Data.Context
 {
     public class DbConnectionFactory
     {

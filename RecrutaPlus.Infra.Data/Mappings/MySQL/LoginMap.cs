@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Infra.Data.Mappings.DataTypes;
+using Safety.Domain.Entities;
+using Safety.Infra.Data.Mappings.DataTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Infra.Data.Mappings.MySQL
+namespace Safety.Infra.Data.Mappings.MySQL
 {
     public class LoginMap : IEntityTypeConfiguration<Login>
     {

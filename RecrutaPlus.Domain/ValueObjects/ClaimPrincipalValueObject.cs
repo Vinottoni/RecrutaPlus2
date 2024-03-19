@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.ValueObjects
+namespace Safety.Domain.ValueObjects
 {
     public class ClaimPrincipalValueObject
     {

@@ -1,4 +1,4 @@
-﻿namespace RecrutaPlus.Domain.Enums
+﻿namespace Safety.Domain.Enums
 {
     public enum GeneroEnum
     {

@@ -1,16 +1,16 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Logging;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.UnitOfWork;
-using RecrutaPlus.Infra.Data.Mappings.MySQL;
+using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.UnitOfWork;
+using Safety.Infra.Data.Mappings.MySQL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Infra.Data.Context
+namespace Safety.Infra.Data.Context
 {
     public class AppDbContext :DbContext, IUnitOfWork
     {

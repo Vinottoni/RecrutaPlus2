@@ -4,7 +4,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Infra.Data
+namespace Safety.Infra.Data
 {
     public static class PredicateBuilder
     {

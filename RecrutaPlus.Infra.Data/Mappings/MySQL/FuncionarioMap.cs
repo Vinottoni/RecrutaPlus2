@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Infra.Data.Mappings.DataTypes;
+using Safety.Domain.Entities;
+using Safety.Infra.Data.Mappings.DataTypes;
 
-namespace RecrutaPlus.Infra.Data.Mappings.MySQL
+namespace Safety.Infra.Data.Mappings.MySQL
 {
     public class FuncionarioMap : IEntityTypeConfiguration<Funcionario>
     {

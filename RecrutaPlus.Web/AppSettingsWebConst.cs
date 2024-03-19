@@ -1,4 +1,4 @@
-﻿namespace RecrutaPlus.Web
+﻿namespace Safety.Web
 {
     public struct AppSettingsWebConst
     {

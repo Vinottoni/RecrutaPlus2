@@ -1,11 +1,11 @@
-﻿using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.UnitOfWork;
+﻿using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.UnitOfWork;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Interfaces.Repositories
+namespace Safety.Domain.Interfaces.Repositories
 {
     public interface IRepositoryAsync<T> where T : Entity
     {

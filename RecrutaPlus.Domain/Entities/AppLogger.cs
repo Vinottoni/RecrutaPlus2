@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Entities
+namespace Safety.Domain.Entities
 {
     public class AppLogger : Entity
     {

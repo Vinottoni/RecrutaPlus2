@@ -5,22 +5,22 @@ VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D82BB87A-824B-4F27-BF5C-ECD611A224E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecrutaPlus.Web", "RecrutaPlus.Web\RecrutaPlus.Web.csproj", "{3FEA1CED-0B38-4501-A9DE-9534BE9285AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety.Web", "RecrutaPlus.Web\Safety.Web.csproj", "{3FEA1CED-0B38-4501-A9DE-9534BE9285AB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{D2853CE8-7A3F-4547-8A25-32B1D88379D4}"
 	ProjectSection(SolutionItems) = preProject
 		Alteracoes.txt = Alteracoes.txt
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecrutaPlus.Domain", "RecrutaPlus.Domain\RecrutaPlus.Domain.csproj", "{1D3D7639-6D0D-400E-ACE6-0A550B277A6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety.Domain", "RecrutaPlus.Domain\Safety.Domain.csproj", "{1D3D7639-6D0D-400E-ACE6-0A550B277A6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecrutaPlus.Application", "RecrutaPlus.Application\RecrutaPlus.Application.csproj", "{53DA4F58-30FB-430D-B228-AC7DBF1C04A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety.Application", "RecrutaPlus.Application\Safety.Application.csproj", "{53DA4F58-30FB-430D-B228-AC7DBF1C04A2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecrutaPlus.Infra.Data", "RecrutaPlus.Infra.Data\RecrutaPlus.Infra.Data.csproj", "{54A186B1-F55F-4D14-B802-955E001E4DEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety.Infra.Data", "RecrutaPlus.Infra.Data\Safety.Infra.Data.csproj", "{54A186B1-F55F-4D14-B802-955E001E4DEC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RecrutaPlus.Infra.Data.IoC", "RecrutaPlus.Infra.Data.IoC\RecrutaPlus.Infra.Data.IoC.csproj", "{753FEB0B-F4B1-4B4E-AED1-EC804827185D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety.Infra.Data.IoC", "RecrutaPlus.Infra.Data.IoC\Safety.Infra.Data.IoC.csproj", "{753FEB0B-F4B1-4B4E-AED1-EC804827185D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecrutaPlus.Infra.Data.Logging", "RecrutaPlus.Infra.Data.Logging\RecrutaPlus.Infra.Data.Logging.csproj", "{5C38ABB8-8639-4A56-AC35-F26E44109864}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Safety.Infra.Data.Logging", "RecrutaPlus.Infra.Data.Logging\Safety.Infra.Data.Logging.csproj", "{5C38ABB8-8639-4A56-AC35-F26E44109864}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

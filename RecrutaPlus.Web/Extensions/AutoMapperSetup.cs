@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using RecrutaPlus.Application.AutoMapper;
+using Safety.Application.AutoMapper;
 
-namespace RecrutaPlus.Web.Extensions
+namespace Safety.Web.Extensions
 {
     public static class AutoMapperSetup
     {

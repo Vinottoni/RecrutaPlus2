@@ -1,12 +1,12 @@
-﻿using RecrutaPlus.Application.Filters;
-using RecrutaPlus.Application.ViewModels;
-using RecrutaPlus.Domain.Constants;
-using RecrutaPlus.Domain.ValueObjects;
+﻿using Safety.Application.Filters;
+using Safety.Application.ViewModels;
+using Safety.Domain.Constants;
+using Safety.Domain.ValueObjects;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 
-namespace RecrutaPlus.Application.Searches
+namespace Safety.Application.Searches
 {
     public class FeriasSearch
     {

@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using RecrutaPlus.Domain.Interfaces;
-using RecrutaPlus.Domain.Interfaces.Repositories;
-using RecrutaPlus.Domain.Interfaces.Services;
-using RecrutaPlus.Domain.Services;
-using RecrutaPlus.Infra.Data.Logging;
-using RecrutaPlus.Infra.Data.Repositories;
+using Safety.Domain.Interfaces;
+using Safety.Domain.Interfaces.Repositories;
+using Safety.Domain.Interfaces.Services;
+using Safety.Domain.Services;
+using Safety.Infra.Data.Logging;
+using Safety.Infra.Data.Repositories;
 
-namespace RecrutaPlus.Infra.Data.IoC
+namespace Safety.Infra.Data.IoC
 {
     public static class NativeInjectorConfig
     {

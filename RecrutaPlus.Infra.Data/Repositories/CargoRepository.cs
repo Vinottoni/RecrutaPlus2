@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RecrutaPlus.Application.ViewModels;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.Repositories;
-using RecrutaPlus.Infra.Data.Context;
+using Safety.Application.ViewModels;
+using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.Repositories;
+using Safety.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +10,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Infra.Data.Repositories
+namespace Safety.Infra.Data.Repositories
 {
     public class CargoRepository : RepositoryAsync<Cargo>, ICargoRepository
     {

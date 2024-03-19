@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RecrutaPlus.Infra.Data.Context;
+using Safety.Infra.Data.Context;
 
 #nullable disable
 
-namespace RecrutaPlus.Infra.Data.Migrations
+namespace Safety.Infra.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace RecrutaPlus.Infra.Data.Migrations
                 .HasAnnotation("ProductVersion", "7.0.5")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.AppLogger", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.AppLogger", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -48,7 +48,7 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.ToTable("AppLoggers");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Cargo", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Cargo", b =>
                 {
                     b.Property<int>("CargoId")
                         .ValueGeneratedOnAdd()
@@ -96,7 +96,7 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.ToTable("cargos", (string)null);
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Ferias", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Ferias", b =>
                 {
                     b.Property<int>("FeriasId")
                         .ValueGeneratedOnAdd()
@@ -163,7 +163,7 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.ToTable("ferias", (string)null);
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Funcionario", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Funcionario", b =>
                 {
                     b.Property<int>("FuncionarioId")
                         .ValueGeneratedOnAdd()
@@ -266,7 +266,7 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.ToTable("funcionarios", (string)null);
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Login", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Login", b =>
                 {
                     b.Property<int>("UsuarioId")
                         .ValueGeneratedOnAdd()
@@ -315,26 +315,26 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.ToTable("usuarios", (string)null);
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Cargo", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Cargo", b =>
                 {
-                    b.HasOne("RecrutaPlus.Domain.Entities.Ferias", null)
+                    b.HasOne("Safety.Domain.Entities.Ferias", null)
                         .WithMany("Cargos")
                         .HasForeignKey("FeriasId");
 
-                    b.HasOne("RecrutaPlus.Domain.Entities.Funcionario", null)
+                    b.HasOne("Safety.Domain.Entities.Funcionario", null)
                         .WithMany("Cargos")
                         .HasForeignKey("FuncionarioId");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Ferias", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Ferias", b =>
                 {
-                    b.HasOne("RecrutaPlus.Domain.Entities.Funcionario", "Funcionario")
+                    b.HasOne("Safety.Domain.Entities.Funcionario", "Funcionario")
                         .WithMany("Feriass")
                         .HasForeignKey("FuncionarioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RecrutaPlus.Domain.Entities.Login", "Login")
+                    b.HasOne("Safety.Domain.Entities.Login", "Login")
                         .WithMany()
                         .HasForeignKey("LoginUsuarioId");
 
@@ -343,21 +343,21 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.Navigation("Login");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Funcionario", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Funcionario", b =>
                 {
-                    b.HasOne("RecrutaPlus.Domain.Entities.Cargo", "Cargo")
+                    b.HasOne("Safety.Domain.Entities.Cargo", "Cargo")
                         .WithMany("Funcionarios")
                         .HasForeignKey("CargoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RecrutaPlus.Domain.Entities.Ferias", "Ferias")
+                    b.HasOne("Safety.Domain.Entities.Ferias", "Ferias")
                         .WithMany("Funcionarios")
                         .HasForeignKey("FeriasId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("RecrutaPlus.Domain.Entities.Login", "Login")
+                    b.HasOne("Safety.Domain.Entities.Login", "Login")
                         .WithMany("Funcionarios")
                         .HasForeignKey("LoginUsuarioId");
 
@@ -368,13 +368,13 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.Navigation("Login");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Login", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Login", b =>
                 {
-                    b.HasOne("RecrutaPlus.Domain.Entities.Ferias", null)
+                    b.HasOne("Safety.Domain.Entities.Ferias", null)
                         .WithMany("Logins")
                         .HasForeignKey("FeriasId");
 
-                    b.HasOne("RecrutaPlus.Domain.Entities.Funcionario", "Funcionario")
+                    b.HasOne("Safety.Domain.Entities.Funcionario", "Funcionario")
                         .WithMany("Logins")
                         .HasForeignKey("FuncionarioId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -383,12 +383,12 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.Navigation("Funcionario");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Cargo", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Cargo", b =>
                 {
                     b.Navigation("Funcionarios");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Ferias", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Ferias", b =>
                 {
                     b.Navigation("Cargos");
 
@@ -397,7 +397,7 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.Navigation("Logins");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Funcionario", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Funcionario", b =>
                 {
                     b.Navigation("Cargos");
 
@@ -406,7 +406,7 @@ namespace RecrutaPlus.Infra.Data.Migrations
                     b.Navigation("Logins");
                 });
 
-            modelBuilder.Entity("RecrutaPlus.Domain.Entities.Login", b =>
+            modelBuilder.Entity("Safety.Domain.Entities.Login", b =>
                 {
                     b.Navigation("Funcionarios");
                 });

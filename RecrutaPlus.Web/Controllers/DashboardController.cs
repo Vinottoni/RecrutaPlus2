@@ -1,17 +1,17 @@
-﻿using RecrutaPlus.Application.ViewModels;
+﻿using Safety.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Application.Searches;
-using RecrutaPlus.Application.Filters;
-using RecrutaPlus.Domain.Constants;
-using RecrutaPlus.Domain.Entities;
+using Safety.Application.Searches;
+using Safety.Application.Filters;
+using Safety.Domain.Constants;
+using Safety.Domain.Entities;
 using System.Text.Json.Serialization;
 using System.Text.Json;
 using AutoMapper;
-using RecrutaPlus.Domain.Interfaces.Services;
-using RecrutaPlus.Domain.Interfaces;
+using Safety.Domain.Interfaces.Services;
+using Safety.Domain.Interfaces;
 using Microsoft.Data.SqlClient;
 
-namespace RecrutaPlus.Web.Controllers
+namespace Safety.Web.Controllers
 {
     public class DashboardController : BaseController
     {

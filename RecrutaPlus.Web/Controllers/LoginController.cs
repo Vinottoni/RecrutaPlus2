@@ -1,17 +1,17 @@
-﻿using RecrutaPlus.Application.ViewModels;
+﻿using Safety.Application.ViewModels;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Web.Models;
+using Safety.Web.Models;
 using System.Diagnostics;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.Services;
+using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.Services;
 using AutoMapper;
-using RecrutaPlus.Domain.Interfaces;
-using RecrutaPlus.Domain.Services;
-using RecrutaPlus.Domain.Constants;
+using Safety.Domain.Interfaces;
+using Safety.Domain.Services;
+using Safety.Domain.Constants;
 using static System.Runtime.InteropServices.JavaScript.JSType;
-using RecrutaPlus.Domain.Interfaces.Repositories;
+using Safety.Domain.Interfaces.Repositories;
 
-namespace RecrutaPlus.Web.Controllers
+namespace Safety.Web.Controllers
 {
     public class LoginController : BaseController
     {

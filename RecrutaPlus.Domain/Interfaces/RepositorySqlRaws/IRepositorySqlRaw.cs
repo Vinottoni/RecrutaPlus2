@@ -1,6 +1,6 @@
-﻿using RecrutaPlus.Domain.Entities;
+﻿using Safety.Domain.Entities;
 
-namespace RecrutaPlus.Domain.Interfaces.RepositorySqlRaws
+namespace Safety.Domain.Interfaces.RepositorySqlRaws
 {
     public interface IRepositorySqlRaw<T> where T : Entity
     {

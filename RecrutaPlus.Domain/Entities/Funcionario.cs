@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text.Json.Serialization;
-using RecrutaPlus.Domain.Validators;
-using RecrutaPlus.Domain.ValueObjects;
+using Safety.Domain.Validators;
+using Safety.Domain.ValueObjects;
 
-namespace RecrutaPlus.Domain.Entities
+namespace Safety.Domain.Entities
 {
     public class Funcionario : Entity
     {

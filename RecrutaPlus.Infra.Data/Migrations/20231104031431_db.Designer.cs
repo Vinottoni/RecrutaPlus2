@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using RecrutaPlus.Infra.Data.Context;
+using Safety.Infra.Data.Context;
 
 #nullable disable
 
-namespace RecrutaPlus.Infra.Data.Migrations
+namespace Safety.Infra.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     [Migration("20231104031431_db")]

@@ -1,9 +1,9 @@
-﻿using RecrutaPlus.Domain.Constants;
-using RecrutaPlus.Domain.Services;
+﻿using Safety.Domain.Constants;
+using Safety.Domain.Services;
 using System.Collections.Generic;
 using System.Text;
 
-namespace RecrutaPlus.Domain.Services
+namespace Safety.Domain.Services
 {
     public class ServiceResult
     {

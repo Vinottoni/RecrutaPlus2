@@ -1,4 +1,4 @@
-﻿namespace RecrutaPlus.Domain.Interfaces
+﻿namespace Safety.Domain.Interfaces
 {
     public interface IEmailSender
     {

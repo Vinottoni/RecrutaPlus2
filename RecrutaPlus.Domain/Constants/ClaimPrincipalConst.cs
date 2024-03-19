@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Constants
+namespace Safety.Domain.Constants
 {
     public struct ClaimPrincipalConst
     {

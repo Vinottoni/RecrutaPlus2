@@ -1,6 +1,6 @@
-﻿using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.Repositories;
-using RecrutaPlus.Domain.Interfaces.Services;
+﻿using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.Repositories;
+using Safety.Domain.Interfaces.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Services
+namespace Safety.Domain.Services
 {
     public class Service<T> : IService<T> where T : Entity
     {

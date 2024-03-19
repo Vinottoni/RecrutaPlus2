@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RecrutaPlus.Domain\RecrutaPlus.Domain.csproj" />
+    <ProjectReference Include="..\Safety.Domain\Safety.Domain.csproj" />
   </ItemGroup>
 
 </Project>

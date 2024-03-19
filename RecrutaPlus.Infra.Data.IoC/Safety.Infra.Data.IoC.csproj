@@ -11,9 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RecrutaPlus.Domain\RecrutaPlus.Domain.csproj" />
-    <ProjectReference Include="..\RecrutaPlus.Infra.Data.Logging\RecrutaPlus.Infra.Data.Logging.csproj" />
-    <ProjectReference Include="..\RecrutaPlus.Infra.Data\RecrutaPlus.Infra.Data.csproj" />
+    <ProjectReference Include="..\Safety.Domain\Safety.Domain.csproj" />
+    <ProjectReference Include="..\Safety.Infra.Data.Logging\Safety.Infra.Data.Logging.csproj" />
+    <ProjectReference Include="..\Safety.Infra.Data\Safety.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

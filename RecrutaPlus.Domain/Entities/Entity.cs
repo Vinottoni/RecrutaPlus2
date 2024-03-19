@@ -1,7 +1,7 @@
 ﻿using FluentValidation.Results;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RecrutaPlus.Domain.Entities
+namespace Safety.Domain.Entities
 {
     public abstract class Entity
     {

@@ -1,4 +1,4 @@
-﻿namespace RecrutaPlus.Infra.Data.Logging
+﻿namespace Safety.Infra.Data.Logging
 {
     public struct AppLogSettingsConfigurationConst
     {

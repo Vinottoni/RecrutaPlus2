@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace RecrutaPlus.Application.ViewModels
+namespace Safety.Application.ViewModels
 {
     public class FeriasFilter
     {

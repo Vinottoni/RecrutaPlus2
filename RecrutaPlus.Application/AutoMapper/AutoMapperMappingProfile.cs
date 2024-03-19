@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
-using RecrutaPlus.Application.Filters;
-using RecrutaPlus.Application.ViewModels;
-using RecrutaPlus.Domain.Entities;
+using Safety.Application.Filters;
+using Safety.Application.ViewModels;
+using Safety.Domain.Entities;
 
-namespace RecrutaPlus.Application.AutoMapper
+namespace Safety.Application.AutoMapper
 {
     public class AutoMapperMappingProfile : Profile
     {

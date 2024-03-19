@@ -1,4 +1,4 @@
-﻿namespace RecrutaPlus.Domain.Constants
+﻿namespace Safety.Domain.Constants
 {
     public struct DefaultConst
     {

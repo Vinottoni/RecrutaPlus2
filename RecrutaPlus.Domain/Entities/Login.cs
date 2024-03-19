@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using RecrutaPlus.Domain.Validators;
+using Safety.Domain.Validators;
 
-namespace RecrutaPlus.Domain.Entities
+namespace Safety.Domain.Entities
 {
     public class Login : Entity
     {

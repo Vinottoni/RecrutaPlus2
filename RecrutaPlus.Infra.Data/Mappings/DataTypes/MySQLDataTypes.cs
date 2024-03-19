@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Infra.Data.Mappings.DataTypes
+namespace Safety.Infra.Data.Mappings.DataTypes
 {
     public struct MySQLDataTypes
     {

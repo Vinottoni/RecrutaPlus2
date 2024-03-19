@@ -1,14 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.Repositories;
-using RecrutaPlus.Infra.Data.Context;
+using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.Repositories;
+using Safety.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Infra.Data.Repositories
+namespace Safety.Infra.Data.Repositories
 {
     public class AppLoggerRepository : RepositoryAsync<AppLogger>, IAppLoggerRepository
     {

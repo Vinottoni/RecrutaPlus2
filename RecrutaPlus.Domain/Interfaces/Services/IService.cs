@@ -1,4 +1,4 @@
-﻿using RecrutaPlus.Domain.Services;
+﻿using Safety.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Interfaces.Services
+namespace Safety.Domain.Interfaces.Services
 {
     public interface IService<T> where T : class
     {

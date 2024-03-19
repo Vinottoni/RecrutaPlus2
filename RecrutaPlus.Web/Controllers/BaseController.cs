@@ -1,10 +1,10 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using RecrutaPlus.Domain.Constants;
-using RecrutaPlus.Domain.Interfaces;
-using RecrutaPlus.Domain.ValueObjects;
+using Safety.Domain.Constants;
+using Safety.Domain.Interfaces;
+using Safety.Domain.ValueObjects;
 
-namespace RecrutaPlus.Web.Controllers
+namespace Safety.Web.Controllers
 {
     public class BaseController : Controller
     {

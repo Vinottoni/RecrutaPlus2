@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Interfaces
+namespace Safety.Domain.Interfaces
 {
     public interface IEmailSenderAsync
     {

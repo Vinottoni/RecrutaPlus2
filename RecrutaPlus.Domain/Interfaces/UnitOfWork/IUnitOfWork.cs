@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Domain.Interfaces.UnitOfWork
+namespace Safety.Domain.Interfaces.UnitOfWork
 {
     public interface IUnitOfWork : IDisposable
     {

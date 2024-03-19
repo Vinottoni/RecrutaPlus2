@@ -1,15 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using RecrutaPlus.Domain.Entities;
-using RecrutaPlus.Domain.Interfaces.Repositories;
-using RecrutaPlus.Domain.Interfaces.UnitOfWork;
-using RecrutaPlus.Infra.Data.Context;
+using Safety.Domain.Entities;
+using Safety.Domain.Interfaces.Repositories;
+using Safety.Domain.Interfaces.UnitOfWork;
+using Safety.Infra.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace RecrutaPlus.Infra.Data.Repositories
+namespace Safety.Infra.Data.Repositories
 {
     public class RepositoryAsync<T> : IRepositoryAsync<T> where T : Entity
     {

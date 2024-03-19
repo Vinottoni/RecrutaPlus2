@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using RecrutaPlus.Application.ViewModels;
+using Safety.Application.ViewModels;
 
-namespace RecrutaPlus.Domain.Interfaces
+namespace Safety.Domain.Interfaces
 {
     internal interface ISessao
     {

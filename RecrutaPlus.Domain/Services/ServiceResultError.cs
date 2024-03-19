@@ -1,4 +1,4 @@
-﻿namespace RecrutaPlus.Domain.Services
+﻿namespace Safety.Domain.Services
 {
     public class ServiceResultError
     {

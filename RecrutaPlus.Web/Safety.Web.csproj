@@ -25,9 +25,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\RecrutaPlus.Application\RecrutaPlus.Application.csproj" />
-		<ProjectReference Include="..\RecrutaPlus.Infra.Data.IoC\RecrutaPlus.Infra.Data.IoC.csproj" />
-		<ProjectReference Include="..\RecrutaPlus.Infra.Data\RecrutaPlus.Infra.Data.csproj" />
+		<ProjectReference Include="..\Safety.Application\Safety.Application.csproj" />
+		<ProjectReference Include="..\Safety.Infra.Data.IoC\Safety.Infra.Data.IoC.csproj" />
+		<ProjectReference Include="..\Safety.Infra.Data\Safety.Infra.Data.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Configuration;
-using RecrutaPlus.Domain.Interfaces;
+using Safety.Domain.Interfaces;
 using Serilog;
 using System;
 
-namespace RecrutaPlus.Infra.Data.Logging
+namespace Safety.Infra.Data.Logging
 {
 
     public class LoggerAdapter : IAppLogger, IDisposable
